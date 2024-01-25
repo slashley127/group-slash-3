@@ -12,7 +12,7 @@ public class Activity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int activityId;
 
 //    public int nextId = 1;
 
@@ -22,6 +22,7 @@ public class Activity {
     private String name;
 
     @NotNull(message = "Activity must have a location")
+    @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
     private String location;
 
     @Size(min = 10, message = "Description must be minimum 10 characters")
@@ -51,17 +52,17 @@ public class Activity {
         if (this == o) return true;
         if (!(o instanceof Activity)) return false;
         Activity activity = (Activity) o;
-        return id == activity.id;
+        return activityId == activity.activityId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(activityId);
     }
 
 
-    public Activity(String location, String description, double cost, int rating) {
-        super();
+    public Activity(String name, String location, String description, double cost, int rating) {
+        this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
@@ -97,25 +98,7 @@ public class Activity {
     }
 
     public Integer getId() {
-        return id;
+        return activityId;
     }
 
-
-//    @Override
-//    public String toString() {
-//        return super.toString();
-//    }
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Activity activity = (Activity) o;
-//        return id == activity.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return super.hashCode();
-//    }
 }

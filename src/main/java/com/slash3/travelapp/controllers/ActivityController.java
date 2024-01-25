@@ -18,6 +18,11 @@ public class ActivityController {
     @Autowired
     private ActivityRepository activityRepository;
 
+    public ActivityController(ActivityRepository activityRepository) {
+        this.activityRepository = activityRepository;
+    }
+
+
     @GetMapping("/")
     public String index(Model model) {
         activityRepository.findAll();
