@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Trip {
+
     @Id
     @GeneratedValue
     @Column(name = "TripId")
@@ -21,4 +22,35 @@ public class Trip {
     private String traveler;
 
 // *add list of activities when activity model is merged in*
+
+    public Trip(Integer tripId, String tripLocation, String traveler) {
+        this.tripId = tripId;
+        this.tripLocation = tripLocation;
+        this.traveler = traveler;
+    }
+    public Trip(){}
+
+    public Integer getTripId() {
+        return tripId;
+    }
+
+    public void setTripId(Integer tripId) {
+        this.tripId = tripId;
+    }
+
+    public String getTripLocation() {
+        return tripLocation;
+    }
+
+    public void setTripLocation(String tripLocation) {
+        this.tripLocation = tripLocation;
+    }
+
+    public String getTraveler() {
+        return traveler;
+    }
+
+    public void setTraveler(String traveler) {
+        this.traveler = traveler;
+    }
 }
