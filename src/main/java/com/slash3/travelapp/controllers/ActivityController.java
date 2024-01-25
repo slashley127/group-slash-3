@@ -49,7 +49,7 @@ public class ActivityController {
         if (optActivity.isPresent()) {
             Activity activity = optActivity.get();
             model.addAttribute("activity", activity);
-            return "activities/view";
+            return "activitiess/view";
         } else {
             return "redirect:../";
         }
