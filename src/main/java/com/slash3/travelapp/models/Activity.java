@@ -3,6 +3,8 @@ package com.slash3.travelapp.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Activity {
@@ -11,7 +13,11 @@ public class Activity {
     @GeneratedValue
     private int id;
     private static int nextId = 1;
+
+    @NotNull(message = "Name is required")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
+    @NotNull
     private String location;
     private String description;
     private double cost;
