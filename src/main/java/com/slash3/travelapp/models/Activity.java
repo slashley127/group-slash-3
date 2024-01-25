@@ -1,10 +1,11 @@
 package com.slash3.travelapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.Objects;
 
 @Entity
 public class Activity {
@@ -12,37 +13,25 @@ public class Activity {
     @Id
     @GeneratedValue
     private int id;
-    private static int nextId = 1;
 
+//    public int nextId = 1;
+
+    @Valid
     @NotNull(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
-    @NotNull
+
+    @NotNull(message = "Activity must have a location")
     private String location;
+
+    @Size(min = 10, message = "Description must be minimum 10 characters")
     private String description;
+
+    @NotNull(message = "Activity must have a price even if zero")
     private double cost;
+
+    @NotNull(message = "Activity must have a rating")
     private int rating;
-
-
-    public Activity(String name, String location, String description, double cost, int rating) {
-        this.name = name;
-        this.location = location;
-        this.description = description;
-        this.cost = cost;
-        this.rating = rating;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Activity() {
-    }
-
-    public void setId(int id) {
-        this.id = id;
-        nextId++;
-    }
 
     public String getName() {
         return name;
@@ -52,13 +41,36 @@ public class Activity {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    @Override
+    public String toString() {
+        return name;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Activity)) return false;
+        Activity activity = (Activity) o;
+        return id == activity.id;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+
+    public Activity(String location, String description, double cost, int rating) {
+        super();
+        this.location = location;
+        this.description = description;
+        this.cost = cost;
+        this.rating = rating;
+    }
+
+    public Activity() {
+    }
+
 
     public String getDescription() {
         return description;
@@ -84,22 +96,26 @@ public class Activity {
         this.rating = rating;
     }
 
-
-    @Override
-    public String toString() {
-        return super.toString();
+    public Integer getId() {
+        return id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Activity activity = (Activity) o;
-        return id == activity.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+//    @Override
+//    public String toString() {
+//        return super.toString();
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Activity activity = (Activity) o;
+//        return id == activity.id;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return super.hashCode();
+//    }
 }
