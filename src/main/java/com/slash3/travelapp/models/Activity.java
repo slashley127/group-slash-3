@@ -12,6 +12,7 @@ public class Activity {
 
     @Id
     @GeneratedValue
+    @Column(name = "ActivityId")
     private int activityId;
 
 //    public int nextId = 1;
@@ -19,19 +20,24 @@ public class Activity {
     @Valid
     @NotNull(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
+    @Column(name = "Activity_Name")
     private String name;
 
     @NotNull(message = "Activity must have a location")
     @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
+    @Column(name = "Activity_Location")
     private String location;
 
     @Size(min = 10, message = "Description must be minimum 10 characters")
+    @Column(name = "Activity_Description")
     private String description;
 
     @NotNull(message = "Activity must have a price even if zero")
+    @Column(name = "Cost")
     private double cost;
 
     @NotNull(message = "Activity must have a rating")
+    @Column(name = "Rating")
     private int rating;
 
     public String getName() {
