@@ -26,7 +26,7 @@ public class TripController {
         return (List<Trip>) tripRepository.findAll();
     }
 
-    @GetMapping("/{tripId}")
+    @GetMapping(value="/{tripId}")
     public Trip getTripById(@PathVariable Integer tripId) {
         Optional<Trip> optionalTrip = tripRepository.findById(tripId);
         return optionalTrip.orElse(null);
@@ -37,7 +37,7 @@ public class TripController {
         return tripRepository.save(trip);
     }
 
-    @PostMapping("/{tripId}")
+    @PostMapping(value="/{tripId}")
     public Trip updateTrip(Integer tripId, Trip updatedTrip) {
         Optional<Trip> optionalTrip = tripRepository.findById(tripId);
 

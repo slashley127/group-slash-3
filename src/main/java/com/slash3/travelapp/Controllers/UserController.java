@@ -1,5 +1,3 @@
-package com.slash3.travelapp.Controllers;
-
 import com.slash3.travelapp.Models.User;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +16,15 @@ public class UserController {
         this.userrepository = userrepository;
 
     }
-    @GetMapping
-
+    @GetMapping("/test")
+    @ResponseBody
+    public String tester(){return "test";}
+    @GetMapping()
     public List<User> getAllUsers() {
         return (List<User>) userrepository.findAll();
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping(value="/{userId}")
     public User getUserById(@PathVariable Integer userId) {
         Optional<User> optionalUser = userrepository.findById(userId);
         return optionalUser.orElse(null);
@@ -34,7 +34,9 @@ public class UserController {
     public User createUser(@RequestBody User user) {
         return userrepository.save(user);
     }
-    @PostMapping ("/{userId}")
+
+    @PostMapping (value="update/{userId}")
+    @ResponseBody
     public User updateUser(Integer userId, User updatedUser) {
         Optional<User> optionalUser = userrepository.findById(userId);
 
@@ -49,7 +51,8 @@ public class UserController {
 
         return null;
     }
-
+    @PostMapping("delete/{userId}")
+    @ResponseBody
     public void deleteUser(Integer userId) {
         userrepository.deleteById(userId);
     }
