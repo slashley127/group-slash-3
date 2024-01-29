@@ -4,15 +4,13 @@ import com.slash3.travelapp.Models.Trip;
 import com.slash3.travelapp.Repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping
 public class TripController {
     @Autowired
     private final TripRepository tripRepository;
@@ -21,23 +19,26 @@ public class TripController {
         this.tripRepository = tripRepository;
     }
 
-    @GetMapping
+    @GetMapping("/testTrip")
+    @ResponseBody
+    public String tripTester(){return "test trip";}
+    @GetMapping("/trips")
     public List<Trip> getAllTrips() {
         return (List<Trip>) tripRepository.findAll();
     }
 
-    @GetMapping(value="/{tripId}")
+    @GetMapping("/{tripId}")
     public Trip getTripById(@PathVariable Integer tripId) {
         Optional<Trip> optionalTrip = tripRepository.findById(tripId);
         return optionalTrip.orElse(null);
     }
 
-    @PostMapping
+    @PostMapping("/createTrip")
     public Trip createTrip(@RequestBody Trip trip) {
         return tripRepository.save(trip);
     }
 
-    @PostMapping(value="/{tripId}")
+    @PostMapping("/{tripId}")
     public Trip updateTrip(Integer tripId, Trip updatedTrip) {
         Optional<Trip> optionalTrip = tripRepository.findById(tripId);
 
@@ -50,6 +51,12 @@ public class TripController {
         }
 
         return null;
+    }
+
+    @DeleteMapping("delete/{tripId}")
+    @ResponseBody
+    public void deleteTrip(@PathVariable Integer tripId) {
+        tripRepository.deleteById(tripId);
     }
 }
 

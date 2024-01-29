@@ -1,3 +1,5 @@
+package com.slash3.travelapp.Controllers;
+
 import com.slash3.travelapp.Models.User;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,37 +10,37 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping
 public class UserController {
     @Autowired
-    private final UserRepository userrepository;
+    private final UserRepository userRepository;
 
     public UserController(UserRepository userrepository) {
-        this.userrepository = userrepository;
-
+        this.userRepository = userrepository;
     }
     @GetMapping("/test")
     @ResponseBody
     public String tester(){return "test";}
-    @GetMapping()
+    @GetMapping("/users")
     public List<User> getAllUsers() {
-        return (List<User>) userrepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
-    @GetMapping(value="/{userId}")
+    @GetMapping("/{userId}")
     public User getUserById(@PathVariable Integer userId) {
-        Optional<User> optionalUser = userrepository.findById(userId);
+        Optional<User> optionalUser = userRepository.findById(userId);
         return optionalUser.orElse(null);
     }
 
-    @PostMapping
+    @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
-        return userrepository.save(user);
+        return userRepository.save(user);
     }
 
-    @PostMapping (value="update/{userId}")
+    @PutMapping ("update/{userId}")
     @ResponseBody
-    public User updateUser(Integer userId, User updatedUser) {
-        Optional<User> optionalUser = userrepository.findById(userId);
+    public User updateUser(@PathVariable Integer userId, User updatedUser) {
+        Optional<User> optionalUser = userRepository.findById(userId);
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
@@ -46,14 +48,14 @@ public class UserController {
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPassword(updatedUser.getPassword());
 
-            return userrepository.save(existingUser);
+            return userRepository.save(existingUser);
         }
 
         return null;
     }
-    @PostMapping("delete/{userId}")
+    @DeleteMapping("delete/{userId}")
     @ResponseBody
-    public void deleteUser(Integer userId) {
-        userrepository.deleteById(userId);
+    public void deleteUser(@PathVariable Integer userId) {
+        userRepository.deleteById(userId);
     }
 }
