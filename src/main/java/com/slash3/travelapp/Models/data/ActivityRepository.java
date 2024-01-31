@@ -1,4 +1,4 @@
-package com.slash3.travelapp.data;
+package com.slash3.travelapp.models.data;
 
 import com.slash3.travelapp.models.Activity;
 import org.springframework.data.repository.CrudRepository;

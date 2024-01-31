@@ -1,7 +1,7 @@
-package com.slash3.travelapp.Controllers;
+package com.slash3.travelapp.controllers;
 
-import com.slash3.travelapp.Models.Trip;
-import com.slash3.travelapp.Repositories.TripRepository;
+import com.slash3.travelapp.models.Trip;
+import com.slash3.travelapp.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.slash3.travelapp.Models;
+package com.slash3.travelapp.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
