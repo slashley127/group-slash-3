@@ -22,7 +22,6 @@ public class ActivityController {
         this.activityRepository = activityRepository;
     }
 
-
     @GetMapping("/")
     public String index(Model model) {
         activityRepository.findAll();

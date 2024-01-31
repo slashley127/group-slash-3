@@ -4,27 +4,32 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.aspectj.bridge.IMessage;
 
 @Entity
-public class User {
-    @Id
-    @GeneratedValue
-    @Column(name="UserId")
-    private Integer userId;
+public class User extends AbstractEntity {
+//    @Id
+//    @GeneratedValue
+//    @Column(name="UserId")
+//    private Integer userId;
     @NotNull
     @Column(name="User_Name")
     private String userName;
+
     @NotNull
     @Column(name="Password")
     private String password;
+
+
     @NotNull
     @Column(name="Email_Id")
     private String email;
-    @NotNull
+    @NotBlank(message="First name is required")
     @Column(name= "First_Name")
     private String firstName;
-    @NotNull
+    @NotBlank(message="Last name is required")
     @Column(name= "Last_Name")
     private String lastName;
     public User(){
@@ -35,18 +40,18 @@ public class User {
         this.email=email;
         this.userName=userName;
         this.password = password;
-        this.userId=Id;
+//        this.userId=Id;
         this.firstName=firstName;
         this.lastName=lastName;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+//    public Integer getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Integer userId) {
+//        this.userId = userId;
+//    }
 
     public String getUserName() {
         return userName;

@@ -1,5 +1,6 @@
 package com.slash3.travelapp.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +9,12 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class Activity {
+public class Activity extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ActivityId")
-    private int activityId;
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "ActivityId")
+//    private int activityId;
 
 //    public int nextId = 1;
 
@@ -23,10 +24,15 @@ public class Activity {
     @Column(name = "Activity_Name")
     private String name;
 
-    @NotNull(message = "Activity must have a location")
-    @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
-    @Column(name = "Activity_Location")
-    private String location;
+//    @NotNull(message = "Activity must have a location")
+//    @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
+//    @Column(name = "Activity_Location")
+//    private String location;
+    @ManyToOne
+    @NotNull(message = "Location is required.")
+    @Column(name= "Activity_Location")
+    @JsonManagedReference
+    private Location location;
 
     @Size(min = 10, message = "Description must be minimum 10 characters")
     @Column(name = "Activity_Description")
@@ -39,6 +45,8 @@ public class Activity {
     @NotNull(message = "Activity must have a rating")
     @Column(name = "Rating")
     private int rating;
+
+
 
     public String getName() {
         return name;
@@ -53,21 +61,21 @@ public class Activity {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Activity)) return false;
-        Activity activity = (Activity) o;
-        return activityId == activity.activityId;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Activity)) return false;
+//        Activity activity = (Activity) o;
+////        return activityId == activity.activityId;
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(activityId);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(activityId);
+//    }
 
 
-    public Activity(String name, String location, String description, double cost, int rating) {
+    public Activity(String name, Location location, String description, double cost, int rating) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -103,8 +111,8 @@ public class Activity {
         this.rating = rating;
     }
 
-    public Integer getId() {
-        return activityId;
-    }
+//    public Integer getId() {
+//        return activityId;
+//    }
 
 }
