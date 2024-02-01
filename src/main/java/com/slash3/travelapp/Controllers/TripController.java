@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping
+@RestController
+@RequestMapping("/api")
 public class TripController {
     @Autowired
     private final TripRepository tripRepository;
