@@ -5,7 +5,11 @@ import Login from './Login'
 
 function Signup() {
   return (
-    <div className='signup template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'>
+    <div className='signup template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'
+       style={{
+        backgroundImage: `url('https://4.bp.blogspot.com/-TrQ_PEyE1F0/T4d9VmIsP-I/AAAAAAAAHnc/-qREJB_54ko/s1600/DSC01359.jpg')`,
+        backgroundSize: "cover",
+      }}>
       <div className='form-container p-5 rounded bg-white mx-auto'>
         <form action="">
           <h3 className="text-center"> Sign In</h3>
@@ -32,11 +36,13 @@ function Signup() {
             </label>
           </div>
           <div className='d-grid'>
-          <button className='btn btn-primary'>  <Link to="/Profile" className="ms-2"> Sign Up</Link></button>
-            <p className='text-end mt-2'>
-              Already Registered
-              <Link to="/" className="ms-2"> Sign in</Link>
-            </p>
+               className='btn btn-primary'
+              <div className="d-grid">
+               <Link to="/Profile" className="btn btn-primary">
+              Sign UP
+               </Link>
+               </div>
+          
           </div>
         </form>
       </div>

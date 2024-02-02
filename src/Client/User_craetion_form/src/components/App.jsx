@@ -1,27 +1,20 @@
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Login from './Login'
-import Signup from './Signup'
-import "bootstrap/dist/css/bootstrap.min.css"
-import Profile from './Profile'
-import React from 'react'
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import Login from './Login';
+import Signup from './Signup';
+import Profile from './Profile';
 
 function App() {
   return (
     <BrowserRouter>
-        <Routes>
-            <Route path='/' element={<Login/>}> </Route>
-            <Route path='/signup' element={<Signup/>}> </Route>
-            <Route path='/profile' element={<Profile/>}> </Route>
-            
-
-
-        </Routes>
-
-
-
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
