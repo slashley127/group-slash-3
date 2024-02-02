@@ -7,8 +7,8 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class Location extends AbstractEntity {
+
+public class Location {
 
     @OneToMany(mappedBy="location")
     @JsonBackReference

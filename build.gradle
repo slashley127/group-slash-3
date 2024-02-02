@@ -28,6 +28,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'mysql:mysql-connector-java:8.0.28'
 	implementation 'org.springframework.security:spring-security-crypto'
+    implementation 'org.projectlombok:lombok:1.18.28'
 //	implementation 'mysql:mysql-connector-java:8.0.32'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

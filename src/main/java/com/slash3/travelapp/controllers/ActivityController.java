@@ -1,6 +1,6 @@
 package com.slash3.travelapp.controllers;
 
-import com.slash3.travelapp.models.data.ActivityRepository;
+import com.slash3.travelapp.repositories.ActivityRepository;
 import com.slash3.travelapp.models.Activity;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
