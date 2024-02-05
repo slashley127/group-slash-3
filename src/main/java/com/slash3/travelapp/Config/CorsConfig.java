@@ -1,4 +1,4 @@
-package com.slash3.travelapp.config;
+package com.slash3.travelapp.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
