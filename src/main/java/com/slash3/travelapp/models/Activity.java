@@ -1,10 +1,9 @@
 package com.slash3.travelapp.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
 public class Activity {
@@ -28,14 +27,17 @@ public class Activity {
     @NotNull
     @Column(name="rating")
     private int rating;
+    @ManyToMany(mappedBy = "activities")
+    private List<Trip> trips;
 
 
-    public Activity(String name, String location, String description, double cost, int rating) {
+    public Activity(String name, String location, String description, double cost, int rating, List<Trip> trips) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
+        this.trips = trips;
     }
 
     public int getId() {
@@ -89,6 +91,13 @@ public class Activity {
         this.rating = rating;
     }
 
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
 
     @Override
     public String toString() {
