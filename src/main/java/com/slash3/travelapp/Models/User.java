@@ -10,22 +10,22 @@ import jakarta.validation.constraints.NotNull;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name="UserId")
+    @Column(name="user_id")
     private Integer userId;
     @NotNull
-    @Column(name="User_Name")
+    @Column(name="user_name")
     private String userName;
     @NotNull
-    @Column(name="Password")
+    @Column(name="password")
     private String password;
     @NotNull
-    @Column(name="Email_Id")
+    @Column(name="email")
     private String email;
     @NotNull
-    @Column(name= "First_Name")
+    @Column(name= "first_name")
     private String firstName;
     @NotNull
-    @Column(name= "Last_Name")
+    @Column(name= "last_name")
     private String lastName;
     public User(){
 

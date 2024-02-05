@@ -1,20 +1,32 @@
-package com.slash3.travelapp.models;
+package com.slash3.travelapp.Models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Activity {
 
     @Id
     @GeneratedValue
+    @Column(name="activity_id")
     private int id;
-    private static int nextId = 1;
+    @NotNull
+    @Column(name="name")
     private String name;
+    @NotNull
+    @Column(name="location")
     private String location;
+    @NotNull
+    @Column(name="description")
     private String description;
+    @NotNull
+    @Column(name="cost")
     private double cost;
+    @NotNull
+    @Column(name="rating")
     private int rating;
 
 
@@ -35,7 +47,6 @@ public class Activity {
 
     public void setId(int id) {
         this.id = id;
-        nextId++;
     }
 
     public String getName() {

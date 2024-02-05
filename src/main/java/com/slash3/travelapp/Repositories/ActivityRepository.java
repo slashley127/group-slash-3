@@ -1,6 +1,6 @@
-package com.slash3.travelapp.data;
+package com.slash3.travelapp.Repositories;
 
-import com.slash3.travelapp.models.Activity;
+import com.slash3.travelapp.Models.Activity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
