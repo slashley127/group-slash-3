@@ -18,6 +18,7 @@ public class Trip {
     @NotNull
     @Column(name = "Trip_Location")
     private String tripLocation;
+
     @NotNull
     @Column(name = "Traveler")
     private String traveler;

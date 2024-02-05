@@ -29,7 +29,7 @@ public class Activity {
     @NotNull(message = "Activity must have a location")
     @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
     @Column(name = "Activity_Location")
-    private String location;
+    private Location location;
 
 //    @ManyToOne
 //    @NotNull(message = "Location is required.")
@@ -78,7 +78,7 @@ public class Activity {
     }
 
 
-    public Activity(String name, String location, String description, double cost, int rating) {
+    public Activity(String name, Location location, String description, double cost, int rating) {
         this.name = name;
         this.location = location;
         this.description = description;
