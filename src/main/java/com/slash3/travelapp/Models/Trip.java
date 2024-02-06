@@ -10,7 +10,7 @@ import java.util.List;
 public class Trip {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id")
     private Integer tripId;
     @NotNull
