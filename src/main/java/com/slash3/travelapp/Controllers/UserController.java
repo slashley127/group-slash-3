@@ -1,5 +1,5 @@
 package com.slash3.travelapp.Controllers;
-import com.slash3.travelapp.Models.User;
+import com.slash3.travelapp.Models.AppUser;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,28 +20,28 @@ public class UserController {
     @ResponseBody
     public String tester(){return "test";}
     @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return (List<User>) userRepository.findAll();
+    public List<AppUser> getAllUsers() {
+        return (List<AppUser>) userRepository.findAll();
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable Integer userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
+    public AppUser getUserById(@PathVariable Integer userId) {
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         return optionalUser.orElse(null);
     }
 
     @PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
+    public AppUser createUser(@RequestBody AppUser user) {
         return userRepository.save(user);
     }
 
     @PutMapping ("update/{userId}")
     @ResponseBody
-    public User updateUser(@PathVariable Integer userId, User updatedUser) {
-        Optional<User> optionalUser = userRepository.findById(userId);
+    public AppUser updateUser(@PathVariable Integer userId, AppUser updatedUser) {
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
 
         if (optionalUser.isPresent()) {
-            User existingUser = optionalUser.get();
+            AppUser existingUser = optionalUser.get();
             existingUser.setUserName(updatedUser.getUserName());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPassword(updatedUser.getPassword());
