@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react';
 import Profile from './Profile'
 import Login from './Login'
 
 function Signup() {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    firstName: '',
+    lastName: ''
   });
 
   const handleChange = (e) => {
@@ -25,13 +28,19 @@ function Signup() {
         },
         body: JSON.stringify(formData)
       });
+      if (response.ok) {
+        const userData = await response.json();
+
+        history.push("/Profile", { user: userData });
+      }
+
       if (!response.ok) {
         throw new Error('Failed to sign up');
       }
-      // Handle successful signup, such as redirecting to another page or displaying a success message
+
     } catch (error) {
       console.error('Error signing up:', error);
-      // Handle error, such as displaying an error message to the user
+
     }
   };
 

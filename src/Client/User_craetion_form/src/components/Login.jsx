@@ -6,7 +6,7 @@ import React, {useState} from "react";
 function Login() {
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
