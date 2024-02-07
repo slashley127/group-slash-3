@@ -1,6 +1,6 @@
 package com.slash3.travelapp.data;
 
-import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.models.Activity;
 import jakarta.persistence.Entity;
 
 import java.util.Collection;

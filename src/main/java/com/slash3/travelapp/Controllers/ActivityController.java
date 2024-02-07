@@ -1,5 +1,5 @@
 package com.slash3.travelapp.Controllers;
-import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.models.Activity;
 import com.slash3.travelapp.Repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
