@@ -1,10 +1,10 @@
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react';
 import Profile from './Profile'
 import Login from './Login'
 
 function Signup() {
-  const history = useHistory();
+  const history = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',

@@ -1,11 +1,10 @@
 import "./App.css";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, {useState} from "react";
 
 
 function Login() {
-const history = useHistory();
+const history = useNavigate();
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
