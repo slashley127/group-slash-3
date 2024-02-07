@@ -1,9 +1,11 @@
 import "./App.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, {useState} from "react";
-// import { useHistory } from "react-router-dom";
+
 
 function Login() {
+const history = useHistory();
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -57,7 +59,7 @@ const [email, setEmail] = useState("");
             </label>
           </div>
           <div className='d-grid'>
-            <button className='btn btn-primary'> Sign In</button>
+            <button className='btn btn-primary' onClick={handleSubmit}> Sign In</button>
             <p className='text-end mt-2'>
               Forgot <a href=""> Password?</a>
               <Link to="/signup" className="ms-2"> Sign Up</Link>
