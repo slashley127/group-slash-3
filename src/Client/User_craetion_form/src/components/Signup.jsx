@@ -1,10 +1,10 @@
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react';
 import Profile from './Profile'
 import Login from './Login'
 
 function Signup() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -21,7 +21,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/users', {
+      const response = await fetch('http://localhost:8080/api/createUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function Signup() {
       if (response.ok) {
         const userData = await response.json();
 
-        history.push("/Profile", { user: userData });
+        navigate("/Profile", { user: userData });
       }
 
       if (!response.ok) {

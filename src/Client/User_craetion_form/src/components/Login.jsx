@@ -1,11 +1,11 @@
 import "./App.css";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, {useState} from "react";
 
 
 function Login() {
-const history = useHistory();
+const navigate = useNavigate();
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,7 +13,7 @@ const [email, setEmail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("api/login", {
+      const response = await fetch("http://localhost:8080/api/{userId}", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ const [email, setEmail] = useState("");
 
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        history.push("/profile");
+        navigate("/profile");
       } else {
 
         console.error("Login failed");
