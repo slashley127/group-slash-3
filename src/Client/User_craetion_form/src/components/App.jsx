@@ -8,23 +8,28 @@ import React, { useEffect, useState } from 'react';
 const App = () => {
 
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+      fetchUsers();
+    }, []);
 
-    fetch('http://localhost:8080/api/users')
-      .then(response => response.json())
-      .then(data => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/users');
+        if (!response.ok) {
+          throw new Error('Failed to fetch users');
+        }
+        const data = await response.json();
         setUsers(data);
-        setLoading(false);
-      })
-  }, []);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or failure
+      }
+    };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-   const createUser = async (userData) => {
+    const createUser = async (userData) => {
       try {
         const response = await fetch('http://localhost:8080/api/users', {
           method: 'POST',
@@ -36,7 +41,6 @@ const App = () => {
         if (!response.ok) {
           throw new Error('Failed to create user');
         }
-
         const updatedUsers = await response.json();
         setUsers(updatedUsers);
       } catch (error) {
@@ -44,16 +48,62 @@ const App = () => {
       }
     };
 
-
-  return (
-    <BrowserRouter>
+    return (
+      <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Login/>}> </Route>
-            <Route path='/signup' element={<Signup/>}> </Route>
-            <Route path='/profile' element={<Profile user={users}/>} />
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/profile' element={<Profile users={users} />} />
         </Routes>
-    </BrowserRouter>
-  )
-}
+      </BrowserRouter>
+    );
+  }
 
-export default App
+  export default App;
+
+//   useEffect(() => {
+//
+//     fetch('http://localhost:8080/api/users')
+//       .then(response => response.json())
+//       .then(data => {
+//         setUsers(data);
+//         setLoading(false);
+//       })
+//   }, []);
+//
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
+//    const createUser = async (userData) => {
+//       try {
+//         const response = await fetch('http://localhost:8080/api/users', {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify(userData)
+//         });
+//         if (!response.ok) {
+//           throw new Error('Failed to create user');
+//         }
+//
+//         const updatedUsers = await response.json();
+//         setUsers(updatedUsers);
+//       } catch (error) {
+//         console.error('Error creating user:', error);
+//       }
+//     };
+//
+//
+//   return (
+//     <BrowserRouter>
+//         <Routes>
+//             <Route path='/' element={<Login/>}> </Route>
+//             <Route path='/signup' element={<Signup/>}> </Route>
+//             <Route path='/profile' element={<Profile user={users}/>} />
+//         </Routes>
+//     </BrowserRouter>
+//   )
+// }
+//
+// export default App

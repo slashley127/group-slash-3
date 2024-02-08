@@ -4,7 +4,7 @@ import React, {useState} from "react";
 
 
 function Login() {
-const history = useNavigate();
+const navigate = useNavigate();
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +12,7 @@ const [email, setEmail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("api/login", {
+      const response = await fetch("http://localhost:8080/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const [email, setEmail] = useState("");
 
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        history.push("/profile");
+        navigate("/Profile");
       } else {
 
         console.error("Login failed");

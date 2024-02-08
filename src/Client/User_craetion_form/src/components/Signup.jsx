@@ -4,7 +4,7 @@ import Profile from './Profile'
 import Login from './Login'
 
 function Signup() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -31,7 +31,7 @@ function Signup() {
       if (response.ok) {
         const userData = await response.json();
 
-        history.push("/Profile", { user: userData });
+        navigate("/Profile", { user: userData });
       }
 
       if (!response.ok) {
