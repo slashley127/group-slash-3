@@ -1,60 +1,48 @@
 package com.slash3.travelapp.Controllers;
 import com.slash3.travelapp.Models.Trip;
-import com.slash3.travelapp.Repositories.TripRepository;
+import com.slash3.travelapp.Services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class TripController {
     @Autowired
-    private final TripRepository tripRepository;
+    private final TripService tripService;
 
-    public TripController(TripRepository tripRepository) {
-        this.tripRepository = tripRepository;
+    public TripController(TripService tripService) {
+        this.tripService = tripService;
     }
 
-    @GetMapping("/testTrip")
-    @ResponseBody
-    public String tripTester(){return "test trip";}
     @GetMapping("/trips")
     public List<Trip> getAllTrips() {
-        return (List<Trip>) tripRepository.findAll();
+        return (List<Trip>) tripService.findAll();
     }
+
 
     @GetMapping("/{tripId}")
-    public Trip getTripById(@PathVariable Integer tripId) {
-        Optional<Trip> optionalTrip = tripRepository.findById(tripId);
-        return optionalTrip.orElse(null);
+    public ResponseEntity<Trip> getTripById(@PathVariable Integer tripId) {
+        Trip trip = tripService.getTripById(tripId);
+        return ResponseEntity.ok(trip);
     }
-
     @PostMapping("/createTrip")
     public Trip createTrip(@RequestBody Trip trip) {
-        return tripRepository.save(trip);
+        return tripService.createTrip(trip);
     }
-
-    @PostMapping("/{tripId}")
-    public Trip updateTrip(Integer tripId, Trip updatedTrip) {
-        Optional<Trip> optionalTrip = tripRepository.findById(tripId);
-
-        if (optionalTrip.isPresent()) {
-            Trip existingTrip = optionalTrip.get();
-            existingTrip.setTripLocation(updatedTrip.getTripLocation());
-            existingTrip.setTraveler(updatedTrip.getTraveler());
-
-            return tripRepository.save(existingTrip);
-        }
-
-        return null;
+    @PutMapping("/{tripId}")
+    public ResponseEntity<Trip> updateTrip(@PathVariable Integer tripId, @RequestBody Trip tripDetails) {
+        Trip updatedTrip = tripService.updateTrip(tripId, tripDetails);
+        return ResponseEntity.ok(updatedTrip);
     }
 
     @DeleteMapping("delete/{tripId}")
     @ResponseBody
     public void deleteTrip(@PathVariable Integer tripId) {
-        tripRepository.deleteById(tripId);
+        tripService.deleteTrip(tripId);
     }
 }
 
