@@ -1,4 +1,5 @@
 package com.slash3.travelapp.Services;
+import com.slash3.travelapp.DTO.ActivityDTO;
 import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,22 +8,37 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ActivityService {
 
     @Autowired
     private ActivityRepository activityRepository;
 
-    public Activity createActivity(Activity activity) {
-        return activityRepository.save(activity);
-    }
-    public List<Activity> findAll() {
-        return (List<Activity>) activityRepository.findAll();
+    public ActivityDTO createActivity(ActivityDTO activityDTO) {
+        Activity activity = new Activity();
+        activity.setName(activityDTO.getName());
+        activity.setLocation(activityDTO.getLocation());
+        activity.setDescription(activityDTO.getDescription());
+        activity.setCost(activityDTO.getCost());
+        activity.setRating(activityDTO.getRating());
+        activity.setTrips(activityDTO.getTrips());
+
+        Activity savedActivity = activityRepository.save(activity);
+
+        return convertToActivityDTO(savedActivity);
     }
 
-    public Activity getActivityById(Integer activityId) {
-        return activityRepository.findById(activityId)
+    public List<ActivityDTO> findAll() {
+        List<Activity> activities = (List<Activity>) activityRepository.findAll();
+        return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
+    }
+
+    public ActivityDTO getActivityById(Integer activityId) {
+        Activity activity = activityRepository.findById(activityId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity not found with id " + activityId));
+        return convertToActivityDTO(activity);
     }
 
     public void deleteActivity(Integer activityId) {
@@ -32,18 +48,32 @@ public class ActivityService {
         activityRepository.deleteById(activityId);
     }
 
-    public Activity updateActivity(Integer activityId, Activity activityDetails) {
+    public ActivityDTO updateActivity(Integer activityId, ActivityDTO activityDTO) {
         Activity activity = activityRepository.findById(activityId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity not found with id " + activityId));
 
-        activity.setName(activityDetails.getName());
-        activity.setLocation(activityDetails.getLocation());
-        activity.setCost(activityDetails.getCost());
-        activity.setDescription(activityDetails.getDescription());
-        activity.setRating(activityDetails.getRating());
-        activity.setTrips(activityDetails.getTrips());
+        activity.setName(activityDTO.getName());
+        activity.setLocation(activityDTO.getLocation());
+        activity.setDescription(activityDTO.getDescription());
+        activity.setCost(activityDTO.getCost());
+        activity.setRating(activityDTO.getRating());
+        activity.setTrips(activityDTO.getTrips());
 
+        Activity updatedActivity = activityRepository.save(activity);
 
-        return activityRepository.save(activity);
+        return convertToActivityDTO(updatedActivity);
+    }
+
+    // Helper method to convert Activity to ActivityDTO
+    private ActivityDTO convertToActivityDTO(Activity activity) {
+        return new ActivityDTO(
+                activity.getActivityId(),
+                activity.getName(),
+                activity.getLocation(),
+                activity.getDescription(),
+                activity.getCost(),
+                activity.getRating(),
+                activity.getTrips()
+        );
     }
 }

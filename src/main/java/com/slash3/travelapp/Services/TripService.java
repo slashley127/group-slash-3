@@ -1,5 +1,6 @@
 
 package com.slash3.travelapp.Services;
+import com.slash3.travelapp.DTO.TripDTO;
 import com.slash3.travelapp.Models.Trip;
 import com.slash3.travelapp.Repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TripService {
@@ -16,16 +17,26 @@ public class TripService {
     @Autowired
     private TripRepository tripRepository;
 
-    public Trip createTrip(Trip trip) {
-        return tripRepository.save(trip);
-    }
-    public List<Trip> findAll() {
-        return (List<Trip>) tripRepository.findAll();
+    public TripDTO createTrip(TripDTO tripDTO) {
+        Trip trip = new Trip();
+        trip.setTripLocation(tripDTO.getTripLocation());
+        trip.setTraveler(tripDTO.getTraveler());
+        trip.setActivities(tripDTO.getActivities());
+
+        Trip savedTrip = tripRepository.save(trip);
+
+        return convertToTripDTO(savedTrip);
     }
 
-    public Trip getTripById(Integer tripId) {
-        return tripRepository.findById(tripId)
+    public List<TripDTO> findAll() {
+        List<Trip> trips = (List<Trip>) tripRepository.findAll();
+        return trips.stream().map(this::convertToTripDTO).collect(Collectors.toList());
+    }
+
+    public TripDTO getTripById(Integer tripId) {
+        Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
+        return convertToTripDTO(trip);
     }
 
     public void deleteTrip(Integer tripId) {
@@ -35,16 +46,25 @@ public class TripService {
         tripRepository.deleteById(tripId);
     }
 
-    public Trip updateTrip(Integer tripId, Trip tripDetails) {
+    public TripDTO updateTrip(Integer tripId, TripDTO tripDTO) {
         Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
 
-        trip.setTripLocation(tripDetails.getTripLocation());
-        trip.setTraveler(tripDetails.getTraveler());
-        trip.setActivities(tripDetails.getActivities());
+        trip.setTripLocation(tripDTO.getTripLocation());
+        trip.setTraveler(tripDTO.getTraveler());
+        trip.setActivities(tripDTO.getActivities());
 
+        Trip updatedTrip = tripRepository.save(trip);
 
+        return convertToTripDTO(updatedTrip);
+    }
 
-        return tripRepository.save(trip);
+    private TripDTO convertToTripDTO(Trip trip) {
+        return new TripDTO(
+                trip.getTripId(),
+                trip.getTripLocation(),
+                trip.getTraveler(),
+                trip.getActivities()
+        );
     }
 }

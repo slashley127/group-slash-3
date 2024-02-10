@@ -1,4 +1,5 @@
 package com.slash3.travelapp.Controllers;
+import com.slash3.travelapp.DTO.ActivityDTO;
 import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +20,21 @@ public class ActivityController {
 
 
     @GetMapping("/activities")
-    public List<Activity> getAllActivities() {
-        return (List<Activity>) activityService.findAll();
+    public List<ActivityDTO> getAllActivities() {
+        return activityService.findAll();
     }
 
-    @GetMapping("/{activityId}")
-    public Activity getActivityById(@PathVariable Integer activityId) {
-        Activity activity = activityService.getActivityById(activityId);
-        return activity;
+    @GetMapping("/activities/{activityId}")
+    public ActivityDTO getActivityById(@PathVariable Integer activityId) {
+        return activityService.getActivityById(activityId);
     }
 
-    @PostMapping("/createActivity")
-    public Activity createActivity(@RequestBody Activity activity) {
-        return activityService.createActivity(activity);
+    @PostMapping("/activities")
+    public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO) {
+        return activityService.createActivity(activityDTO);
     }
 
-
-    @DeleteMapping("delete/{activityId}")
-    @ResponseBody
+    @DeleteMapping("/activities/{activityId}")
     public void deleteActivity(@PathVariable Integer activityId) {
         activityService.deleteActivity(activityId);
     }

@@ -1,4 +1,5 @@
 package com.slash3.travelapp.Controllers;
+import com.slash3.travelapp.DTO.TripDTO;
 import com.slash3.travelapp.Models.Trip;
 import com.slash3.travelapp.Services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,30 +20,31 @@ public class TripController {
     }
 
     @GetMapping("/trips")
-    public List<Trip> getAllTrips() {
-        return (List<Trip>) tripService.findAll();
+    public List<TripDTO> getAllTrips() {
+        return tripService.findAll();
     }
 
-
-    @GetMapping("/{tripId}")
-    public ResponseEntity<Trip> getTripById(@PathVariable Integer tripId) {
-        Trip trip = tripService.getTripById(tripId);
-        return ResponseEntity.ok(trip);
-    }
-    @PostMapping("/createTrip")
-    public Trip createTrip(@RequestBody Trip trip) {
-        return tripService.createTrip(trip);
-    }
-    @PutMapping("/{tripId}")
-    public ResponseEntity<Trip> updateTrip(@PathVariable Integer tripId, @RequestBody Trip tripDetails) {
-        Trip updatedTrip = tripService.updateTrip(tripId, tripDetails);
-        return ResponseEntity.ok(updatedTrip);
+    @GetMapping("/trips/{tripId}")
+    public ResponseEntity<TripDTO> getTripById(@PathVariable Integer tripId) {
+        TripDTO tripDTO = tripService.getTripById(tripId);
+        return ResponseEntity.ok(tripDTO);
     }
 
-    @DeleteMapping("delete/{tripId}")
+    @PostMapping("/trips")
+    public ResponseEntity<TripDTO> createTrip(@RequestBody TripDTO tripDTO) {
+        TripDTO newTripDTO = tripService.createTrip(tripDTO);
+        return ResponseEntity.ok(newTripDTO);
+    }
+
+    @PutMapping("/trips/{tripId}")
+    public ResponseEntity<TripDTO> updateTrip(@PathVariable Integer tripId, @RequestBody TripDTO tripDTO) {
+        TripDTO updatedTripDTO = tripService.updateTrip(tripId, tripDTO);
+        return ResponseEntity.ok(updatedTripDTO);
+    }
+
+    @DeleteMapping("/trips/{tripId}")
     @ResponseBody
     public void deleteTrip(@PathVariable Integer tripId) {
         tripService.deleteTrip(tripId);
     }
 }
-
