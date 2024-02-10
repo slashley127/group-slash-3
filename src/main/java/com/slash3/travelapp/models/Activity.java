@@ -11,7 +11,7 @@ public class Activity {
     @Id
     @GeneratedValue
     @Column(name="activity_id")
-    private int id;
+    private Integer activityId;
     @NotNull
     @Column(name="name")
     private String name;
@@ -31,7 +31,8 @@ public class Activity {
     private List<Trip> trips;
 
 
-    public Activity(String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips) {
+        this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
@@ -40,15 +41,15 @@ public class Activity {
         this.trips = trips;
     }
 
-    public int getId() {
-        return id;
+    public int getActivityId() {
+        return activityId;
     }
 
     public Activity() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setActivityId(Integer activityIdd) {
+        this.activityId = activityId;
     }
 
     public String getName() {
@@ -109,7 +110,7 @@ public class Activity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Activity activity = (Activity) o;
-        return id == activity.id;
+        return activityId == activity.activityId;
     }
 
     @Override
