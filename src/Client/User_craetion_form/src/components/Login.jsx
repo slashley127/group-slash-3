@@ -26,7 +26,7 @@ const [email, setEmail] = useState("");
 
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        navigate("/profile");
+        navigate("/Profile");
       } else {
 
         console.error("Login failed");

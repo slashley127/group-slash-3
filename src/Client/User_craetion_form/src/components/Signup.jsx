@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 function Signup() {
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     email: '',
     password: '',
     firstName: '',
@@ -28,7 +28,7 @@ function Signup() {
       });
       if (response.ok) {
         const userData = await response.json();
-
+        console.log("test")
         navigate("/Profile", { state: { user: userData } });
       } else {
         throw new Error('Failed to sign up');
@@ -43,6 +43,17 @@ function Signup() {
               <div className='form-container p-5 rounded bg-white mx-auto'>
                 <form onSubmit={handleSubmit}>
                   <h3 className="text-center">Sign Up</h3>
+                   <div className='mb-2'>
+                       <label htmlFor="username">Username</label>
+                          <input
+                            type="text"
+                            name="userName"
+                            placeholder='Enter Username'
+                            className='form-control'
+                            value={formData.userName}
+                            onChange={handleChange}
+                          />
+                        </div>
                   <div className='mb-2'>
                     <label htmlFor="first name">First Name</label>
                     <input
@@ -88,7 +99,7 @@ function Signup() {
                     />
                   </div>
                   <div className='d-grid'>
-                   <Link to="/Profile" className='btn btn-primary'>Sign Up</Link>
+                   <button type="submit" className='btn btn-primary'>Sign Up</button>
                     <p className='text-end mt-2'>
                        Already Registered
                       <Link to="/" className="ms-2">Sign in</Link>
