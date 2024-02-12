@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 
+
 function Signup() {
+  const navigate = useNavigate;
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -28,7 +30,7 @@ function Signup() {
       });
       if (response.ok) {
         const userData = await response.json();
-        console.log("test")
+
         navigate("/Profile", { state: { user: userData } });
       } else {
         throw new Error('Failed to sign up');
