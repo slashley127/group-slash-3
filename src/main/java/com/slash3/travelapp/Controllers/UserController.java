@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(userDTO);
     }
     @GetMapping("/email")
-    public ResponseEntity<UserDTO> getUserByEmail(@PathVariable String email) {
+    public ResponseEntity<UserDTO> getUserByEmail(@RequestParam String email) {
         UserDTO userDTO = userService.getUserByEmail(email);
         return ResponseEntity.ok(userDTO);
     }

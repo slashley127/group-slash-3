@@ -56,6 +56,7 @@ public class UserService {
         user.setLastName(userDetails.getLastName());
         user.setEmail(userDetails.getEmail());
         user.setPassword(userDetails.getPassword());
+        user.setUserName(userDetails.getUserName());
 
 
         User updatedUser = userRepository.save(user);
@@ -106,39 +107,3 @@ public class UserService {
         return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 }
-
-//
-//    public List<User> findAll() {
-//        return (List<User>) userRepository.findAll();
-//    }
-//
-//    public User getUserById(Integer userId) {
-//        return userRepository.findById(userId)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
-//    }
-//
-//    public User getUserByEmail(String email) {
-//        return (User) userRepository.findByEmail(email)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with email " + email));
-//    }
-//
-//    public void deleteUser(Integer userId) {
-//        if (!userRepository.existsById(userId)) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId);
-//        }
-//        userRepository.deleteById(userId);
-//    }
-//
-//    public User updateUser(Integer userId, User userDetails) {
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
-//
-//        user.setFirstName(userDetails.getFirstName());
-//        user.setLastName(userDetails.getLastName());
-//        user.setEmail(userDetails.getEmail());
-//        user.setPassword(userDetails.getPassword());
-//
-//
-//        return userRepository.save(user);
-//    }
-//}
