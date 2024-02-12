@@ -1,18 +1,15 @@
 package com.slash3.travelapp.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 
 
 
 @Entity
-public class User {
+public class AppUser {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Integer userId;
     @NotNull
@@ -30,11 +27,11 @@ public class User {
     @NotNull
     @Column(name= "last_name")
     private String lastName;
-    public User(){
+    public AppUser(){
 
     }
 
-    public User(String userName,String password,String email,Integer Id, String lastName, String firstName) {
+    public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
         this.email=email;
         this.userName=userName;
         this.password = password;

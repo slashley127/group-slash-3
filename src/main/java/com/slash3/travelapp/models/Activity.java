@@ -9,7 +9,7 @@ import java.util.List;
 public class Activity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="activity_id")
     private Integer activityId;
     @NotNull
