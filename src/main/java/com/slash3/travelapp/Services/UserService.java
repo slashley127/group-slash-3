@@ -1,6 +1,6 @@
 package com.slash3.travelapp.Services;
 import com.slash3.travelapp.DTO.UserDTO;
-import com.slash3.travelapp.Models.User;
+import com.slash3.travelapp.Models.AppUser;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,26 +17,26 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserDTO createUser(UserDTO userDTO) {
-        User user = convertToEntity(userDTO);
-        User newUser = userRepository.save(user);
+        AppUser user = convertToEntity(userDTO);
+        AppUser newUser = userRepository.save(user);
         return convertToDTO(newUser);
     }
 
     public List<UserDTO> findAll() {
-        List<User> users = (List<User>) userRepository.findAll();
+        List<AppUser> users = (List<AppUser>) userRepository.findAll();
         return users.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     public UserDTO getUserById(Integer userId) {
-        User user = userRepository.findById(userId)
+        AppUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
         return convertToDTO(user);
     }
 
     public UserDTO getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email)
+        AppUser user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with email " + email));
         return convertToDTO(user);
     }
@@ -49,7 +49,7 @@ public class UserService {
     }
 
     public UserDTO updateUser(Integer userId, UserDTO userDetails) {
-        User user = userRepository.findById(userId)
+        AppUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
 
         user.setFirstName(userDetails.getFirstName());
@@ -59,13 +59,13 @@ public class UserService {
         user.setUserName(userDetails.getUserName());
 
 
-        User updatedUser = userRepository.save(user);
+        AppUser updatedUser = userRepository.save(user);
 
         return convertToDTO(updatedUser);
     }
 
-    private User convertToEntity(UserDTO userDTO) {
-        return new User(
+    private AppUser convertToEntity(UserDTO userDTO) {
+        return new AppUser(
                 userDTO.getUserName(),
                 userDTO.getPassword(),
                 userDTO.getEmail(),
@@ -74,7 +74,7 @@ public class UserService {
         );
     }
 
-    private UserDTO convertToDTO(User user) {
+    private UserDTO convertToDTO(AppUser user) {
         return new UserDTO(
                 user.getUserId(),
                 user.getUserName(),
@@ -86,7 +86,7 @@ public class UserService {
     }
 
 
-    public User createUser(User user) {
+    public AppUser createUser(AppUser user) {
 
         if (user.getFirstName() == null || user.getLastName() == null || user.getEmail() == null || user.getPassword() == null) {
             throw new IllegalArgumentException("All fields are required");

@@ -40,7 +40,7 @@ public class AppUser {
         this.lastName=lastName;
     }
 
-    public User(String userName, String password, String email, String firstName, String lastName) {
+    public AppUser(String userName, String password, String email, String firstName, String lastName) {
         this.email=email;
         this.userName=userName;
         this.password = password;
