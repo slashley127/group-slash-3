@@ -19,25 +19,29 @@ public class ActivityDTO {
 
     private int rating;
 
-    private List<Trip> trips;
+    private List<Trip> selectedTrips;
+
+    private List<Trip> likedTrips;
 
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
+        this.selectedTrips = selectedTrips;
+        this.likedTrips = likedTrips;
     }
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
+        this.selectedTrips = selectedTrips;
+        this.likedTrips = likedTrips;
     }
 
     public Integer getActivityId() {
@@ -91,12 +95,19 @@ public class ActivityDTO {
         this.rating = rating;
     }
 
-    public List<Trip> getTrips() {
-        return trips;
+    public List<Trip> getSelectedTrips() {
+        return selectedTrips;
     }
 
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+    public void setSelectedTrips(List<Trip> selectedTrips) {
+        this.selectedTrips = selectedTrips;
     }
 
+    public List<Trip> getLikedTrips() {
+        return likedTrips;
+    }
+
+    public void setLikedTrips(List<Trip> likedTrips) {
+        this.likedTrips = likedTrips;
+    }
 }

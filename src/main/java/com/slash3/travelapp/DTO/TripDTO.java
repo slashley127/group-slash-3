@@ -8,19 +8,22 @@ public class TripDTO {
     private Integer tripId;
     private String tripLocation;
     private String traveler;
-    private List<Activity> activities;
+    private List<Activity> selectedActivities;
+    private List<Activity> likedActivities;
 
-    public TripDTO(Integer tripId, String tripLocation, String traveler, List<Activity> activities) {
+    public TripDTO(Integer tripId, String tripLocation, String traveler, List<Activity> selectedActivities, List<Activity> likedActivities) {
         this.tripId = tripId;
         this.tripLocation = tripLocation;
         this.traveler = traveler;
-        this.activities = activities;
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
     }
-    public TripDTO(String tripLocation, String traveler, List<Activity> activities) {
+    public TripDTO(String tripLocation, String traveler, List<Activity> selectedActivities, List<Activity> likedActivities) {
 
         this.tripLocation = tripLocation;
         this.traveler = traveler;
-        this.activities = activities;
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
     }
     public TripDTO(){};
 
@@ -48,11 +51,19 @@ public class TripDTO {
         this.traveler = traveler;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
+    public List<Activity> getSelectedActivities() {
+        return selectedActivities;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public void setSelectedActivities(List<Activity> selectedActivities) {
+        this.selectedActivities = selectedActivities;
+    }
+
+    public List<Activity> getLikedActivities() {
+        return likedActivities;
+    }
+
+    public void setLikedActivities(List<Activity> likedActivities) {
+        this.likedActivities = likedActivities;
     }
 }

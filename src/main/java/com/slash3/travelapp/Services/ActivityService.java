@@ -23,7 +23,8 @@ public class ActivityService {
         activity.setDescription(activityDTO.getDescription());
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
-        activity.setTrips(activityDTO.getTrips());
+        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
+        activity.setLikedByTrips(activityDTO.getLikedTrips());
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -57,7 +58,8 @@ public class ActivityService {
         activity.setDescription(activityDTO.getDescription());
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
-        activity.setTrips(activityDTO.getTrips());
+        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
+        activity.setLikedByTrips(activityDTO.getLikedTrips());
 
         Activity updatedActivity = activityRepository.save(activity);
 
@@ -73,7 +75,8 @@ public class ActivityService {
                 activity.getDescription(),
                 activity.getCost(),
                 activity.getRating(),
-                activity.getTrips()
+                activity.getSelectedByTrips(),
+                activity.getLikedByTrips()
         );
     }
 }

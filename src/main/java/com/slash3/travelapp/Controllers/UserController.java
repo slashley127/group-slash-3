@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -50,58 +50,3 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 }
-
-//import java.util.List;
-//import java.util.Optional;
-//@CrossOrigin
-//@RestController
-//@RequestMapping("/api")
-//public class UserController {
-//    @Autowired
-//    private UserService userService;
-//
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
-
-//    @PostMapping("/register")
-//    public User createUser(@RequestBody User user) {
-//        User newUser = userService.createUser(user);
-//        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-//    }
-
-
-//
-//    @GetMapping("/{userId}")
-//    public User getUserById(@PathVariable Integer userId) {
-//        Optional<User> optionalUser = userRepository.findById(userId);
-//        return optionalUser.orElse(null);
-//    }
-//
-//    @PostMapping("/createUser")
-//    public User createUser(@RequestBody User user) {
-//        return userRepository.save(user);
-//    }
-//
-//    @PutMapping ("update/{userId}")
-//    @ResponseBody
-//    public User updateUser(@PathVariable Integer userId, User updatedUser) {
-//        Optional<User> optionalUser = userRepository.findById(userId);
-//
-//        if (optionalUser.isPresent()) {
-//            User existingUser = optionalUser.get();
-//            existingUser.setUserName(updatedUser.getUserName());
-//            existingUser.setEmail(updatedUser.getEmail());
-//            existingUser.setPassword(updatedUser.getPassword());
-//
-//            return userRepository.save(existingUser);
-//        }
-//
-//        return null;
-//    }
-//    @DeleteMapping("delete/{userId}")
-//    @ResponseBody
-//    public void deleteUser(@PathVariable Integer userId) {
-//        userRepository.deleteById(userId);
-//    }
-//}
