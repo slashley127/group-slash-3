@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 
 function Signup() {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
