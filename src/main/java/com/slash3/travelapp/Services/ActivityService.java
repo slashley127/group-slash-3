@@ -24,6 +24,7 @@ public class ActivityService {
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
         activity.setTrips(activityDTO.getTrips());
+        activity.setIndoor(activityDTO.getIsIndoor());
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -58,6 +59,7 @@ public class ActivityService {
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
         activity.setTrips(activityDTO.getTrips());
+        activity.setIndoor(activityDTO.getIsIndoor());
 
         Activity updatedActivity = activityRepository.save(activity);
 
@@ -73,7 +75,8 @@ public class ActivityService {
                 activity.getDescription(),
                 activity.getCost(),
                 activity.getRating(),
-                activity.getTrips()
+                activity.getTrips(),
+                activity.getIsIndoor()
         );
     }
 }
