@@ -1,25 +1,26 @@
 package com.slash3.travelapp.DTO;
 
 import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.Models.AppUser;
 
 import java.util.List;
 
 public class TripDTO {
     private Integer tripId;
     private String tripLocation;
-    private String traveler;
+    private List<AppUser> travelers;
     private List<Activity> activities;
 
-    public TripDTO(Integer tripId, String tripLocation, String traveler, List<Activity> activities) {
+    public TripDTO(Integer tripId, String tripLocation, List<AppUser> travelers, List<Activity> activities) {
         this.tripId = tripId;
         this.tripLocation = tripLocation;
-        this.traveler = traveler;
+        this.travelers = travelers;
         this.activities = activities;
     }
-    public TripDTO(String tripLocation, String traveler, List<Activity> activities) {
+    public TripDTO(String tripLocation, List<AppUser> travelers, List<Activity> activities) {
 
         this.tripLocation = tripLocation;
-        this.traveler = traveler;
+        this.travelers = travelers;
         this.activities = activities;
     }
     public TripDTO(){};
@@ -40,12 +41,12 @@ public class TripDTO {
         this.tripLocation = tripLocation;
     }
 
-    public String getTraveler() {
-        return traveler;
+    public List<AppUser> getTravelers() {
+        return travelers;
     }
 
-    public void setTraveler(String traveler) {
-        this.traveler = traveler;
+    public void setTraveler(List<AppUser> travelers) {
+        this.travelers = travelers;
     }
 
     public List<Activity> getActivities() {
