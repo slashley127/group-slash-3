@@ -20,7 +20,7 @@ public class TripService {
     public TripDTO createTrip(TripDTO tripDTO) {
         Trip trip = new Trip();
         trip.setTripLocation(tripDTO.getTripLocation());
-        trip.setTraveler(tripDTO.getTraveler());
+        trip.setTravelers(tripDTO.getTravelers());
         trip.setActivities(tripDTO.getActivities());
 
         Trip savedTrip = tripRepository.save(trip);
@@ -51,7 +51,7 @@ public class TripService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
 
         trip.setTripLocation(tripDTO.getTripLocation());
-        trip.setTraveler(tripDTO.getTraveler());
+        trip.setTravelers(tripDTO.getTravelers());
         trip.setActivities(tripDTO.getActivities());
 
         Trip updatedTrip = tripRepository.save(trip);
@@ -63,7 +63,7 @@ public class TripService {
         return new TripDTO(
                 trip.getTripId(),
                 trip.getTripLocation(),
-                trip.getTraveler(),
+                trip.getTravelers(),
                 trip.getActivities()
         );
     }
