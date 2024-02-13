@@ -1,6 +1,6 @@
-package com.slash3.travelapp.Controllers;
-import com.slash3.travelapp.Models.Activity;
-import com.slash3.travelapp.Repositories.ActivityRepository;
+package com.slash3.travelapp.controllers;
+import com.slash3.travelapp.models.Activity;
+import com.slash3.travelapp.repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +44,7 @@ public class ActivityController {
         if (optionalActivity.isPresent()) {
             Activity existingActivity = optionalActivity.get();
             existingActivity.setName(updatedActivity.getName());
-            existingActivity.setLocation(updatedActivity.getLocation());
+//            existingActivity.setLocation(updatedActivity.getLocation());
             existingActivity.setCost(updatedActivity.getCost());
             existingActivity.setRating(updatedActivity.getRating());
             existingActivity.setDescription(updatedActivity.getDescription());

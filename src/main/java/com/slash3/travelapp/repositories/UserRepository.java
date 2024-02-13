@@ -1,6 +1,6 @@
-package com.slash3.travelapp.Repositories;
+package com.slash3.travelapp.repositories;
 
-import com.slash3.travelapp.Models.AppUser;
+import com.slash3.travelapp.models.AppUser;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

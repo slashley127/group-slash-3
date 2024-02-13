@@ -1,24 +1,31 @@
-package com.slash3.travelapp.Models;
+package com.slash3.travelapp.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+//import lombok.Data;
+import com.slash3.travelapp.models.Activity;
+import jdk.jfr.DataAmount;
 
 import java.util.List;
 
 
 @Entity
+@Table
 public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id")
     private Integer tripId;
+
     @NotNull
     @Column(name = "trip_location")
     private String tripLocation;
+
     @NotNull
     @Column(name = "traveler")
     private String traveler;
+
     @ManyToMany
     @JoinTable(
             name = "trip_activities",

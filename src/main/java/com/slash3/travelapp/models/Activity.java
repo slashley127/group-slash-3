@@ -1,37 +1,51 @@
-package com.slash3.travelapp.Models;
+package com.slash3.travelapp.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
 @Entity
+@Table
 public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activity_id")
+    @Column(name="ActivityId")
     private int id;
+
+    @Valid
     @NotNull
-    @Column(name="name")
+    @Column(name="Activity_Name")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
+
+    @ManyToOne
+    @NotNull(message = "Activity must have a location")
+    @Size(min = 2, max = 100, message = "Location must be between 2 and 100 characters")
+    @JoinColumn(name = "Activity_Location")
+    private Location location;
+
     @NotNull
-    @Column(name="location")
-    private String location;
-    @NotNull
-    @Column(name="description")
+    @Column(name="Activity_Description")
+    @Size(min = 10, message = "Description must be minimum 10 characters")
     private String description;
+
     @NotNull
-    @Column(name="cost")
+    @Column(name="Cost")
     private double cost;
+
     @NotNull
-    @Column(name="rating")
+    @Column(name="Rating")
     private int rating;
+
     @ManyToMany(mappedBy = "activities")
     private List<Trip> trips;
 
 
-    public Activity(String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public Activity(String name, Location location, String description, double cost, int rating, List<Trip> trips) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -59,13 +73,13 @@ public class Activity {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    public String getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 
     public String getDescription() {
         return description;
