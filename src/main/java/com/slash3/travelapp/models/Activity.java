@@ -10,7 +10,7 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activity_id")
+    @Column(name="activity_id",columnDefinition = "INT(11) NOT NULL UNIQUE INDEX")
     private Integer activityId;
     @NotNull
     @Column(name="name")
@@ -27,18 +27,22 @@ public class Activity {
     @NotNull
     @Column(name="rating")
     private int rating;
-    @ManyToMany(mappedBy = "activities")
-    private List<Trip> trips;
+    @ManyToMany(mappedBy = "selectedActivities")
+    private List<Trip> selectedByTrips;
+
+    @ManyToMany(mappedBy = "likedActivities")
+    private List<Trip> likedByTrips;
 
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedByTrips, List<Trip> likedByTrips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
+        this.selectedByTrips = selectedByTrips;
+        this.likedByTrips = likedByTrips;
     }
 
     public int getActivityId() {
@@ -48,7 +52,7 @@ public class Activity {
     public Activity() {
     }
 
-    public void setActivityId(Integer activityIdd) {
+    public void setActivityId(Integer activityId) {
         this.activityId = activityId;
     }
 
@@ -92,12 +96,20 @@ public class Activity {
         this.rating = rating;
     }
 
-    public List<Trip> getTrips() {
-        return trips;
+    public List<Trip> getSelectedByTrips() {
+        return selectedByTrips;
     }
 
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+    public void setSelectedByTrips(List<Trip> selectedByTrips) {
+        this.selectedByTrips = selectedByTrips;
+    }
+
+    public List<Trip> getLikedByTrips() {
+        return likedByTrips;
+    }
+
+    public void setLikedByTrips(List<Trip> likedByTrips) {
+        this.likedByTrips = likedByTrips;
     }
 
     @Override
