@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -32,8 +33,9 @@ public class UserController {
         UserDTO userDTO = userService.getUserById(userId);
         return ResponseEntity.ok(userDTO);
     }
-    @GetMapping("/email")
-    public ResponseEntity<UserDTO> getUserByEmail(@RequestParam String email) {
+    @PostMapping("/email")
+    public ResponseEntity<UserDTO> getUserByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
         UserDTO userDTO = userService.getUserByEmail(email);
         return ResponseEntity.ok(userDTO);
     }
