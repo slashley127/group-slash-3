@@ -66,7 +66,6 @@ public class ActivityService {
         return convertToActivityDTO(updatedActivity);
     }
 
-    // Helper method to convert Activity to ActivityDTO
     private ActivityDTO convertToActivityDTO(Activity activity) {
         return new ActivityDTO(
                 activity.getActivityId(),
