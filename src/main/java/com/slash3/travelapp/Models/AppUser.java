@@ -27,9 +27,7 @@ public class AppUser {
     @NotNull
     @Column(name= "last_name")
     private String lastName;
-    public AppUser(){
-
-    }
+    public AppUser(){}
 
     public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
         this.email=email;
