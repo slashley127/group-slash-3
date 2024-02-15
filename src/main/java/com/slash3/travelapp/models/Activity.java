@@ -10,7 +10,7 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activity_id",columnDefinition = "INT(11) NOT NULL UNIQUE INDEX")
+    @Column(name="activity_id")
     private Integer activityId;
     @NotNull
     @Column(name="name")
