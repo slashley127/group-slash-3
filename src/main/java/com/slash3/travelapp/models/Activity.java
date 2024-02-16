@@ -10,14 +10,18 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activity_id",columnDefinition = "INT(11) NOT NULL UNIQUE INDEX")
+//    @Column(name="activity_id",columnDefinition = "INT(11) NOT NULL UNIQUE INDEX")
+    @Column(name="activity_id")
     private Integer activityId;
     @NotNull
     @Column(name="name")
     private String name;
+
+//    @ManyToOne
     @NotNull
     @Column(name="location")
     private String location;
+
     @NotNull
     @Column(name="description")
     private String description;
@@ -27,6 +31,7 @@ public class Activity {
     @NotNull
     @Column(name="rating")
     private int rating;
+
     @ManyToMany(mappedBy = "selectedActivities")
     private List<Trip> selectedByTrips;
 
@@ -63,6 +68,7 @@ public class Activity {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getLocation() {
         return location;
