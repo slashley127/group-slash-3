@@ -24,6 +24,11 @@ public class Activity {
     @NotNull
     @Column(name="cost")
     private double cost;
+
+    @NotNull
+    @Column(name="indoor")
+    private boolean isIndoor;
+
     @NotNull
     @Column(name="rating")
     private int rating;
@@ -34,7 +39,7 @@ public class Activity {
     private List<Trip> likedByTrips;
 
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedByTrips, List<Trip> likedByTrips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedByTrips, List<Trip> likedByTrips, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -43,9 +48,10 @@ public class Activity {
         this.rating = rating;
         this.selectedByTrips = selectedByTrips;
         this.likedByTrips = likedByTrips;
+        this.isIndoor = isIndoor;
     }
 
-    public int getActivityId() {
+    public Integer getActivityId() {
         return activityId;
     }
 
@@ -110,6 +116,14 @@ public class Activity {
 
     public void setLikedByTrips(List<Trip> likedByTrips) {
         this.likedByTrips = likedByTrips;
+    }
+
+    public boolean isIndoor() {
+        return isIndoor;
+    }
+
+    public void setIndoor(boolean indoor) {
+        isIndoor = indoor;
     }
 
     @Override

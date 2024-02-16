@@ -19,12 +19,14 @@ public class ActivityDTO {
 
     private int rating;
 
+    boolean isIndoor;
+
     private List<Trip> selectedTrips;
 
     private List<Trip> likedTrips;
 
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -33,8 +35,9 @@ public class ActivityDTO {
         this.rating = rating;
         this.selectedTrips = selectedTrips;
         this.likedTrips = likedTrips;
+        this.isIndoor = isIndoor;
     }
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
+    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -42,6 +45,7 @@ public class ActivityDTO {
         this.rating = rating;
         this.selectedTrips = selectedTrips;
         this.likedTrips = likedTrips;
+        this.isIndoor = isIndoor;
     }
 
     public Integer getActivityId() {
@@ -109,5 +113,13 @@ public class ActivityDTO {
 
     public void setLikedTrips(List<Trip> likedTrips) {
         this.likedTrips = likedTrips;
+    }
+
+    public boolean isIndoor() {
+        return isIndoor;
+    }
+
+    public void setIndoor(boolean indoor) {
+        isIndoor = indoor;
     }
 }

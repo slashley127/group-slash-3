@@ -2,6 +2,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
+import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
 
@@ -50,6 +51,7 @@ const App = () => {
         <Routes>
             <Route path='/' element={<Login/>}> </Route>
             <Route path='/signup' element={<Signup/>}> </Route>
+            <Route path='/WeatherWidget' element={<weatherWidget/>}> </Route>
             <Route path='/profile' element={<Profile user={users}/>} />
         </Routes>
     </BrowserRouter>

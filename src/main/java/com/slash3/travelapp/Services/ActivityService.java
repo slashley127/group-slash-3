@@ -60,13 +60,14 @@ public class ActivityService {
         activity.setRating(activityDTO.getRating());
         activity.setSelectedByTrips(activityDTO.getSelectedTrips());
         activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setIndoor(activityDTO.isIndoor());
 
         Activity updatedActivity = activityRepository.save(activity);
 
         return convertToActivityDTO(updatedActivity);
     }
 
-    // Helper method to convert Activity to ActivityDTO
+
     private ActivityDTO convertToActivityDTO(Activity activity) {
         return new ActivityDTO(
                 activity.getActivityId(),
@@ -76,7 +77,8 @@ public class ActivityService {
                 activity.getCost(),
                 activity.getRating(),
                 activity.getSelectedByTrips(),
-                activity.getLikedByTrips()
+                activity.getLikedByTrips(),
+                activity.isIndoor()
         );
     }
 }
