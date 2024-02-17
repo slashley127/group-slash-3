@@ -13,11 +13,16 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id")
     private Integer tripId;
-    @NotNull
+
     @Column(name = "trip_location")
     private String tripLocation;
-    @NotNull
-    @Column(name = "traveler")
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "trip_travelers",
+//            joinColumns = @JoinColumn(name = "trip_id"),
+//            inverseJoinColumns = @JoinColumn(name = "user_id")
+//    )
     private String traveler;
 
 
@@ -43,6 +48,10 @@ public class Trip {
         this.traveler = traveler;
         this.selectedActivities = selectedActivities;
         this.likedActivities = likedActivities;
+    }
+    public Trip(String tripLocation, String traveler) {
+        this.tripLocation = tripLocation;
+        this.traveler = traveler;
     }
     public Trip(){}
 

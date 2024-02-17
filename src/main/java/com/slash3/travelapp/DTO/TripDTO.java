@@ -1,6 +1,7 @@
 package com.slash3.travelapp.DTO;
 
 import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.Models.AppUser;
 
 import java.util.List;
 
@@ -24,6 +25,11 @@ public class TripDTO {
         this.traveler = traveler;
         this.selectedActivities = selectedActivities;
         this.likedActivities = likedActivities;
+    }
+
+    public TripDTO(String tripLocation, String traveler) {
+        this.tripLocation = tripLocation;
+        this.traveler = traveler;
     }
     public TripDTO(){};
 

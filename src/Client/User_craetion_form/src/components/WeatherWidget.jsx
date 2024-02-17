@@ -2,7 +2,10 @@
 import React, { useState, useEffect } from 'react';
 
 const WeatherWidget = ({ tripLocation }) => {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState({
+     tripLocation: '',
+     traveler: ''
+            });
   const [isLoading, setIsLoading] = useState(true);
   const apiKey = '288d4ad1796edec11323fa49cd85ac1d'
 
@@ -15,7 +18,7 @@ const WeatherWidget = ({ tripLocation }) => {
         if (!response.ok) {
           throw new Error('Failed to fetch weather data');
         }
-        const data = await response.json();
+        const tripData = await response.json();
         setWeatherData(data);
         setIsLoading(false);
       } catch (error) {

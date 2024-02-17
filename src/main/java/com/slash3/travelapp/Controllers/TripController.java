@@ -30,7 +30,7 @@ public class TripController {
         return ResponseEntity.ok(tripDTO);
     }
 
-    @PostMapping("/trips")
+    @PostMapping("/trips/create")
     public ResponseEntity<TripDTO> createTrip(@RequestBody TripDTO tripDTO) {
         TripDTO newTripDTO = tripService.createTrip(tripDTO);
         return ResponseEntity.ok(newTripDTO);
