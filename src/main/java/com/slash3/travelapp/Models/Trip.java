@@ -17,8 +17,8 @@ public class Trip {
     @Column(name = "trip_location")
     private String tripLocation;
     @NotNull
-    @Column(name = "travelers")
-    private List<AppUser> travelers;
+    @Column(name = "traveler")
+    private String traveler;
     @ManyToMany
     @JoinTable(
             name = "trip_activities",
@@ -29,10 +29,10 @@ public class Trip {
 
 // *add list of activities when activity model is merged in*
 
-    public Trip(Integer tripId, String tripLocation, List<AppUser> travelers, List<Activity> activities) {
+    public Trip(Integer tripId, String tripLocation, String traveler, List<Activity> activities) {
         this.tripId = tripId;
         this.tripLocation = tripLocation;
-        this.travelers = travelers;
+        this.traveler = traveler;
         this.activities = activities;
     }
     public Trip(){}
@@ -53,12 +53,12 @@ public class Trip {
         this.tripLocation = tripLocation;
     }
 
-    public List<AppUser> getTravelers() {
-        return travelers;
+    public String getTraveler() {
+        return traveler;
     }
 
-    public void setTravelers(List<AppUser> travelers) {
-        this.travelers = travelers;
+    public void setTraveler(String traveler) {
+        this.traveler = traveler;
     }
 
     public List<Activity> getActivities() {
