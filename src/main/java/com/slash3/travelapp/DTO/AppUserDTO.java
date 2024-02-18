@@ -1,5 +1,5 @@
 package com.slash3.travelapp.DTO;
-public class UserDTO {
+public class AppUserDTO {
     public Integer userId;
     public String userName;
     public String password;
@@ -8,10 +8,10 @@ public class UserDTO {
     public String lastName;
 
     // Constructors
-    public UserDTO() {
+    public AppUserDTO() {
     }
 
-    public UserDTO(Integer userId, String userName, String password, String email, String firstName, String lastName) {
+    public AppUserDTO(Integer userId, String userName, String password, String email, String firstName, String lastName) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
@@ -19,7 +19,7 @@ public class UserDTO {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    public UserDTO(String userName, String password, String email, String firstName, String lastName) {
+    public AppUserDTO(String userName, String password, String email, String firstName, String lastName) {
         this.userName = userName;
         this.password = password;
         this.email = email;

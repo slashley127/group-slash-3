@@ -1,5 +1,5 @@
 package com.slash3.travelapp.Services;
-import com.slash3.travelapp.DTO.UserDTO;
+import com.slash3.travelapp.DTO.AppUserDTO;
 import com.slash3.travelapp.Models.AppUser;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +16,26 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDTO createUser(UserDTO userDTO) {
-        AppUser user = convertToEntity(userDTO);
+    public AppUserDTO createUser(AppUserDTO appUserDTO) {
+        AppUser user = convertToEntity(appUserDTO);
         AppUser newUser = userRepository.save(user);
         return convertToDTO(newUser);
     }
 
-    public List<UserDTO> findAll() {
+    public List<AppUserDTO> findAll() {
         List<AppUser> users = (List<AppUser>) userRepository.findAll();
         return users.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    public UserDTO getUserById(Integer userId) {
+    public AppUserDTO getUserById(Integer userId) {
         AppUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
         return convertToDTO(user);
     }
 
-    public UserDTO getUserByEmail(String email) {
+    public AppUserDTO getUserByEmail(String email) {
         AppUser user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with email " + email));
         return convertToDTO(user);
@@ -48,7 +48,7 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public UserDTO updateUser(Integer userId, UserDTO userDetails) {
+    public AppUserDTO updateUser(Integer userId, AppUserDTO userDetails) {
         AppUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + userId));
 
@@ -64,18 +64,18 @@ public class UserService {
         return convertToDTO(updatedUser);
     }
 
-    private AppUser convertToEntity(UserDTO userDTO) {
+    private AppUser convertToEntity(AppUserDTO appUserDTO) {
         return new AppUser(
-                userDTO.getUserName(),
-                userDTO.getPassword(),
-                userDTO.getEmail(),
-                userDTO.getFirstName(),
-                userDTO.getLastName()
+                appUserDTO.getUserName(),
+                appUserDTO.getPassword(),
+                appUserDTO.getEmail(),
+                appUserDTO.getFirstName(),
+                appUserDTO.getLastName()
         );
     }
 
-    private UserDTO convertToDTO(AppUser user) {
-        return new UserDTO(
+    private AppUserDTO convertToDTO(AppUser user) {
+        return new AppUserDTO(
                 user.getUserId(),
                 user.getUserName(),
                 user.getPassword(),

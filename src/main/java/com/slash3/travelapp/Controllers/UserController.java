@@ -1,5 +1,5 @@
 package com.slash3.travelapp.Controllers;
-import com.slash3.travelapp.DTO.UserDTO;
+import com.slash3.travelapp.DTO.AppUserDTO;
 import com.slash3.travelapp.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +18,24 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
-        UserDTO newUserDTO = userService.createUser(userDTO);
-        return new ResponseEntity<>(newUserDTO, HttpStatus.CREATED);
+    public ResponseEntity<AppUserDTO> createUser(@RequestBody AppUserDTO appUserDTO) {
+        AppUserDTO newAppUserDTO = userService.createUser(appUserDTO);
+        return new ResponseEntity<>(newAppUserDTO, HttpStatus.CREATED);
     }
     @GetMapping("/users")
-    public List<UserDTO> getAllUsers() {
+    public List<AppUserDTO> getAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer userId) {
-        UserDTO userDTO = userService.getUserById(userId);
-        return ResponseEntity.ok(userDTO);
+    public ResponseEntity<AppUserDTO> getUserById(@PathVariable Integer userId) {
+        AppUserDTO appUserDTO = userService.getUserById(userId);
+        return ResponseEntity.ok(appUserDTO);
     }
     @GetMapping("/email")
-    public ResponseEntity<UserDTO> getUserByEmail(@RequestParam String email) {
-        UserDTO userDTO = userService.getUserByEmail(email);
-        return ResponseEntity.ok(userDTO);
+    public ResponseEntity<AppUserDTO> getUserByEmail(@RequestParam String email) {
+        AppUserDTO appUserDTO = userService.getUserByEmail(email);
+        return ResponseEntity.ok(appUserDTO);
     }
 
     @DeleteMapping("/{userId}")
@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Integer userId, @RequestBody UserDTO userDetails) {
-        UserDTO updatedUser = userService.updateUser(userId, userDetails);
+    public ResponseEntity<AppUserDTO> updateUser(@PathVariable Integer userId, @RequestBody AppUserDTO userDetails) {
+        AppUserDTO updatedUser = userService.updateUser(userId, userDetails);
         return ResponseEntity.ok(updatedUser);
     }
 }

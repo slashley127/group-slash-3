@@ -27,6 +27,8 @@ public class AppUser {
     @NotNull
     @Column(name= "last_name")
     private String lastName;
+
+
     public AppUser(){
 
     }

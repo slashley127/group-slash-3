@@ -27,17 +27,23 @@ public class Activity {
     @NotNull
     @Column(name="rating")
     private int rating;
+
+    @NotNull
+    @Column(name="isIndoor")
+    private boolean isIndoor;
+
     @ManyToMany(mappedBy = "activities")
     private List<Trip> trips;
 
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> trips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
+        this.isIndoor = isIndoor;
         this.trips = trips;
     }
 
@@ -90,6 +96,14 @@ public class Activity {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public boolean getIsIndoor() {
+        return isIndoor;
+    }
+
+    public void setIndoor(boolean indoor) {
+        isIndoor = indoor;
     }
 
     public List<Trip> getTrips() {
