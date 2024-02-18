@@ -7,7 +7,7 @@ function CreateTrip() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     tripLocation: '',
-    travelers: ''
+    traveler: ''
   });
 
   const handleChange = (e) => {
@@ -28,7 +28,8 @@ function CreateTrip() {
       if (response.ok) {
         const tripData = await response.json();
 
-        navigate("/Trip", { state: { trip: tripData } });
+        navigate("/WeatherWidget", { state: { tripLocation: formData.tripLocation } });
+
       } else {
         throw new Error('Failed to create trip');
       }
@@ -46,21 +47,21 @@ function CreateTrip() {
                        <label htmlFor="location">Trip Location</label>
                           <input
                             type="text"
-                            name="location"
+                            name="tripLocation"
                             placeholder='Enter trip location'
                             className='form-control'
-                            value={formData.location}
+                            value={formData.tripLocation}
                              onChange={handleChange}
                           />
                         </div>
                   <div className='mb-2'>
-                    <label htmlFor="travelers">Travelers</label>
+                    <label htmlFor="traveler">Traveler</label>
                     <input
                       type="text"
-                      name="travelers"
-                      placeholder='Travelers'
+                      name="traveler"
+                      placeholder='Traveler'
                       className='form-control'
-                      value={formData.travelers}
+                      value={formData.traveler}
                       onChange={handleChange}
                     />
                   </div>

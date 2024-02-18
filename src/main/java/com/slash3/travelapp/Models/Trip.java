@@ -13,7 +13,7 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id")
     private Integer tripId;
-
+    @NotNull
     @Column(name = "trip_location")
     private String tripLocation;
 
@@ -23,6 +23,7 @@ public class Trip {
 //            joinColumns = @JoinColumn(name = "trip_id"),
 //            inverseJoinColumns = @JoinColumn(name = "user_id")
 //    )
+    @NotNull
     private String traveler;
 
 

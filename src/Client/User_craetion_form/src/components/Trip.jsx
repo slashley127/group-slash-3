@@ -10,8 +10,8 @@ function Trip() {
       <div><h1> My Trip</h1></div>
       {tripData && (
         <>
-          <p>Location: {tripData.location}</p>
-          <p>Travelers: {tripData.travelers}</p>
+          <p>Location: {tripData.tripLocation}</p>
+          <p>Travelers: {tripData.traveler}</p>
         </>
       )}
     </>

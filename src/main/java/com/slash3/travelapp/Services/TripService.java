@@ -21,8 +21,10 @@ public class TripService {
         Trip trip = new Trip();
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
-        trip.setSelectedActivities(tripDTO.getSelectedActivities());
-        trip.setLikedActivities(tripDTO.getLikedActivities());
+        if (tripDTO.getSelectedActivities() != null) {
+        trip.setSelectedActivities(tripDTO.getSelectedActivities());}
+        if (tripDTO.getLikedActivities() != null) {
+        trip.setLikedActivities(tripDTO.getLikedActivities());}
 
         Trip savedTrip = tripRepository.save(trip);
 
