@@ -31,8 +31,8 @@ spring:
       on-profile: prod
   datasource:
     url: jdbc:mysql://localhost:3306/travel-planner
-    username: travel-planner
-    password: Code4team!
+    username: root
+    password: Nahlaemo1037
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
