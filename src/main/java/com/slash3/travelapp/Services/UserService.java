@@ -107,22 +107,22 @@ public class UserService {
     }
 
 
-    public AppUser createUser(AppUser user) {
-
-        if (user.getFirstName() == null || user.getLastName() == null || user.getEmail() == null || user.getPassword() == null) {
-            throw new IllegalArgumentException("All fields are required");
-        }
-
-        if (!isValidEmail(user.getEmail())) {
-            throw new IllegalArgumentException("Invalid email format");
-        }
-
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("Email already exists");
-        }
-
-        return userRepository.save(user);
-    }
+//    public AppUser createUser(AppUser user) {
+//
+//        if (user.getFirstName() == null || user.getLastName() == null || user.getEmail() == null || user.getPassword() == null) {
+//            throw new IllegalArgumentException("All fields are required");
+//        }
+//
+//        if (!isValidEmail(user.getEmail())) {
+//            throw new IllegalArgumentException("Invalid email format");
+//        }
+//
+//        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+//            throw new IllegalArgumentException("Email already exists");
+//        }
+//
+//        return userRepository.save(user);
+//    }
 
     private boolean isValidEmail(String email) {
         return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");

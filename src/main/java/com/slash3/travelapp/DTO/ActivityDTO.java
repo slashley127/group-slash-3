@@ -17,7 +17,7 @@ public class ActivityDTO {
 
     private double cost;
 
-    private int rating;
+    private Integer rating;
 
     private boolean isIndoor;
 
@@ -26,7 +26,7 @@ public class ActivityDTO {
     private List<Trip> likedTrips;
 
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, Integer rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -38,7 +38,7 @@ public class ActivityDTO {
         this.isIndoor = isIndoor;
     }
 
-    public ActivityDTO(String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
+    public ActivityDTO(String name, String location, String description, double cost, Integer rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -99,7 +99,7 @@ public class ActivityDTO {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
