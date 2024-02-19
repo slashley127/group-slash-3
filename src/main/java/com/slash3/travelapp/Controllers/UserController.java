@@ -18,11 +18,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<AppUserDTO> createUser(@RequestBody AppUserDTO appUserDTO) {
         AppUserDTO newAppUserDTO = userService.createUser(appUserDTO);
         return new ResponseEntity<>(newAppUserDTO, HttpStatus.CREATED);
     }
+
     @GetMapping("/users")
     public List<AppUserDTO> getAllUsers() {
         return userService.findAll();
@@ -33,6 +34,7 @@ public class UserController {
         AppUserDTO appUserDTO = userService.getUserById(userId);
         return ResponseEntity.ok(appUserDTO);
     }
+
     @GetMapping("/email")
     public ResponseEntity<AppUserDTO> getUserByEmail(@RequestParam String email) {
         AppUserDTO appUserDTO = userService.getUserByEmail(email);

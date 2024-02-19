@@ -78,11 +78,12 @@ public class Trip {
         this.selectedActivities = selectedActivities;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
+    public List<Activity> getLikedActivities() {
+        return likedActivities;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public void setLikedActivities(List<Activity> likedActivities) {
+        this.likedActivities = likedActivities;
     }
+
 }

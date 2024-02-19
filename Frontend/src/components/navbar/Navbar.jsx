@@ -38,7 +38,7 @@ function Navbar() {
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className='nav-item'>
                     <Link
-                    to='/my_profile'
+                    to='/profile'
                     className='nav-links  fst-italic'
                     onClick={closeMobileMenu}  >
                 My Profile
@@ -69,6 +69,13 @@ function Navbar() {
               <Button variant='outline-primary  fst-italic'>Create Trip</Button>
             </Link>
           )}
+
+          
+          {button && (
+                      <Link to='/add_activity' className='btn-link' onClick={closeMobileMenu}>
+                        <Button variant='outline-primary  fst-italic'>Add Activity</Button>
+                      </Link>
+                    )}
         </div>
       </nav>
     </>

@@ -32,7 +32,7 @@ function Signup() {
       if (response.ok) {
         const userData = await response.json();
 
-        navigate("/Profile", { user: userData });
+        navigate("/profile", { state: { user: userData }});
       } else {
         throw new Error('Failed to sign up');
       }
@@ -70,6 +70,17 @@ function Signup() {
                   onChange={handleChange}
                 />
               </div>
+               <div className='mb-2'>
+                  <label htmlFor="userName">Username</label>
+                  <input
+                     type="text"
+                     name="userName"
+                     placeholder='Username'
+                      className='form-control'
+                      value={formData.userName}
+                       onChange={handleChange}
+                />
+                </div>
               <div className='mb-2'>
                 <label htmlFor="email">Email</label>
                 <input

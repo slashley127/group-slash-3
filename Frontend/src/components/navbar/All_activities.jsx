@@ -178,27 +178,9 @@ function AllActivities() {
 
   return (
   <div>
-     <div>All Activities</div>
-
+{/*      <div>All Activities</div> */}
      <div className="destinationInput">
-{/*      <label htmlFor="search" className="fst-italic"> */}
-{/*             Search: */}
-{/*      </label> */}
-{/*       <div className="input flex"> */}
-{/*         <input */}
-{/*             type="text" */}
-{/*             placeholder="Search by location..." */}
-{/*             value={searchQuery} */}
-{/*             onChange={(e) => setSearchQuery(e.target.value.toLowerCase())} */}
-{/*             /> */}
-{/*       </div> */}
-{/*       <button */}
-{/*         type="button" */}
-{/*         className="btn btn-black-primary" */}
-{/*         data-mdb-ripple-init */}
-{/*       > */}
-{/*             Search */}
-{/*       </button> */}
+
    <div className="homeContent"></div>
     <div className="activity-group">
               {Data.map((item) => (
