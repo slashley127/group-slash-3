@@ -1,0 +1,28 @@
+
+.activity-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.activity {
+  width: 400px;
+  height: 200;
+  display: block;
+  flex: 0 0 calc(15% - 10px);
+  box-sizing: border-box;/* Adjust the width based on your design */
+  margin: 5px;
+  border: 1px solid #ccc;
+  overflow: auto;
+
+  /* Optional: Box shadow for a lifted effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05); /* Increase the size on hover */
+}
+
+.card-body {
+  padding: 10px;
+}

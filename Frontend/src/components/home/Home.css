@@ -81,6 +81,11 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
 }
 
+.card-body {
+    width: 300px;
+    border: 2px solid #ccc;
+    padding: 15px;
+}
 label {
     display: block;
     color: var(--textColor);

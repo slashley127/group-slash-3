@@ -9,8 +9,11 @@ import '../navbar/Profile'
 
 
 function Login() {
+
+
 const navigate = useNavigate();
 const [email, setEmail] = useState("");
+const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -22,7 +25,7 @@ const [email, setEmail] = useState("");
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, userName, password }),
       });
       if (response.ok) {
 
@@ -32,7 +35,6 @@ const [email, setEmail] = useState("");
 
         navigate("/Profile");
       } else {
-
         console.error("Login failed");
       }
     } catch (error) {
@@ -44,29 +46,50 @@ const [email, setEmail] = useState("");
       <div className='form-container p-5 rounded bg-white mx-auto'>
         <form action="">
           <h3 className="text-center"> Sign In</h3>
+
           <div className='mb-2'>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder='Enter Email' className='form-control' value={email}
             onChange={(e) => setEmail(e.target.value)}
              required />
           </div>
+
           <div className='mb-2'>
             <label htmlFor="Password">Password</label>
             <input type="Password" placeholder='Enter Password' className='form-control' value={password}
              onChange={(e) => setPassword(e.target.value)}
               required />
           </div>
+
           <div className='mb-2'>
             <input type="checkbox" className='custom-control custom-checkbox' id="check" />
-            <label htmlFor="check" className='custom-input-label ms-2 '>
-              Remember me
+            <label htmlFor="check" className='custom-input-label ms-2 '>Remember me
             </label>
           </div>
+
+
+{/*       <Form onSubmit={handleSubmit}> */}
+{/*             <Form.Group controlId="formUsername"> */}
+{/*                 <Form.Label>Username</Form.Label> */}
+{/*                 <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} /> */}
+{/*             </Form.Group> */}
+
+{/*             <Form.Group controlId="formPassword"> */}
+{/*                 <Form.Label>Password</Form.Label> */}
+{/*                 <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} /> */}
+{/*             </Form.Group> */}
+
+{/*             <Button variant="primary" type="submit"> */}
+{/*                 Submit */}
+{/*             </Button> */}
+{/*         </Form> */}
+
+
           <div className='d-grid'>
 
             <button className='btn btn-primary' onClick={handleSubmit}><Link to="/home" className='btn btn-primary'>Sign In</Link> </button>
             <p className='text-end mt-2'>
-              Forgot <a href=""> Password?</a>
+{/*               Forgot <a href=""> Password?</a> */}
               <Link to="/signup" className="ms-2"> Sign Up</Link>
             </p>
           </div>

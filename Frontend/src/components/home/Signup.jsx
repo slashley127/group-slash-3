@@ -33,9 +33,7 @@ function Signup() {
         const userData = await response.json();
 
         navigate("/Profile", { user: userData });
-      }
-
-      if (!response.ok) {
+      } else {
         throw new Error('Failed to sign up');
       }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -15,6 +16,14 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public boolean verifyPassword(String username, String rawPassword) {
+        Optional<AppUser> userOptional = userRepository.findByUsername(username);
+        return userOptional.map(user -> passwordEncoder.matches(rawPassword, user.getPassword())).orElse(false);
+    }
 
     public AppUserDTO createUser(AppUserDTO appUserDTO) {
         AppUser user = convertToEntity(appUserDTO);

@@ -29,7 +29,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to="/home" className='navbar-logo fst-italic' onClick={closeMobileMenu}>
-            Tripella
+            TravelTribe
             <i className='fab fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
@@ -41,12 +41,12 @@ function Navbar() {
                     to='/my_profile'
                     className='nav-links  fst-italic'
                     onClick={closeMobileMenu}  >
-                My profile
+                My Profile
                     </Link>
                 </li>
                 <li className='nav-item'>
-                   <Link to='/all_activites' className='nav-links  fst-italic' onClick={closeMobileMenu}>
-                All activites
+                   <Link to='/all_activities' className='nav-links  fst-italic' onClick={closeMobileMenu}>
+                All Activities
                    </Link>
                 </li>
                 <li>
