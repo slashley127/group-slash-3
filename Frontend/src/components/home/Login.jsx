@@ -13,7 +13,7 @@ function Login() {
 
 const navigate = useNavigate();
 const [email, setEmail] = useState("");
-const [userName, setUserName] = useState("");
+// const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -42,7 +42,7 @@ const [userName, setUserName] = useState("");
     }
   };
   return (
-    <div className='login template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'>
+    <div className='login template d-flex justify-content-center align-items-center w-100 vh-100 bg-primary'>
       <div className='form-container p-5 rounded bg-white mx-auto'>
         <form action="">
           <h3 className="text-center"> Sign In</h3>
@@ -67,28 +67,9 @@ const [userName, setUserName] = useState("");
             </label>
           </div>
 
-
-
-   <Form onSubmit={handleSubmit}>
-             <Form.Group controlId="formUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
-             </Form.Group>
-
-           <Form.Group controlId="formPassword">
-               <Form.Label>Password</Form.Label>
-                 <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
-             </Form.Group>
-
-             <Button variant="primary" type="submit">
-                 Submit
-             </Button>
-         </Form>
-
-
           <div className='d-grid'>
 
-            <button className='btn btn-primary' onClick={handleSubmit}><Link to="/home" className='btn btn-primary'>Sign In</Link> </button>
+            <button className='btn btn-primary' onClick={handleSubmit}><Link to="/profile" className='btn btn-primary'>Sign In</Link> </button>
             <p className='text-end mt-2'>
 {/*               Forgot <a href=""> Password?</a> */}
               <Link to="/signup" className="ms-2"> Sign Up</Link>
@@ -101,53 +82,3 @@ const [userName, setUserName] = useState("");
 }
 
 export default Login;
-
-// import React from "react";
-// import "./App.css";
-// import { Link } from "react-router-dom";
-// import Profile from "./Profile";
-//
-// function Login() {
-//   return (
-//     <div
-//       className="login template d-flex justify-content-center align-items-center vh-100 bg-primary"
-//       style={{
-//         backgroundImage: `url('https://cxeffect.com/wp-content/uploads/2021/12/Services_Header-2.png')`,
-//         backgroundSize: "cover",
-//       }}
-//     >
-//       <div className="form-container p-5 rounded bg-white mx-auto">
-//         <form action="">
-//           <h3 className="text-center">Sign In</h3>
-//           <div className="mb-2">
-//             <label htmlFor="email">Email</label>
-//             <input type="email" placeholder="Enter Email" className="form-control" />
-//           </div>
-//           <div className="mb-2">
-//             <label htmlFor="password">Password</label>
-//             <input type="password" placeholder="Enter Password" className="form-control" />
-//           </div>
-//           <div className="mb-2">
-//             <input type="checkbox" className="custom-control-input" id="check" />
-//             <label htmlFor="check" className="custom-control-label ms-2">
-//               Remember me
-//             </label>
-//           </div>
-//           <div className="d-grid">
-//             <Link to="/Profile" className="btn btn-primary">
-//               Sign In
-//             </Link>
-//             <p className="text-end mt-2">
-//               Forgot <a href="/">Password?</a>
-//               <Link to="/signup" className="ms-2">
-//                 Sign Up
-//               </Link>
-//             </p>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-//
-// export default Login;

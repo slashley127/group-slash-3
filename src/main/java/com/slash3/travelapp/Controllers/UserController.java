@@ -37,12 +37,13 @@ public class UserController {
     public ResponseEntity<AppUserDTO> getUserByEmail(@RequestParam String email) {
         AppUserDTO appUserDTO = userService.getUserByEmail(email);
         return ResponseEntity.ok(appUserDTO);
+    }
 
 
     @PostMapping("/email")
-    public ResponseEntity<UserDTO> getUserByEmail(@RequestBody Map<String, String> requestBody) {
+    public ResponseEntity<AppUserDTO> getUserByEmail(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
-        UserDTO userDTO = userService.getUserByEmail(email);
+        AppUserDTO userDTO = userService.getUserByEmail(email);
         return ResponseEntity.ok(userDTO);
     }
 

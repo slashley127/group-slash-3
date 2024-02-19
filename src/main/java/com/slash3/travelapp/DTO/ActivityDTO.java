@@ -25,9 +25,8 @@ public class ActivityDTO {
 
     private List<Trip> likedTrips;
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips, boolean isIndoor) {
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -36,20 +35,21 @@ public class ActivityDTO {
         this.rating = rating;
         this.selectedTrips = selectedTrips;
         this.likedTrips = likedTrips;
-        this.trips = trips;
         this.isIndoor = isIndoor;
     }
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips) {
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> trips, boolean isIndoor) {
+
+    public ActivityDTO(String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> selectedTrips, List<Trip> likedTrips) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
         this.isIndoor = isIndoor;
         this.selectedTrips = selectedTrips;
         this.likedTrips = likedTrips;
+    }
+
+    public ActivityDTO(int activityId, String name, String location, String description, double cost, int rating, List<Trip> trips, boolean b, List<Trip> selectedTrips, List<Trip> likedTrips) {
     }
 
     public Integer getActivityId() {
@@ -118,7 +118,7 @@ public class ActivityDTO {
     public void setLikedTrips(List<Trip> likedTrips) {
         this.likedTrips = likedTrips;
     }
-    public boolean getIsIndoor() {
+    public boolean IsIndoor() {
         return isIndoor;
     }
 

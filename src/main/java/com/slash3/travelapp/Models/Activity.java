@@ -41,9 +41,8 @@ public class Activity {
     @ManyToMany(mappedBy = "likedActivities")
     private List<Trip> likedByTrips;
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> trips) {
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedByTrips, List<Trip> likedByTrips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, int rating,boolean isIndoor, List<Trip> selectedByTrips, List<Trip> likedByTrips) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -51,7 +50,6 @@ public class Activity {
         this.cost = cost;
         this.rating = rating;
         this.isIndoor = isIndoor;
-        this.trips = trips;
         this.selectedByTrips = selectedByTrips;
         this.likedByTrips = likedByTrips;
     }
@@ -107,7 +105,7 @@ public class Activity {
         this.rating = rating;
     }
 
-    public boolean getIsIndoor() {
+    public boolean IsIndoor() {
         return isIndoor;
     }
 
@@ -116,20 +114,21 @@ public class Activity {
     }
 
     public List<Trip> getTrips() {
-        return trips;
-    public List<Trip> getSelectedByTrips() {
+        return trips;}
+
+    public List<Trip> getSelectedTrips() {
         return selectedByTrips;
     }
 
-    public void setSelectedByTrips(List<Trip> selectedByTrips) {
+    public void setSelectedTrips(List<Trip> selectedByTrips) {
         this.selectedByTrips = selectedByTrips;
     }
 
-    public List<Trip> getLikedByTrips() {
+    public List<Trip> getLikedTrips() {
         return likedByTrips;
     }
 
-    public void setLikedByTrips(List<Trip> likedByTrips) {
+    public void setLikedTrips(List<Trip> likedByTrips) {
         this.likedByTrips = likedByTrips;
     }
 

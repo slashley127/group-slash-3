@@ -23,10 +23,9 @@ public class ActivityService {
         activity.setDescription(activityDTO.getDescription());
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
-        activity.setTrips(activityDTO.getTrips());
-        activity.setIndoor(activityDTO.getIsIndoor());
-        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
-        activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setIndoor(activityDTO.IsIndoor());
+        activity.setSelectedTrips(activityDTO.getSelectedTrips());
+        activity.setLikedTrips(activityDTO.getLikedTrips());
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -60,10 +59,9 @@ public class ActivityService {
         activity.setDescription(activityDTO.getDescription());
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
-        activity.setTrips(activityDTO.getTrips());
-        activity.setIndoor(activityDTO.getIsIndoor());
-        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
-        activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setIndoor(activityDTO.IsIndoor());
+        activity.setSelectedTrips(activityDTO.getSelectedTrips());
+        activity.setLikedTrips(activityDTO.getLikedTrips());
 
         Activity updatedActivity = activityRepository.save(activity);
 
@@ -80,9 +78,10 @@ public class ActivityService {
                 activity.getCost(),
                 activity.getRating(),
                 activity.getTrips(),
-                activity.getIsIndoor()
-                activity.getSelectedByTrips(),
-                activity.getLikedByTrips()
-        );
+                activity.IsIndoor(),
+                activity.getSelectedTrips(),
+                activity.getLikedTrips()
+                );
+
     }
 }
