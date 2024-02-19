@@ -10,15 +10,23 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
 
+    @Bean
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    };
 
     public boolean verifyPassword(String username, String rawPassword) {
         Optional<AppUser> userOptional = userRepository.findByUsername(username);
