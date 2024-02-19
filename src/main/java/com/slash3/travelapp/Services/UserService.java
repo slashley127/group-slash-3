@@ -1,43 +1,47 @@
 package com.slash3.travelapp.Services;
+
 import com.slash3.travelapp.DTO.AppUserDTO;
 import com.slash3.travelapp.Models.AppUser;
 import com.slash3.travelapp.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
 
-    @Bean
     @Autowired
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    };
-
-    public boolean verifyPassword(String username, String rawPassword) {
-        Optional<AppUser> userOptional = userRepository.findByUsername(username);
-        return userOptional.map(user -> passwordEncoder.matches(rawPassword, user.getPassword())).orElse(false);
-    }
+    private PasswordEncoder passwordEncoder;
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    };
 
     public AppUserDTO createUser(AppUserDTO appUserDTO) {
         AppUser user = convertToEntity(appUserDTO);
+
+        user.setPassword((passwordEncoder.encode(appUserDTO.getPassword())));
+
         AppUser newUser = userRepository.save(user);
+
         return convertToDTO(newUser);
     }
+
+    public boolean verifyPassword(String username, String rawPassword) {
+        Optional<AppUser> userOptional = userRepository.findByUserName(username);
+        return userOptional.map(user -> passwordEncoder.matches(rawPassword, user.getPassword())).orElse(false);
+    }
+
 
     public List<AppUserDTO> findAll() {
         List<AppUser> users = (List<AppUser>) userRepository.findAll();
