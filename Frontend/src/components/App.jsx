@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import Login from './home/Login';
 import Signup from './home/Signup';
 import Home from './home/Home';
-import All_activites from './navbar/All_activites';
+// import All_activites from './navbar/All_activites';
 
 import Create_Trip from './navbar/Create_Trip';
 import About_us from './navbar/About_us';
@@ -16,6 +16,7 @@ import Bottom from './home/Bottom';
 import {AuthProvider} from './context/AuthContext'
 import { Navigate } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
+import AllActivities from './navbar/All_activities'
 
 import './navbar/Profile'
 
@@ -75,7 +76,7 @@ const App = () => {
           <Route index element={ <Home/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path="/all_activites" element={<All_activites/>} />
+          <Route path="/all_activities" element={<AllActivities/>} />
           <Route path="/create_trip" element={<Create_Trip />} />
           <Route path="/create_trip" element={<Profile />} />
           <Route path="/about_us" element={<About_us />} />

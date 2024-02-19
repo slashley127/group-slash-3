@@ -47,26 +47,11 @@ function Bottom() {
 
   return (
     <section>
-      <Card>
-        <Card.Body className="text-center bg-secondary text-white my-2 py-2  fst-italic">
-          Most Visited Destinations
-        </Card.Body>
-      </Card>
 
-      <div className="card-group">
-       {Data.map((item) => ( 
-          <div className="card" key={item.id}>
-            <img className="card-img-top" src={item.imgSrc} alt="Card cap" />
-            <div className="card-body">
-              <h5 className="card-title">{item.name}</h5>
-              <p className="card-text">{item.location}</p>
-              <p className="card-text">{item.description}</p>
-              <p className="card-text">rating:{item.rating}</p>
-              <p className="card-text">cost: ${item.cost}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+
+           <div> <h6>&copy; 2024 TravelTribe NJC</h6></div>
+
+
     </section>
   );
 }

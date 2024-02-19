@@ -199,12 +199,12 @@ function AllActivities() {
 {/*       > */}
 {/*             Search */}
 {/*       </button> */}
-
+   <div className="homeContent"></div>
     <div className="activity-group">
               {Data.map((item) => (
         <div className="activity" key={item.id}>
-        <div className="card-body">
-          <h5 className="card-title">{item.name}</h5>
+        <div className="activity-body">
+          <h5 className="activity-title">{item.name}</h5>
           <p className="card-text">{item.location}</p>
           <p className="card-text">{item.description}</p>
           <p className="card-text">rating: {item.rating}    ${item.cost}</p>
