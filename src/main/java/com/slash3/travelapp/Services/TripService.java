@@ -21,7 +21,8 @@ public class TripService {
         Trip trip = new Trip();
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
-        trip.setActivities(tripDTO.getActivities());
+        trip.setSelectedActivities(tripDTO.getSelectedActivities());
+        trip.setLikedActivities(tripDTO.getLikedActivities());
 
         Trip savedTrip = tripRepository.save(trip);
 
@@ -52,7 +53,8 @@ public class TripService {
 
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
-        trip.setActivities(tripDTO.getActivities());
+        trip.setSelectedActivities(tripDTO.getSelectedActivities());
+        trip.setLikedActivities(tripDTO.getLikedActivities());
 
         Trip updatedTrip = tripRepository.save(trip);
 
@@ -64,7 +66,8 @@ public class TripService {
                 trip.getTripId(),
                 trip.getTripLocation(),
                 trip.getTraveler(),
-                trip.getActivities()
+                trip.getSelectedActivities(),
+                trip.getLikedActivities()
         );
     }
 }

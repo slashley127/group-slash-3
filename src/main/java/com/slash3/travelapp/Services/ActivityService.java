@@ -25,6 +25,8 @@ public class ActivityService {
         activity.setRating(activityDTO.getRating());
         activity.setTrips(activityDTO.getTrips());
         activity.setIndoor(activityDTO.getIsIndoor());
+        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
+        activity.setLikedByTrips(activityDTO.getLikedTrips());
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -60,6 +62,8 @@ public class ActivityService {
         activity.setRating(activityDTO.getRating());
         activity.setTrips(activityDTO.getTrips());
         activity.setIndoor(activityDTO.getIsIndoor());
+        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
+        activity.setLikedByTrips(activityDTO.getLikedTrips());
 
         Activity updatedActivity = activityRepository.save(activity);
 
@@ -77,6 +81,8 @@ public class ActivityService {
                 activity.getRating(),
                 activity.getTrips(),
                 activity.getIsIndoor()
+                activity.getSelectedByTrips(),
+                activity.getLikedByTrips()
         );
     }
 }

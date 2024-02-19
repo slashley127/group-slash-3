@@ -19,21 +19,30 @@ public class Trip {
     @NotNull
     @Column(name = "traveler")
     private String traveler;
+
+
     @ManyToMany
     @JoinTable(
             name = "trip_activities",
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
-    private List<Activity> activities;
+    private List<Activity> selectedActivities;
 
-// *add list of activities when activity model is merged in*
+    @ManyToMany
+    @JoinTable(
+            name = "trip_liked_activities",
+            joinColumns = @JoinColumn(name = "trip_id"),
+            inverseJoinColumns = @JoinColumn(name = "activity_id")
+    )
+    private List<Activity> likedActivities;
 
-    public Trip(Integer tripId, String tripLocation, String traveler, List<Activity> activities) {
+    public Trip(Integer tripId, String tripLocation, String traveler, List<Activity> selectedActivities,  List<Activity> likedActivities) {
         this.tripId = tripId;
         this.tripLocation = tripLocation;
         this.traveler = traveler;
-        this.activities = activities;
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
     }
     public Trip(){}
 
@@ -61,11 +70,19 @@ public class Trip {
         this.traveler = traveler;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
+    public List<Activity> getSelectedActivities() {
+        return selectedActivities;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public void setSelectedActivities(List<Activity> selectedActivities) {
+        this.selectedActivities = selectedActivities;
+    }
+
+    public List<Activity> getLikedActivities() {
+        return likedActivities;
+    }
+
+    public void setLikedActivities(List<Activity> likedActivities) {
+        this.likedActivities = likedActivities;
     }
 }
