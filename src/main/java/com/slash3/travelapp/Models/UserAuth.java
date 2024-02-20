@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 @Table(name="AppUser")
 public class UserAuth {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer userId;
     @NotNull
