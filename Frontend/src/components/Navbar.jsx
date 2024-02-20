@@ -38,7 +38,7 @@ function Navbar() {
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className='nav-item'>
                     <Link
-                    to='/my_profile'
+                    to='/Profile'
                     className='nav-links  fst-italic'
                     onClick={closeMobileMenu}  >
                 My Profile

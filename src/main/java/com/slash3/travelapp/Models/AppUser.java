@@ -3,6 +3,8 @@ package com.slash3.travelapp.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 
 @Entity
 public class AppUser {
@@ -25,8 +27,8 @@ public class AppUser {
     @NotNull
     @Column(name= "last_name")
     private String lastName;
-//    @Column(name= "trips")
-//    private List<Trip> trips;
+    @Column(name= "trips")
+    private List<Trip> trips;
 
 
     public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
@@ -95,5 +97,13 @@ public class AppUser {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }
