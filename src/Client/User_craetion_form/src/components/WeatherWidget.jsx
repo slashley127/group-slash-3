@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const WeatherWidget = ({ location }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+  const apiKey = '68cbf853b47ee9fec36896495fc006d2';
 
   useEffect(() => {
     const fetchWeatherData = async () => {
