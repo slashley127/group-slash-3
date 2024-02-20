@@ -24,7 +24,7 @@ public class TripController {
         return tripService.findAll();
     }
     @GetMapping("/trips/{travelerName}")
-    public ResponseEntity<TripDTO> getTripById(@PathVariable String travelerName) {
+    public ResponseEntity<TripDTO> getTripByTravelerName(@PathVariable String travelerName) {
         TripDTO tripDTO = tripService.getTripByTravelerName(travelerName);
         return ResponseEntity.ok(tripDTO);
     }

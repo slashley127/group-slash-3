@@ -7,6 +7,7 @@ function CreateTrip() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     tripLocation: '',
+    tripId: '',
     traveler: ''
   });
 

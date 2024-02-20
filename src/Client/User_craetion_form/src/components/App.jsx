@@ -3,6 +3,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Trip from './Trip';
+import AllActivities from './AllActivities';
 import CreateTrip from './CreateTrip';
 import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -56,6 +57,7 @@ const App = () => {
             <Route path='/weatherWidget' element={<WeatherWidget/>}> </Route>
             <Route path='/profile' element={<Profile user={users}/>} />
             <Route path='/trip' element={<Trip/>} />
+            <Route path='/allActivities' element={<AllActivities/>} />
             <Route path='/create' element={<CreateTrip/>} />
         </Routes>
     </BrowserRouter>

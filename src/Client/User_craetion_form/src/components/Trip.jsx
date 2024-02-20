@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import WeatherWidget from './WeatherWidget';
+import AllActivities from './AllActivities';
 
 function Trip() {
    const location = useLocation();
@@ -24,36 +25,25 @@ function Trip() {
            console.error('Error fetching weather data:', error);
          }
        };
+
        const fetchActivities = async () => {
-             try {
-               const response = await fetch('http://localhost:8080/api/activities');
-                console.error('Response:', await response.text());
+           try {
+               const response = await fetch('http://localhost:8080/api/activities/${tripData.tripLocation}');
                if (!response.ok) {
-                 throw new Error('Failed to fetch activities');
+                   throw new Error('Failed to fetch activities');
                }
                const data = await response.json();
                setActivities(data);
-             } catch (error) {
+           } catch (error) {
                console.error('Error fetching activities:', error);
-             }
-           };
+           }
+       };
 
        if (tripData) {
          fetchWeatherData();
          fetchActivities();
        }
      }, [tripData]);
-
-     const filteredActivities = activities.filter(activity => {
-         if (weatherData && weatherData.main && weatherData.main.temp) {
-           if (weatherData.main.temp >= 40) {
-             return !activity.isIndoor; // Display outdoor activities if temperature is 40°F or warmer
-           } else {
-             return activity.isIndoor; // Display indoor activities if temperature is below 40°F
-           }
-         }
-         return false;
-       });
 
 
      return (
@@ -63,13 +53,9 @@ function Trip() {
            <>
              <p>Location: {tripData.tripLocation}</p>
              <p>Travelers: {tripData.traveler}</p>
+             <p>TripId: {tripData.tripId}</p>
              <WeatherWidget weatherData={weatherData} />
-             <h2>Recommended Activities:</h2>
-                       <ul>
-                         {filteredActivities.map(activity => (
-                           <li key={activity.id}>{activity.name}</li>
-                         ))}
-                       </ul>
+             <AllActivities tripId={tripData.tripId} activities={activities} />
            </>
          )}
        </>
@@ -77,3 +63,17 @@ function Trip() {
    }
 
    export default Trip;
+
+//     const fetchActivities = async () => {
+//                 try {
+//                   const response = await fetch('http://localhost:8080/api/activities');
+//                    console.error('Response:', await response.text());
+//                   if (!response.ok) {
+//                     throw new Error('Failed to fetch activities');
+//                   }
+//                   const data = await response.json();
+//                   setActivities(data);
+//                 } catch (error) {
+//                   console.error('Error fetching activities:', error);
+//                 }
+//               };

@@ -1,8 +1,10 @@
 package com.slash3.travelapp.Controllers;
 import com.slash3.travelapp.DTO.ActivityDTO;
+import com.slash3.travelapp.DTO.TripDTO;
 import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class ActivityController {
     @GetMapping("/activities")
     public List<ActivityDTO> getAllActivities() {
         return activityService.findAll();
+    }
+    @GetMapping("/activities/{location}")
+    public ResponseEntity<ActivityDTO> getActivityByLocation(@PathVariable String location) {
+        ActivityDTO activityDTO = activityService.getActivityByLocation(location);
+        return ResponseEntity.ok(activityDTO);
     }
 
     @GetMapping("/activities/{activityId}")

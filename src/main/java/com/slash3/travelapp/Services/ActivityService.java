@@ -1,5 +1,6 @@
 package com.slash3.travelapp.Services;
 import com.slash3.travelapp.DTO.ActivityDTO;
+import com.slash3.travelapp.DTO.TripDTO;
 import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Models.ActivityLite;
 import com.slash3.travelapp.Models.Trip;
@@ -63,6 +64,10 @@ public class ActivityService {
     public List<ActivityDTO> findAll() {
         List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
+    }
+    public ActivityDTO getActivityByLocation(String location) {
+        Activity activity = activityRepository.findAllByLocation(location);
+        return convertToActivityDTO(activity);
     }
 
     public ActivityDTO getActivityById(Integer activityId) {

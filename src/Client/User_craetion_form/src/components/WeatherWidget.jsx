@@ -13,17 +13,17 @@ const WeatherWidget = ({ weatherData }) => {
           <p>Temperature: {main.temp}°F</p>
           <p>Description: {weather[0].description}</p>
           <div>
-            {main.temp > 20 ? (
+            {main.temp > 40 ? (
               <div>
-              <p>Based on current weather conditions at your destination, outdoor activities are recommended!</p>
-                <h3>Outdoor Activities:</h3>
-                {/* Display outdoor activities */}
+              <h3>Based on current weather conditions at your destination, outdoor activities are recommended!</h3>
+
+
               </div>
             ) : (
               <div>
-              <p>Based on current weather conditions at your destination, indoor activities are recommended!</p>
-                <h3>Indoor Activities:</h3>
-                {/* Display indoor activities */}
+              <h3>Based on current weather conditions at your destination, indoor activities are recommended!</h3>
+
+
               </div>
             )}
           </div>
