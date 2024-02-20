@@ -1,7 +1,6 @@
 //
 // import Home from './home/Home';
 import AllActivities from './AllActivities';
-// import About_us from './navbar/About_us';
 import Navbar from './Navbar';
 // import {AuthProvider} from './context/AuthContext'
 // import { Navigate } from 'react-router-dom';
@@ -70,6 +69,7 @@ const App = () => {
             <Route path='/profile' element={<Profile user={users}/>} />
             <Route path='/trip' element={<Trip/>} />
             <Route path='/create' element={<CreateTrip/>} />
+            <Route path='/AllActivities' element={<AllActivities />} />
             <Route path='/addactivity' element={<AddActivity/>} />
         </Routes>
     </BrowserRouter>

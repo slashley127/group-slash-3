@@ -32,7 +32,7 @@ public class ActivityController {
         }
     }
 
-    @GetMapping("/activities")
+    @GetMapping("/AllActivities")
     public List<ActivityDTO> getAllActivities() {
         return activityService.findAll();
     }

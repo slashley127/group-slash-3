@@ -1,13 +1,10 @@
 body {
-  /* Set background image */
-  background-image: url(""); /* Assuming the image is located in the assets folder */
-  /* Adjust background properties */
-  background-size: cover; /* Cover the entire viewport */
-  background-repeat: no-repeat; /* Prevent repeating the background image */
-  background-position: center; /* Center the background image */
+  background-image: url("");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* Your existing styles for the form container */
 .form-container {
   width: 100%;
   max-width: 500px;

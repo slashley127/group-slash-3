@@ -35,7 +35,7 @@ const [activityForm, setActivityData] = useState({
       if (response.ok) {
                const newActivity = await response.json();
 
-               navigate("/activities", {state: { newActivity: activityForm}});
+               navigate("/AllActivities", {state: { newActivity: activityForm}});
 
       } else {
         throw new Error('Failed to submit activity');
