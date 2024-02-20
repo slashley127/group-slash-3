@@ -1,6 +1,6 @@
 package com.slash3.travelapp.Controllers;
+
 import com.slash3.travelapp.DTO.ActivityDTO;
-import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ActivityController {
+
+
     @Autowired
     private ActivityService activityService;
 
     public ActivityController(ActivityService activityService) {
         this.activityService = activityService;
     }
+
 
 
     @GetMapping("/activities")

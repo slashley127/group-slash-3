@@ -1,11 +1,11 @@
 package com.slash3.travelapp.Controllers;
+
 import com.slash3.travelapp.DTO.AppUserDTO;
 import com.slash3.travelapp.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +17,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+//    @PostMapping("/importData")
+//    public ResponseEntity<String> importData(@RequestBody List<Data> dataList) {
+//        return ResponseEntity.ok("Data imported successfully");
+//    }
+
 
     @PostMapping("/signup")
     public ResponseEntity<AppUserDTO> createUser(@RequestBody AppUserDTO appUserDTO) {

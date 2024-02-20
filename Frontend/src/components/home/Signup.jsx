@@ -104,7 +104,7 @@ function Signup() {
                 />
               </div>
               <div className='d-grid'>
-               <Link to="/Profile" className='btn btn-primary'>Sign Up</Link>
+               <Link to="/Login" className='btn btn-primary'>Sign Up</Link>
               
 
                 <p className='text-end mt-2'>

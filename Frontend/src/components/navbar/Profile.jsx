@@ -8,6 +8,27 @@ const navigate = useNavigate();
 const location = useLocation();
 const userData = location.state.user;
 
+
+const importData = async (dataList) => {
+  try {
+    const response = await fetch('http://localhost:8080/api/importData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataList),
+    });
+
+    if (response.ok) {
+      console.log('Data imported successfully');
+    } else {
+      console.error('Failed to import data');
+    }
+  } catch (error) {
+    console.error('Error during data import:', error);
+  }
+};
+
   return (
  <div>
 <Navbar />
