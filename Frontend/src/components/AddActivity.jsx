@@ -30,17 +30,15 @@ const [activityForm, setActivity] = useState({
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({activityForm})
+        body: JSON.stringify(activityForm)
       });
       if (response.ok) {
-               const newActivity = await response.json();
+               const newActivityDTO = await response.json();
 
-               navigate("/AllActivities", {state: { newActivity: activityForm}});
-
-            console.log('Activity submitted successfully');
+               navigate("/AllActivities", {state: { newActivityDTO: activityForm}});
 
       } else {
-        console.error('Failed to submit activity');
+        throw new Error('Failed to submit activity');
       }
     } catch (error) {
       console.error('Error submitting activity:', error);

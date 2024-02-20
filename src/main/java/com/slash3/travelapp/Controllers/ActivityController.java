@@ -21,7 +21,7 @@ public class ActivityController {
     }
 
     @PostMapping("/addactivity")
-    public ResponseEntity<ActivityDTO> createActivity(@RequestBody ActivityDTO activityDTO) {
+    public ResponseEntity<ActivityDTO> addActivity(@RequestBody ActivityDTO activityDTO) {
         ActivityDTO newActivityDTO = activityService.createActivity(activityDTO);
         return ResponseEntity.ok(newActivityDTO);
     }

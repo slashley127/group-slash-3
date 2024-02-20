@@ -1,7 +1,7 @@
 # Database connection settings
 spring.datasource.url=jdbc:mysql://localhost:3306/travel-planner
-spring.datasource.username=root
-spring.datasource.password=Nahlaemo1037
+spring.datasource.username=travel-planner
+spring.datasource.password=Code4team!
 
 # Specify the DBMS
 spring.jpa.database = MYSQL
