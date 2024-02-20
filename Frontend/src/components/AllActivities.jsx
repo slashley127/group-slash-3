@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
+import './AllActivities.css'
 
 function AllActivities() {
 
@@ -36,10 +37,10 @@ function AllActivities() {
          <div className="activity" key={activity.activityId}>
          <div className="activity-body">
            <h5 className="activity-title">{activity.name}</h5>
-           <p className="card-text">{activity.location}</p>
-           <p className="card-text">{activity.description}</p>
-           <p className="card-text">rating: {activity.rating}    ${activity.cost}</p>
-           <p className="card-text">{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
+           <p>{activity.location}</p>
+           <p>{activity.description}</p>
+           <p>rating: {activity.rating}    ${activity.cost}</p>
+           <p>{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
  </div>
  </div>
  ))}
@@ -48,25 +49,6 @@ function AllActivities() {
 
  );
  }
-//
-//   <div>
-//      <div>All Activities</div>
-//     <ul>
-//               {activities.map((activity) => (
-//          <li key={activity.activityId}>
-//         <div key={activity.activityId}>
-//           <strong>{activity.name}</strong>
-//           <p>{activity.location}</p>
-//           <p>{activity.description}</p>
-//           <p>rating: {activity.rating}    ${activity.cost}</p>
-//           <p>{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
-//           </div>
-//           </li>
-//           ))}
-//     </ul>
-// </div>
-// );
-// }
 
 
 

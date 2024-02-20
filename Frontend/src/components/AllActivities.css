@@ -1,27 +1,47 @@
 
+.all-activities-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .activity-group {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .activity {
-  width: 400px;
-  height: 200;
-  display: block;
-  flex: 0 0 calc(15% - 10px);
-  box-sizing: border-box;
-  margin: 5px;
+  width: 300px;
+  margin: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
-  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 
-.activities-title {
-    font-size: 26px;
-    font-family: sans-serif;
-    font-weight: bold;
-    letter-spacing: 2px;
-    align: center;
-    border: 2px solid #000;
-    padding: 10px;
-    width: fit-content;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.activity-body {
+  text-align: left;
+}
+
+.activity-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 5px;
+}
+
+/* Add more styles as needed */
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .activity {
+    width: 100%;
+  }
 }

@@ -28,7 +28,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to="/home" className='navbar-logo fst-italic' onClick={closeMobileMenu}>
+          <Link to="/" className='navbar-logo fst-italic' onClick={closeMobileMenu}>
             TravelTribe
             <i className='fab fa-typo3' />
           </Link>

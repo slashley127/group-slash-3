@@ -1,11 +1,7 @@
-//
-// import Home from './home/Home';
+
 import AllActivities from './AllActivities';
 import Navbar from './Navbar';
-// import {AuthProvider} from './context/AuthContext'
-// import { Navigate } from 'react-router-dom';
-// // import PrivateRoute from '../PrivateRoute';
-// import './navbar/Profile'
+
 
 
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
@@ -70,7 +66,7 @@ const App = () => {
             <Route path='/trip' element={<Trip/>} />
             <Route path='/create' element={<CreateTrip/>} />
             <Route path='/AllActivities' element={<AllActivities />} />
-            <Route path='/addactivity' element={<AddActivity/>} />
+            <Route path='/addactivity' element={<AddActivity/>} />} />
         </Routes>
     </BrowserRouter>
   )
