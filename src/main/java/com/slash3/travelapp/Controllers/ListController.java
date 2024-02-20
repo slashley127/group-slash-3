@@ -55,7 +55,7 @@ public class ListController {
         if (column.toLowerCase().equals("all")){
             activities = activityRepository.findAll();
 //            model.addAttribute("activities", activities);
-            model.addAttribute("title", "All Jobs");
+            model.addAttribute("title", "All Activities");
         } else {
             activities = ActivityData.findByColumnAndValue(column, value, activityRepository.findAll());
             model.addAttribute("title", "Activities with " + columnChoices.get(column) + ": " + value);

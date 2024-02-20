@@ -7,7 +7,7 @@ import Home from './home/Home';
 // import All_activites from './navbar/All_activites';
 
 import Create_Trip from './navbar/Create_Trip';
-import About_us from './navbar/About_us';
+// import About_us from './navbar/About_us';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
 import Navbar from './navbar/Navbar';
@@ -80,7 +80,7 @@ const App = () => {
           <Route path="/all_activities" element={<AllActivities/>} />
           <Route path="/create_trip" element={<Create_Trip />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/about_us" element={<About_us />} />
+{/*           <Route path="/about_us" element={<About_us />} /> */}
           <Route path="/search" element={<SearchActivities />} />
         </Routes>
         < Bottom/>
