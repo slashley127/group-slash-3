@@ -12,21 +12,28 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="activity_id")
     private Integer activityId;
+
     @NotNull
     @Column(name="name")
     private String name;
+
     @NotNull
     @Column(name="location")
     private String location;
+
     @NotNull
     @Column(name="description")
     private String description;
+
     @Column(name="cost")
     private double cost;
-    @Column(name="indoor")
+
+    @Column(name="indoor", nullable = true)
     private boolean isIndoor;
+
     @Column(name="rating")
     private Integer rating;
+
     @ManyToMany(mappedBy = "selectedActivities")
     private List<Trip> selectedByTrips;
 

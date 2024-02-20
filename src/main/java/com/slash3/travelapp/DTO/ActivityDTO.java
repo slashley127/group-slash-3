@@ -48,11 +48,14 @@ public class ActivityDTO {
         this.isIndoor = isIndoor;
     }
 
-    public ActivityDTO(Integer activityId, String name, String location, String description) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, Integer rating, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
+        this.cost = cost;
+        this.rating = rating;
+        this.isIndoor = isIndoor;
     }
 
     public ActivityDTO() {

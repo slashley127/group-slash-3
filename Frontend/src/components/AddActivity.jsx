@@ -7,7 +7,7 @@
 
 function AddActivity() {
 const navigate = useNavigate();
-const [activityForm, setActivity] = useState({
+const [activityForm, setActivityData] = useState({
     name: '',
     location: '',
     description: '',
@@ -18,7 +18,7 @@ const [activityForm, setActivity] = useState({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setActivity({ ...activityForm, [name]: value });
+    setActivityData({ ...activityForm, [name]: value });
   };
 
 
@@ -33,9 +33,9 @@ const [activityForm, setActivity] = useState({
         body: JSON.stringify(activityForm)
       });
       if (response.ok) {
-               const newActivityDTO = await response.json();
+               const newActivity = await response.json();
 
-               navigate("/AllActivities", {state: { newActivityDTO: activityForm}});
+               navigate("/activities", {state: { newActivity: activityForm}});
 
       } else {
         throw new Error('Failed to submit activity');

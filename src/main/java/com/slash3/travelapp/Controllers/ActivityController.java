@@ -3,6 +3,7 @@ package com.slash3.travelapp.Controllers;
 import com.slash3.travelapp.DTO.ActivityDTO;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,13 @@ public class ActivityController {
 
     @PostMapping("/addactivity")
     public ResponseEntity<ActivityDTO> addActivity(@RequestBody ActivityDTO activityDTO) {
-        ActivityDTO newActivityDTO = activityService.createActivity(activityDTO);
-        return ResponseEntity.ok(newActivityDTO);
+        try {
+            ActivityDTO newActivityDTO = activityService.addActivity(activityDTO);
+            return ResponseEntity.ok(newActivityDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/activities")
