@@ -26,7 +26,8 @@ function Trip() {
        };
        const fetchActivities = async () => {
              try {
-               const response = await fetch('/api/activities');
+               const response = await fetch('http://localhost:8080/api/activities');
+                console.error('Response:', await response.text());
                if (!response.ok) {
                  throw new Error('Failed to fetch activities');
                }
