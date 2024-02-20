@@ -52,4 +52,4 @@ public class TripController {
     public void deleteTrip(@PathVariable Integer tripId) {
         tripService.deleteTrip(tripId);
     }
-}}
+}

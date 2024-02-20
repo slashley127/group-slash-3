@@ -112,4 +112,4 @@ public class Trip {
     public void setLikedActivities(List<Activity> likedActivities) {
         this.likedActivities = likedActivities;
     }
-}}
+}
