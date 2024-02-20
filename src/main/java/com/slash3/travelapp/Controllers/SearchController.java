@@ -2,22 +2,26 @@ package com.slash3.travelapp.Controllers;
 
 import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Repositories.ActivityRepository;
+import com.slash3.travelapp.Services.ActivityService;
 import com.slash3.travelapp.data.ActivityData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import static com.slash3.travelapp.Controllers.ListController.columnChoices;
 
-@Controller
+@RestController
 @RequestMapping("search")
 public class SearchController {
 
         @Autowired
         private ActivityRepository activityRepository;
+
+        @Autowired
+        private ActivityService activityService;
 
         @RequestMapping("")
         public String search(Model model) {

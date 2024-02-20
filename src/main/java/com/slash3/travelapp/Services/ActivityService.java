@@ -34,6 +34,12 @@ public class ActivityService {
         return convertToActivityDTO(savedActivity);
     }
 
+    public List<Activity> searchActivities(String search) {
+//       List<Activity> activities = (List<Activity>) activityRepository.findById(activityId)
+        return activityRepository.findAllByNameContainingIgnoreCase(search);
+    }
+
+
     public List<ActivityDTO> findAll() {
         List<Activity> activities = (List<Activity>) activityRepository.findAll();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());

@@ -49,9 +49,9 @@ function Navbar() {
                 All Activities
                    </Link>
                 </li>
-                <li>
-                  <Link to='/other_page' className='nav-links-mobile  fst-italic' onClick={closeMobileMenu}>
-                    About us
+                <li className='nav-item'>
+                  <Link to='/search' className='nav-links-mobile  fst-italic' onClick={closeMobileMenu}>
+                    Search
                   </Link>
                 </li>
               <li className='nav-item'>

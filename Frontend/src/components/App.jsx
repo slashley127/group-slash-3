@@ -17,6 +17,7 @@ import {AuthProvider} from './context/AuthContext'
 import { Navigate } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import AllActivities from './navbar/All_activities'
+import SearchActivities from './navbar/SearchActivities';
 
 import './navbar/Profile'
 
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/create_trip" element={<Create_Trip />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about_us" element={<About_us />} />
+          <Route path="/search" element={<SearchActivities />} />
         </Routes>
         < Bottom/>
       </Router>

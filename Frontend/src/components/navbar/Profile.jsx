@@ -31,7 +31,6 @@ const importData = async (dataList) => {
 
   return (
  <div>
-<Navbar />
 
     <div><h1> My Profile</h1></div>
     <p>Username: {userData.userName}</p>
