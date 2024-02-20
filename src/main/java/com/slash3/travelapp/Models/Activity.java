@@ -1,8 +1,6 @@
 package com.slash3.travelapp.Models;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.List;
 
 @Entity
@@ -21,97 +19,101 @@ public class Activity {
     @NotNull
     @Column(name="description")
     private String description;
-    @NotNull
     @Column(name="cost")
     private double cost;
-    @NotNull
-    @Column(name="rating")
-    private int rating;
-
-    @NotNull
-    @Column(name="isIndoor")
+    @Column(name="indoor")
     private boolean isIndoor;
+    @Column(name="rating")
+    private Integer rating;
+    @ManyToMany(mappedBy = "selectedActivities")
+    private List<Trip> selectedByTrips;
 
-    @ManyToMany(mappedBy = "activities")
-    private List<Trip> trips;
+    @ManyToMany(mappedBy = "likedActivities")
+    private List<Trip> likedByTrips;
 
 
-    public Activity(Integer activityId, String name, String location, String description, double cost, int rating, boolean isIndoor, List<Trip> trips) {
+    public Activity(Integer activityId, String name, String location, String description, double cost, Integer rating, List<Trip> selectedByTrips, List<Trip> likedByTrips, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
+        this.selectedByTrips = selectedByTrips;
+        this.likedByTrips = likedByTrips;
         this.isIndoor = isIndoor;
-        this.trips = trips;
     }
-
-    public int getActivityId() {
-        return activityId;
+    public Activity(String name, String location, String description, double cost, Integer rating, List<Trip> selectedByTrips, List<Trip> likedByTrips, boolean isIndoor) {
+        this.name = name;
+        this.location = location;
+        this.description = description;
+        this.cost = cost;
+        this.rating = rating;
+        this.selectedByTrips = selectedByTrips;
+        this.likedByTrips = likedByTrips;
+        this.isIndoor = isIndoor;
     }
-
+    public Activity(Integer activityId, String name, String location, String description) {
+        this.activityId = activityId;
+        this.name = name;
+        this.location = location;
+        this.description = description;
+    }
     public Activity() {
     }
-
-    public void setActivityId(Integer activityIdd) {
-        this.activityId = activityId;
+    public List<Trip> getTrips() {
+        return selectedByTrips;
     }
-
+    public Integer getActivityId() {
+        return activityId;
+    }
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public double getCost() {
         return cost;
     }
-
     public void setCost(double cost) {
         this.cost = cost;
     }
-
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
-
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
-
-    public boolean getIsIndoor() {
+    public List<Trip> getSelectedByTrips() {
+        return selectedByTrips;
+    }
+    public void setSelectedByTrips(List<Trip> selectedByTrips) {
+        this.selectedByTrips = selectedByTrips;
+    }
+    public List<Trip> getLikedByTrips() {
+        return likedByTrips;
+    }
+    public void setLikedByTrips(List<Trip> likedByTrips) {
+        this.likedByTrips = likedByTrips;
+    }
+    public boolean isIndoor() {
         return isIndoor;
     }
-
     public void setIndoor(boolean indoor) {
         isIndoor = indoor;
-    }
-
-    public List<Trip> getTrips() {
-        return trips;
-    }
-
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
     }
 
     @Override
