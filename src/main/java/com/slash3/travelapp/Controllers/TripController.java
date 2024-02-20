@@ -23,6 +23,11 @@ public class TripController {
     public List<TripDTO> getAllTrips() {
         return tripService.findAll();
     }
+    @GetMapping("/trips/{travelerName}")
+    public ResponseEntity<TripDTO> getTripById(@PathVariable String travelerName) {
+        TripDTO tripDTO = tripService.getTripByTravelerName(travelerName);
+        return ResponseEntity.ok(tripDTO);
+    }
 
     @GetMapping("/trips/{tripId}")
     public ResponseEntity<TripDTO> getTripById(@PathVariable Integer tripId) {

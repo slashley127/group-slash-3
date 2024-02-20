@@ -29,6 +29,22 @@ public class ActivityController {
         return activityService.getActivityById(activityId);
     }
 
+    @PostMapping("/trips/{tripId}/activities/{activityId}")
+    public void addActivityToTrip(
+            @PathVariable Integer tripId,
+            @PathVariable Integer activityId
+    ) {
+        activityService.addActivityToTrip(activityId, tripId);
+    }
+    @PostMapping("/trips/{tripId}/activities/{activityId}/remove")
+    public void removeActivityFromTrip(
+            @PathVariable Integer tripId,
+            @PathVariable Integer activityId
+    ) {
+        activityService.removeActivityFromTrip(activityId, tripId);
+    }
+
+
     @PostMapping("/activities")
     public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO) {
         return activityService.createActivity(activityDTO);

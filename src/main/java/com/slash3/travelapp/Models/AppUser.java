@@ -29,7 +29,7 @@ public class AppUser {
     private String lastName;
 //    @Column(name= "trips")
 //    private List<Trip> trips;
-    public AppUser(){}
+
 
     public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
         this.email=email;
@@ -47,6 +47,7 @@ public class AppUser {
         this.firstName=firstName;
         this.lastName=lastName;
     }
+    public AppUser(){}
 
     public Integer getUserId() {
         return userId;

@@ -1,12 +1,18 @@
 package com.slash3.travelapp.Services;
 import com.slash3.travelapp.DTO.ActivityDTO;
 import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.Models.ActivityLite;
+import com.slash3.travelapp.Models.Trip;
+import com.slash3.travelapp.Repositories.ActivityLiteRepository;
 import com.slash3.travelapp.Repositories.ActivityRepository;
+import com.slash3.travelapp.Repositories.TripRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +21,10 @@ public class ActivityService {
 
     @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    private TripRepository tripRepository;
+    @Autowired
+    private ActivityLiteRepository activityLiteRepository;
 
     public ActivityDTO createActivity(ActivityDTO activityDTO) {
         Activity activity = new Activity();
@@ -31,8 +41,27 @@ public class ActivityService {
         return convertToActivityDTO(savedActivity);
     }
 
+    @Transactional
+    public void addActivityToTrip(Integer activityId, Integer tripId) {
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity not found with id " + activityId));
+        Trip trip = tripRepository.findById(tripId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
+        trip.addActivity(activity);
+    }
+
+    @Transactional
+    public void removeActivityFromTrip(Integer activityId, Integer tripId) {
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Activity not found with id " + activityId));
+        Trip trip = tripRepository.findById(tripId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
+        trip.removeActivity(activity);
+    }
+
+
     public List<ActivityDTO> findAll() {
-        List<Activity> activities = (List<Activity>) activityRepository.findAll();
+        List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
     }
 
@@ -67,6 +96,19 @@ public class ActivityService {
         return convertToActivityDTO(updatedActivity);
     }
 
+    private Activity convertToEntity(ActivityDTO activityDTO) {
+        return new Activity(
+                activityDTO.getActivityId(),
+                activityDTO.getName(),
+                activityDTO.getLocation(),
+                activityDTO.getDescription(),
+                activityDTO.getCost(),
+                activityDTO.getRating(),
+                activityDTO.getSelectedTrips(),
+                activityDTO.getLikedTrips(),
+                activityDTO.isIndoor()
+        );
+    }
 
     private ActivityDTO convertToActivityDTO(Activity activity) {
         return new ActivityDTO(
@@ -80,5 +122,13 @@ public class ActivityService {
                 activity.getLikedByTrips(),
                 activity.isIndoor()
         );
+    }
+
+    private ActivityDTO convertToActivityDTO(ActivityLite activity) {
+        return new ActivityDTO(
+                activity.getActivityId(),
+                activity.getName(),
+                activity.getLocation(),
+                activity.getDescription());
     }
 }

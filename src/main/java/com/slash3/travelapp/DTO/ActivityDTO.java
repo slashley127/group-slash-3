@@ -17,16 +17,16 @@ public class ActivityDTO {
 
     private double cost;
 
-    private int rating;
+    private Integer rating;
 
-    boolean isIndoor;
+    private boolean isIndoor;
 
     private List<Trip> selectedTrips;
 
     private List<Trip> likedTrips;
 
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, Integer rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
@@ -37,7 +37,7 @@ public class ActivityDTO {
         this.likedTrips = likedTrips;
         this.isIndoor = isIndoor;
     }
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
+    public ActivityDTO(String name, String location, String description, double cost, Integer rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -48,11 +48,17 @@ public class ActivityDTO {
         this.isIndoor = isIndoor;
     }
 
-    public Integer getActivityId() {
-        return activityId;
+    public ActivityDTO(Integer activityId, String name, String location, String description) {
+        this.activityId = activityId;
+        this.name = name;
+        this.location = location;
+        this.description = description;
     }
 
     public ActivityDTO() {
+    }
+    public Integer getActivityId() {
+        return activityId;
     }
 
     public void setActivityId(Integer activityId) {
@@ -95,7 +101,7 @@ public class ActivityDTO {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 

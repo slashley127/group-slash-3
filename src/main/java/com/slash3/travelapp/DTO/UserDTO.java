@@ -7,10 +7,6 @@ public class UserDTO {
     public String firstName;
     public String lastName;
 
-    // Constructors
-    public UserDTO() {
-    }
-
     public UserDTO(Integer userId, String userName, String password, String email, String firstName, String lastName) {
         this.userId = userId;
         this.userName = userName;
@@ -26,7 +22,8 @@ public class UserDTO {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
+    public UserDTO() {
+    }
     public Integer getUserId() {
         return userId;
     }

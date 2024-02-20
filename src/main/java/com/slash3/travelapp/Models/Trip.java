@@ -3,6 +3,7 @@ package com.slash3.travelapp.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,6 +56,22 @@ public class Trip {
         this.traveler = traveler;
     }
     public Trip(){}
+
+    public Trip(List<Activity> selectedActivities, List<Activity> likedActivities) {
+        this.selectedActivities = new ArrayList<>();
+        this.likedActivities = new ArrayList<>();
+    }
+
+
+    public void addActivity(Activity activity) {
+        selectedActivities.add(activity);
+        activity.getTrips().add(this);
+    }
+
+    public void removeActivity(Activity activity) {
+        selectedActivities.remove(activity);
+        activity.getTrips().remove(this);
+    }
 
     public Integer getTripId() {
         return tripId;
