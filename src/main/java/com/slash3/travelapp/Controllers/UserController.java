@@ -1,5 +1,5 @@
 package com.slash3.travelapp.Controllers;
-import com.slash3.travelapp.DTO.AppUserDTO;
+import com.slash3.travelapp.DTO.UserDTO;
 import com.slash3.travelapp.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,8 +8,9 @@ import org.springframework.http.ResponseEntity;
 
 
 import java.util.List;
+import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -18,24 +19,25 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<AppUserDTO> createUser(@RequestBody AppUserDTO appUserDTO) {
-        AppUserDTO newAppUserDTO = userService.createUser(appUserDTO);
-        return new ResponseEntity<>(newAppUserDTO, HttpStatus.CREATED);
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        UserDTO newUserDTO = userService.createUser(userDTO);
+        return new ResponseEntity<>(newUserDTO, HttpStatus.CREATED);
     }
     @GetMapping("/users")
-    public List<AppUserDTO> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<AppUserDTO> getUserById(@PathVariable Integer userId) {
-        AppUserDTO appUserDTO = userService.getUserById(userId);
-        return ResponseEntity.ok(appUserDTO);
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer userId) {
+        UserDTO userDTO = userService.getUserById(userId);
+        return ResponseEntity.ok(userDTO);
     }
-    @GetMapping("/email")
-    public ResponseEntity<AppUserDTO> getUserByEmail(@RequestParam String email) {
-        AppUserDTO appUserDTO = userService.getUserByEmail(email);
-        return ResponseEntity.ok(appUserDTO);
+    @PostMapping("/email")
+    public ResponseEntity<UserDTO> getUserByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+        UserDTO userDTO = userService.getUserByEmail(email);
+        return ResponseEntity.ok(userDTO);
     }
 
     @DeleteMapping("/{userId}")
@@ -45,8 +47,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<AppUserDTO> updateUser(@PathVariable Integer userId, @RequestBody AppUserDTO userDetails) {
-        AppUserDTO updatedUser = userService.updateUser(userId, userDetails);
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Integer userId, @RequestBody UserDTO userDetails) {
+        UserDTO updatedUser = userService.updateUser(userId, userDetails);
         return ResponseEntity.ok(updatedUser);
     }
 }

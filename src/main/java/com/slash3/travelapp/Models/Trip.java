@@ -3,6 +3,7 @@ package com.slash3.travelapp.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,26 +17,61 @@ public class Trip {
     @NotNull
     @Column(name = "trip_location")
     private String tripLocation;
+
+    //    @ManyToMany
+//    @JoinTable(
+//            name = "trip_travelers",
+//            joinColumns = @JoinColumn(name = "trip_id"),
+//            inverseJoinColumns = @JoinColumn(name = "user_id")
+//    )
     @NotNull
-    @Column(name = "traveler")
     private String traveler;
+
+
     @ManyToMany
     @JoinTable(
             name = "trip_activities",
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
-    private List<Activity> activities;
+    private List<Activity> selectedActivities;
 
-// *add list of activities when activity model is merged in*
+    @ManyToMany
+    @JoinTable(
+            name = "trip_liked_activities",
+            joinColumns = @JoinColumn(name = "trip_id"),
+            inverseJoinColumns = @JoinColumn(name = "activity_id")
+    )
+    private List<Activity> likedActivities;
 
-    public Trip(Integer tripId, String tripLocation, String traveler, List<Activity> activities) {
+    public Trip(Integer tripId, String tripLocation, String traveler, List<Activity> selectedActivities,  List<Activity> likedActivities) {
         this.tripId = tripId;
         this.tripLocation = tripLocation;
         this.traveler = traveler;
-        this.activities = activities;
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
+    }
+    public Trip(String tripLocation, String traveler) {
+        this.tripLocation = tripLocation;
+        this.traveler = traveler;
     }
     public Trip(){}
+
+    public Trip(List<Activity> selectedActivities, List<Activity> likedActivities) {
+        this.selectedActivities = new ArrayList<>();
+        this.likedActivities = new ArrayList<>();
+    }
+
+
+    public void addActivity(Activity activity) {
+        selectedActivities.add(activity);
+        activity.getTrips().add(this);
+    }
+
+    public void removeActivity(Activity activity) {
+        selectedActivities.remove(activity);
+        activity.getTrips().remove(this);
+    }
 
     public Integer getTripId() {
         return tripId;
@@ -61,11 +97,19 @@ public class Trip {
         this.traveler = traveler;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
+    public List<Activity> getSelectedActivities() {
+        return selectedActivities;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public void setSelectedActivities(List<Activity> selectedActivities) {
+        this.selectedActivities = selectedActivities;
     }
-}
+
+    public List<Activity> getLikedActivities() {
+        return likedActivities;
+    }
+
+    public void setLikedActivities(List<Activity> likedActivities) {
+        this.likedActivities = likedActivities;
+    }
+}}

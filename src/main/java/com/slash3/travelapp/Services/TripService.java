@@ -21,7 +21,10 @@ public class TripService {
         Trip trip = new Trip();
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
-        trip.setActivities(tripDTO.getActivities());
+        if (tripDTO.getSelectedActivities() != null) {
+            trip.setSelectedActivities(tripDTO.getSelectedActivities());}
+        if (tripDTO.getLikedActivities() != null) {
+            trip.setLikedActivities(tripDTO.getLikedActivities());}
 
         Trip savedTrip = tripRepository.save(trip);
 
@@ -38,6 +41,10 @@ public class TripService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
         return convertToTripDTO(trip);
     }
+    public TripDTO getTripByTravelerName(String travelerName) {
+        Trip trip = tripRepository.findAllByTraveler(travelerName);
+        return convertToTripDTO(trip);
+    }
 
     public void deleteTrip(Integer tripId) {
         if (!tripRepository.existsById(tripId)) {
@@ -45,18 +52,27 @@ public class TripService {
         }
         tripRepository.deleteById(tripId);
     }
-
     public TripDTO updateTrip(Integer tripId, TripDTO tripDTO) {
         Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));
 
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
-        trip.setActivities(tripDTO.getActivities());
+        trip.setSelectedActivities(tripDTO.getSelectedActivities());
+        trip.setLikedActivities(tripDTO.getLikedActivities());
 
         Trip updatedTrip = tripRepository.save(trip);
 
         return convertToTripDTO(updatedTrip);
+    }
+    private Trip convertToEntity(TripDTO tripDTO) {
+        return new Trip(
+                tripDTO.getTripId(),
+                tripDTO.getTripLocation(),
+                tripDTO.getTraveler(),
+                tripDTO.getSelectedActivities(),
+                tripDTO.getLikedActivities()
+        );
     }
 
     private TripDTO convertToTripDTO(Trip trip) {
@@ -64,7 +80,8 @@ public class TripService {
                 trip.getTripId(),
                 trip.getTripLocation(),
                 trip.getTraveler(),
-                trip.getActivities()
+                trip.getSelectedActivities(),
+                trip.getLikedActivities()
         );
     }
 }

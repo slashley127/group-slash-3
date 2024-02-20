@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TripRepository extends CrudRepository<Trip, Integer> {
+    public Trip findAllByTraveler(String traveler);
 }

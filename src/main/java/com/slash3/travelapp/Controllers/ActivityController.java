@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class ActivityController {
@@ -28,6 +28,22 @@ public class ActivityController {
     public ActivityDTO getActivityById(@PathVariable Integer activityId) {
         return activityService.getActivityById(activityId);
     }
+
+    @PostMapping("/trips/{tripId}/activities/{activityId}")
+    public void addActivityToTrip(
+            @PathVariable Integer tripId,
+            @PathVariable Integer activityId
+    ) {
+        activityService.addActivityToTrip(activityId, tripId);
+    }
+    @PostMapping("/trips/{tripId}/activities/{activityId}/remove")
+    public void removeActivityFromTrip(
+            @PathVariable Integer tripId,
+            @PathVariable Integer activityId
+    ) {
+        activityService.removeActivityFromTrip(activityId, tripId);
+    }
+
 
     @PostMapping("/activities")
     public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO) {
