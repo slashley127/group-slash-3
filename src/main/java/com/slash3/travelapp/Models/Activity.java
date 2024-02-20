@@ -10,14 +10,16 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activity_id")
+    @Column(name="activity_id",columnDefinition = "INT(11) NOT NULL UNIQUE INDEX")
     private Integer activityId;
     @NotNull
     @Column(name="name")
     private String name;
+
     @NotNull
     @Column(name="location")
     private String location;
+
     @NotNull
     @Column(name="description")
     private String description;
@@ -72,6 +74,7 @@ public class Activity {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getLocation() {
         return location;
