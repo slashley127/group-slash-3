@@ -4,39 +4,30 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 
-
-
 @Entity
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Integer userId;
-
     @NotNull
     @Column(name="user_name")
     private String userName;
-
     @NotNull
     @Column(name="password")
     private String password;
-
     @NotNull
     @Column(name="email")
     private String email;
-
     @NotNull
     @Column(name= "first_name")
     private String firstName;
-
     @NotNull
     @Column(name= "last_name")
     private String lastName;
+//    @Column(name= "trips")
+//    private List<Trip> trips;
 
-
-    public AppUser(){
-
-    }
 
     public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
         this.email=email;
@@ -54,6 +45,7 @@ public class AppUser {
         this.firstName=firstName;
         this.lastName=lastName;
     }
+    public AppUser(){}
 
     public Integer getUserId() {
         return userId;
@@ -105,8 +97,3 @@ public class AppUser {
         this.lastName = lastName;
     }
 }
-
-
-
-
-

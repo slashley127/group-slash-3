@@ -17,37 +17,48 @@ public class ActivityDTO {
 
     private double cost;
 
-    private int rating;
+    private Integer rating;
+
     private boolean isIndoor;
 
-    private List<Trip> trips;
+    private List<Trip> selectedTrips;
+
+    private List<Trip> likedTrips;
 
 
-    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, int rating, List<Trip> trips, boolean isIndoor) {
+    public ActivityDTO(Integer activityId, String name, String location, String description, double cost, Integer rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
+        this.selectedTrips = selectedTrips;
+        this.likedTrips = likedTrips;
         this.isIndoor = isIndoor;
     }
-    public ActivityDTO(String name, String location, String description, double cost, int rating, List<Trip> trips, boolean isIndoor) {
+    public ActivityDTO(String name, String location, String description, double cost, Integer rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.cost = cost;
         this.rating = rating;
-        this.trips = trips;
+        this.selectedTrips = selectedTrips;
+        this.likedTrips = likedTrips;
         this.isIndoor = isIndoor;
     }
 
-    public Integer getActivityId() {
-        return activityId;
+    public ActivityDTO(Integer activityId, String name, String location, String description) {
+        this.activityId = activityId;
+        this.name = name;
+        this.location = location;
+        this.description = description;
     }
 
     public ActivityDTO() {
+    }
+    public Integer getActivityId() {
+        return activityId;
     }
 
     public void setActivityId(Integer activityId) {
@@ -90,19 +101,27 @@ public class ActivityDTO {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
-    public List<Trip> getTrips() {
-        return trips;
+    public List<Trip> getSelectedTrips() {
+        return selectedTrips;
     }
 
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+    public void setSelectedTrips(List<Trip> selectedTrips) {
+        this.selectedTrips = selectedTrips;
     }
 
-    public boolean getIsIndoor() {
+    public List<Trip> getLikedTrips() {
+        return likedTrips;
+    }
+
+    public void setLikedTrips(List<Trip> likedTrips) {
+        this.likedTrips = likedTrips;
+    }
+
+    public boolean isIndoor() {
         return isIndoor;
     }
 

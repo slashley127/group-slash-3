@@ -45,7 +45,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className='nav-item'>
-                   <Link to='/all_activities' className='nav-links  fst-italic' onClick={closeMobileMenu}>
+                   <Link to='/activities' className='nav-links  fst-italic' onClick={closeMobileMenu}>
                 All Activities
                    </Link>
                 </li>
@@ -65,10 +65,16 @@ function Navbar() {
               </li>
             </ul>
           {button && (
-            <Link to='/create_trip' className='btn-link' onClick={closeMobileMenu}>
+            <Link to='/create' className='btn-link' onClick={closeMobileMenu}>
               <Button variant='outline-primary  fst-italic'>Create Trip</Button>
             </Link>
           )}
+
+          {button && (
+                      <Link to='/addactivity' className='btn-link' onClick={closeMobileMenu}>
+                        <Button variant='outline-primary  fst-italic'>Add Activity</Button>
+                      </Link>
+                    )}
         </div>
       </nav>
     </>

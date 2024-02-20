@@ -2,7 +2,7 @@ import React from 'react'
 // import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
-import './All_activities.css';
+import './AllActivities.css';
 
 const Data = [{id: 1,
                        name: 'Venice Cafe',
@@ -169,52 +169,47 @@ const Data = [{id: 1,
 
 function AllActivities() {
 
-//     const [searchQuery, setSearchQuery] = useState('');
+ const [activities, setActivities] = useState([]);
 
-//     const handleSearch = () => {
-//     console.log('Search Results:');
-//     };
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/activities');
 
+        if (response.ok) {
+          const data = await response.json();
+          setActivities(data);
+        } else {
+          console.error('Failed to fetch activities');
+        }
+      } catch (error) {
+        console.error('Error fetching activities:', error);
+      }
+    };
+
+    fetchActivities();
+  }, []);
 
   return (
   <div>
-     <div>All Activities</div>
+     <div className="activities-title">All Activities</div>
 
-     <div className="destinationInput">
-{/*      <label htmlFor="search" className="fst-italic"> */}
-{/*             Search: */}
-{/*      </label> */}
-{/*       <div className="input flex"> */}
-{/*         <input */}
-{/*             type="text" */}
-{/*             placeholder="Search by location..." */}
-{/*             value={searchQuery} */}
-{/*             onChange={(e) => setSearchQuery(e.target.value.toLowerCase())} */}
-{/*             /> */}
-{/*       </div> */}
-{/*       <button */}
-{/*         type="button" */}
-{/*         className="btn btn-black-primary" */}
-{/*         data-mdb-ripple-init */}
-{/*       > */}
-{/*             Search */}
-{/*       </button> */}
-
+      <div className="destinationInput">
     <div className="activity-group">
-              {Data.map((item) => (
-        <div className="activity" key={item.id}>
+              {activities.map((activity) => (
+        <div className="activity" key={activity.id}>
         <div className="card-body">
-          <h5 className="card-title">{item.name}</h5>
-          <p className="card-text">{item.location}</p>
-          <p className="card-text">{item.description}</p>
-          <p className="card-text">rating: {item.rating}    ${item.cost}</p>
-          <p className="card-text">{item.isIndoor ? 'Indoor' : 'Outdoor'}</p>
+          <h5 className="card-title">{activity.name}</h5>
+          <p className="card-text">{activity.location}</p>
+          <p className="card-text">{activity.description}</p>
+          <p className="card-text">rating: {activity.rating}    ${activity.cost}</p>
+          <p className="card-text">{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
 </div>
 </div>
 ))}
       </div>
 </div>
-      </div>
+//       </div>
 
 );
 }

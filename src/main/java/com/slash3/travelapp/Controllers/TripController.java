@@ -1,6 +1,6 @@
 package com.slash3.travelapp.Controllers;
+
 import com.slash3.travelapp.DTO.TripDTO;
-import com.slash3.travelapp.Models.Trip;
 import com.slash3.travelapp.Services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class TripController {
@@ -23,6 +23,11 @@ public class TripController {
     public List<TripDTO> getAllTrips() {
         return tripService.findAll();
     }
+    @GetMapping("/trips/{travelerName}")
+    public ResponseEntity<TripDTO> getTripById(@PathVariable String travelerName) {
+        TripDTO tripDTO = tripService.getTripByTravelerName(travelerName);
+        return ResponseEntity.ok(tripDTO);
+    }
 
     @GetMapping("/trips/{tripId}")
     public ResponseEntity<TripDTO> getTripById(@PathVariable Integer tripId) {
@@ -30,7 +35,7 @@ public class TripController {
         return ResponseEntity.ok(tripDTO);
     }
 
-    @PostMapping("/trips")
+    @PostMapping("/trips/create")
     public ResponseEntity<TripDTO> createTrip(@RequestBody TripDTO tripDTO) {
         TripDTO newTripDTO = tripService.createTrip(tripDTO);
         return ResponseEntity.ok(newTripDTO);
