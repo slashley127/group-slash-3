@@ -65,9 +65,11 @@ public class ActivityService {
         List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
     }
-    public ActivityDTO getActivityByLocation(String location) {
-        Activity activity = activityRepository.findAllByLocation(location);
-        return convertToActivityDTO(activity);
+    public List<ActivityDTO> getActivitiesByLocation(String location) {
+        List<Activity> activities = activityRepository.findAllByLocation(location);
+        return activities.stream()
+                .map(this::convertToActivityDTO)
+                .collect(Collectors.toList());
     }
 
     public ActivityDTO getActivityById(Integer activityId) {

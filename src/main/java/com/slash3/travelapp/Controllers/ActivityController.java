@@ -25,11 +25,12 @@ public class ActivityController {
     public List<ActivityDTO> getAllActivities() {
         return activityService.findAll();
     }
-    @GetMapping("/activities/{location}")
-    public ResponseEntity<ActivityDTO> getActivityByLocation(@PathVariable String location) {
-        ActivityDTO activityDTO = activityService.getActivityByLocation(location);
-        return ResponseEntity.ok(activityDTO);
+    @GetMapping("/activities/location")
+    public ResponseEntity<List<ActivityDTO>> getActivitiesByLocation(@RequestParam String location) {
+        List<ActivityDTO> activityDTOList = activityService.getActivitiesByLocation(location);
+        return ResponseEntity.ok(activityDTOList);
     }
+
 
     @GetMapping("/activities/{activityId}")
     public ActivityDTO getActivityById(@PathVariable Integer activityId) {

@@ -6,6 +6,7 @@ import AllActivities from './AllActivities';
 function Trip() {
    const location = useLocation();
     const tripData = location.state && location.state.tripData;
+    const activityData = location.state && location.state.activityData;
     const [activities, setActivities] = useState([]);
     const [weatherData, setWeatherData] = useState(null);
     const apiKey = '68cbf853b47ee9fec36896495fc006d2';
@@ -28,7 +29,7 @@ function Trip() {
 
        const fetchActivities = async () => {
            try {
-               const response = await fetch('http://localhost:8080/api/activities/${tripData.tripLocation}');
+               const response = await fetch(`http://localhost:8080/api/activities/location?location=${tripData.tripLocation}`);
                if (!response.ok) {
                    throw new Error('Failed to fetch activities');
                }

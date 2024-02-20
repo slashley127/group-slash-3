@@ -25,14 +25,11 @@ function AllActivities({ tripId, activities }) {
 
     return (
         <div>
-            <h1>Activities</h1>
+            <h1>Local Activities</h1>
             <ul>
                 {activities.map(activity => (
                     <li key={activity.activityId}>
                         {activity.name} - {activity.location} - {activity.description}
-                        <button onClick={() => handleAddActivityToTrip(activity.activityId)}>
-                            Add to Trip
-                        </button>
                     </li>
                 ))}
             </ul>
