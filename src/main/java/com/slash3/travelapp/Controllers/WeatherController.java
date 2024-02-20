@@ -20,6 +20,7 @@ public class WeatherController {
         this.restTemplate = restTemplate;
     }
 
+
     @GetMapping("/{city}")
     public String getWeather(@PathVariable String city) {
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=d62897568a117f140ee9e2cdee163b4b";
