@@ -3,6 +3,8 @@ spring.datasource.url=jdbc:mysql://localhost:3306/travel-planner
 spring.datasource.username=root
 spring.datasource.password=Nahlaemo1037
 
+openweathermap.apiKey=YOUR_OPENWEATHERMAP_API_KEY
+
 # Specify the DBMS
 spring.jpa.database = MYSQL
 
