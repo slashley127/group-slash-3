@@ -54,7 +54,6 @@ function Trip() {
            <>
              <p>Location: {tripData.tripLocation}</p>
              <p>Travelers: {tripData.traveler}</p>
-             <p>TripId: {tripData.tripId}</p>
              <WeatherWidget weatherData={weatherData} />
              <AllActivities tripId={tripData.tripId} activities={activities} />
            </>
