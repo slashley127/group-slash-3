@@ -1,5 +1,6 @@
 
 import Navbar from './Navbar';
+import Home from './Home';
 
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Login from './Login';
@@ -14,6 +15,8 @@ import CreateTrip from './CreateTrip';
 import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
+
+
 
 const App = () => {
 
@@ -59,7 +62,7 @@ const App = () => {
     <BrowserRouter>
         <Navbar />
         <Routes>
-            <Route path='/' element={<Login/>}> </Route>
+            <Route path='/' element={<Home/>}> </Route>
             <Route path='/signup' element={<Signup/>}> </Route>
             <Route path='/weatherWidget' element={<WeatherWidget/>}> </Route>
             <Route path='/profile' element={<Profile user={users}/>} />
@@ -68,6 +71,8 @@ const App = () => {
             <Route path='/AllActivities' element={<AllActivities />} />
             <Route path='/addactivity' element={<AddActivity />} />
             <Route path='/select' element={<SelectActivities/>} />
+
+            <Route path='/login' element={<Login/>} />
         </Routes>
     </BrowserRouter>
   )
