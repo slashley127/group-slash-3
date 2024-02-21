@@ -27,11 +27,11 @@ public class AppUser {
     @NotNull
     @Column(name= "last_name")
     private String lastName;
-//    @Column(name= "trips")
-//    private List<Trip> trips;
+    @Column(name= "trips")
+    private List<Trip> trips;
 
 
-    public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
+    public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName, List<Trip> trips) {
         this.email=email;
         this.userName=userName;
         this.password = password;

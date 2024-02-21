@@ -1,7 +1,5 @@
 package com.slash3.travelapp.Controllers;
 import com.slash3.travelapp.DTO.ActivityDTO;
-import com.slash3.travelapp.DTO.TripDTO;
-import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +28,6 @@ public class ActivityController {
         List<ActivityDTO> activityDTOList = activityService.getActivitiesByLocation(location);
         return ResponseEntity.ok(activityDTOList);
     }
-
 
     @GetMapping("/activities/{activityId}")
     public ActivityDTO getActivityById(@PathVariable Integer activityId) {

@@ -36,6 +36,8 @@ public class ActivityService {
         activity.setRating(activityDTO.getRating());
         activity.setSelectedByTrips(activityDTO.getSelectedTrips());
         activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setIndoor(activityDTO.isIndoor());
+
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -71,6 +73,7 @@ public class ActivityService {
                 .map(this::convertToActivityDTO)
                 .collect(Collectors.toList());
     }
+
 
     public ActivityDTO getActivityById(Integer activityId) {
         Activity activity = activityRepository.findById(activityId)

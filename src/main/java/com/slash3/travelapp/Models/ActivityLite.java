@@ -18,25 +18,15 @@ public class ActivityLite {
     @NotNull
     @Column(name="description")
     private String description;
-    @Column(name="indoor")
-    private boolean isIndoor;
-    public ActivityLite(Integer activityId, String name, String location, String description, boolean isIndoor) {
+    public ActivityLite(Integer activityId, String name, String location, String description) {
         this.activityId = activityId;
         this.name = name;
         this.location = location;
         this.description = description;
-        this.isIndoor = isIndoor;
     }
 
     public ActivityLite() {}
 
-    public boolean isIndoor() {
-        return isIndoor;
-    }
-
-    public void setIndoor(boolean indoor) {
-        isIndoor = indoor;
-    }
 
     public Integer getActivityId() {
         return activityId;

@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Trip from './Trip';
 import AllActivities from './AllActivities';
 import CreateTrip from './CreateTrip';
+import SelectActivities from './SelectActivities';
 import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
@@ -59,6 +60,7 @@ const App = () => {
             <Route path='/trip' element={<Trip/>} />
             <Route path='/allActivities' element={<AllActivities/>} />
             <Route path='/create' element={<CreateTrip/>} />
+            <Route path='/select' element={<SelectActivities/>} />
         </Routes>
     </BrowserRouter>
   )

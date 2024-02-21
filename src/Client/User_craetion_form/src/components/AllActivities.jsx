@@ -5,7 +5,7 @@ function AllActivities({ tripId, activities }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch activities if needed
+
     }, []); // Ensure this effect runs only once when the component mounts
 
     const handleAddActivityToTrip = async (activityId) => {
@@ -29,7 +29,7 @@ function AllActivities({ tripId, activities }) {
             <ul>
                 {activities.map(activity => (
                     <li key={activity.activityId}>
-                        {activity.name} - {activity.location} - {activity.description}
+                        {activity.name} - {activity.location} - {activity.description} - {activity.indoor ? "indoor" : "outdoor"}
                     </li>
                 ))}
             </ul>
