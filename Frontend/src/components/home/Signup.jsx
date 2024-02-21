@@ -32,7 +32,7 @@ function Signup() {
       if (response.ok) {
         const userData = await response.json();
 
-        navigate("/Profile", { user: userData });
+        navigate("/home", { user: userData });
       }
 
       if (!response.ok) {

@@ -39,7 +39,10 @@ const Data = [
     cost: "16 $",
     rating: 4.6,
     isIndoor: false
-  }
+
+  },
+  
+
 ];
 
 function Bottom() {

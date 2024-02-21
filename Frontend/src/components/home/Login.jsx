@@ -30,7 +30,7 @@ const [email, setEmail] = useState("");
 
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        navigate("/Profile");
+        navigate("/home");
       } else {
 
         console.error("Login failed");
