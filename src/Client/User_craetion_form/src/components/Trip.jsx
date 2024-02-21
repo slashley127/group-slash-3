@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import WeatherWidget from './WeatherWidget';
 import AllActivities from './AllActivities';
+import SelectActivities from './SelectActivities';
 
 function Trip() {
    const location = useLocation();
@@ -56,6 +57,7 @@ function Trip() {
              <p>Travelers: {tripData.traveler}</p>
              <WeatherWidget weatherData={weatherData} />
              <AllActivities tripId={tripData.tripId} activities={activities} />
+             <SelectActivities tripId={tripData.tripId} activities={activities} />
            </>
          )}
        </>
