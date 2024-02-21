@@ -7,7 +7,6 @@ import Home from './home/Home';
 import All_activites from './navbar/All_activites';
 
 import Create_Trip from './navbar/Create_Trip';
-import About_us from './navbar/About_us';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
 import Navbar from './navbar/Navbar';
@@ -18,6 +17,7 @@ import { Navigate } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 
 import './navbar/Profile'
+import My_trips from './navbar/My_trips';
 
 
 
@@ -67,20 +67,21 @@ const App = () => {
     <>
     <AuthProvider>
       <Router>
-        <Navbar />
+        
        
 
 
         <Routes>
-          <Route index element={ <Home/>}/>
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path="/all_activites" element={<All_activites/>} />
+          <Route path= '/home'element= { <div><Navbar />  <Home/> < Bottom/></div>}/>
+          <Route path='/login' element={<div> <Login /> < Bottom/></div>} />
+          <Route path='/signup' element={<div> <Signup /> < Bottom/></div>}  />
+          <Route path="/all_activites" element={<div>< Bottom/></div>} />
           <Route path="/create_trip" element={<Create_Trip />} />
-          <Route path="/create_trip" element={<Profile />} />
-          <Route path="/about_us" element={<About_us />} />
+          <Route path="/my_trips" element={<My_trips />} />
+          
+          
         </Routes>
-        < Bottom/>
+        
       </Router>
     </AuthProvider>
 

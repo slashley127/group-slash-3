@@ -50,8 +50,8 @@ function Navbar() {
                    </Link>
                 </li>
                 <li>
-                  <Link to='/other_page' className='nav-links-mobile  fst-italic' onClick={closeMobileMenu}>
-                    About us
+                  <Link to='/my_trips' className='nav-links-mobile  fst-italic' onClick={closeMobileMenu}>
+                    My Trips
                   </Link>
                 </li>
               <li className='nav-item'>
