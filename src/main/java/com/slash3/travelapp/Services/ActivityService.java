@@ -1,8 +1,11 @@
 package com.slash3.travelapp.Services;
 
 import com.slash3.travelapp.DTO.ActivityDTO;
+import com.slash3.travelapp.DTO.TripDTO;
 import com.slash3.travelapp.Models.Activity;
+import com.slash3.travelapp.Models.ActivityLite;
 import com.slash3.travelapp.Models.Trip;
+import com.slash3.travelapp.Repositories.ActivityLiteRepository;
 import com.slash3.travelapp.Repositories.ActivityRepository;
 import com.slash3.travelapp.Repositories.TripRepository;
 import jakarta.transaction.Transactional;
@@ -31,8 +34,10 @@ public class ActivityService {
         activity.setDescription(activityDTO.getDescription());
         activity.setCost(activityDTO.getCost());
         activity.setRating(activityDTO.getRating());
-//        activity.setSelectedByTrips(activityDTO.getSelectedTrips());s
-//        activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setSelectedByTrips(activityDTO.getSelectedTrips());
+        activity.setLikedByTrips(activityDTO.getLikedTrips());
+        activity.setIndoor(activityDTO.isIndoor());
+
 
         Activity savedActivity = activityRepository.save(activity);
 
@@ -59,9 +64,17 @@ public class ActivityService {
 
 
     public List<ActivityDTO> findAll() {
+//        List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
         List<Activity> activities = activityRepository.findAllDistinctNamedActivities();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
     }
+    public List<ActivityDTO> getActivitiesByLocation(String location) {
+        List<Activity> activities = activityRepository.findAllByLocation(location);
+        return activities.stream()
+                .map(this::convertToActivityDTO)
+                .collect(Collectors.toList());
+    }
+
 
     public ActivityDTO getActivityById(Integer activityId) {
         Activity activity = activityRepository.findById(activityId)
@@ -121,12 +134,12 @@ public class ActivityService {
                 activity.isIndoor()
         );
     }
-//
-//    private ActivityDTO convertToActivityDTO(Activity activity) {
-//        return new ActivityDTO(
-//                activity.getActivityId(),
-//                activity.getName(),
-//                activity.getLocation(),
-//                activity.getDescription());
-//    }
+
+    private ActivityDTO convertToActivityDTO(ActivityLite activity) {
+        return new ActivityDTO(
+                activity.getActivityId(),
+                activity.getName(),
+                activity.getLocation(),
+                activity.getDescription());
+    }
 }

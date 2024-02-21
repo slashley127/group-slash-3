@@ -31,7 +31,7 @@ public class AppUser {
     private List<Trip> trips;
 
 
-    public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
+    public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName, List<Trip> trips) {
         this.email=email;
         this.userName=userName;
         this.password = password;

@@ -1,6 +1,6 @@
 package com.slash3.travelapp.Controllers;
-
 import com.slash3.travelapp.DTO.ActivityDTO;
+import com.slash3.travelapp.Models.Activity;
 import com.slash3.travelapp.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,6 @@ import java.util.List;
 public class ActivityController {
     @Autowired
     private ActivityService activityService;
-
 
     public ActivityController(ActivityService activityService) {
         this.activityService = activityService;
@@ -35,6 +34,11 @@ public class ActivityController {
     @GetMapping("/AllActivities")
     public List<ActivityDTO> getAllActivities() {
         return activityService.findAll();
+    }
+    @GetMapping("/activities/location")
+    public ResponseEntity<List<ActivityDTO>> getActivitiesByLocation(@RequestParam String location) {
+        List<ActivityDTO> activityDTOList = activityService.getActivitiesByLocation(location);
+        return ResponseEntity.ok(activityDTOList);
     }
 
     @GetMapping("/activities/{activityId}")
@@ -58,10 +62,10 @@ public class ActivityController {
     }
 
 
-//    @PostMapping("/activities")
-//    public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO) {
-//        return activityService.createActivity(activityDTO);
-//    }
+    @PostMapping("/activities")
+    public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO) {
+        return activityService.createActivity(activityDTO);
+    }
 
     @DeleteMapping("/activities/{activityId}")
     public void deleteActivity(@PathVariable Integer activityId) {

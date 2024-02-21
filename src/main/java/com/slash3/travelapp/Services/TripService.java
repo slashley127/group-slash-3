@@ -22,9 +22,9 @@ public class TripService {
         trip.setTripLocation(tripDTO.getTripLocation());
         trip.setTraveler(tripDTO.getTraveler());
         if (tripDTO.getSelectedActivities() != null) {
-            trip.setSelectedActivities(tripDTO.getSelectedActivities());}
+        trip.setSelectedActivities(tripDTO.getSelectedActivities());}
         if (tripDTO.getLikedActivities() != null) {
-            trip.setLikedActivities(tripDTO.getLikedActivities());}
+        trip.setLikedActivities(tripDTO.getLikedActivities());}
 
         Trip savedTrip = tripRepository.save(trip);
 
@@ -52,6 +52,7 @@ public class TripService {
         }
         tripRepository.deleteById(tripId);
     }
+
     public TripDTO updateTrip(Integer tripId, TripDTO tripDTO) {
         Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found with id " + tripId));

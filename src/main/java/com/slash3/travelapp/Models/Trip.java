@@ -18,7 +18,7 @@ public class Trip {
     @Column(name = "trip_location")
     private String tripLocation;
 
-    //    @ManyToMany
+//    @ManyToMany
 //    @JoinTable(
 //            name = "trip_travelers",
 //            joinColumns = @JoinColumn(name = "trip_id"),
