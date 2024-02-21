@@ -27,7 +27,7 @@ public class ActivityService {
     private TripRepository tripRepository;
 
 
-    public ActivityDTO addActivity(ActivityDTO activityDTO) {
+    public ActivityDTO createActivity(ActivityDTO activityDTO) {
         Activity activity = new Activity();
         activity.setName(activityDTO.getName());
         activity.setLocation(activityDTO.getLocation());

@@ -28,6 +28,7 @@ public class Activity {
 
     @Column(name="cost")
     private double cost;
+
     @Column(name="indoor")
     private boolean isIndoor;
 
@@ -131,6 +132,10 @@ public class Activity {
     }
     public void setIndoor(boolean indoor) {
         isIndoor = indoor;
+    }
+
+    public List<Trip> getTrips() {
+        return selectedByTrips;
     }
 
     @Override

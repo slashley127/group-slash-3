@@ -23,6 +23,8 @@ public class ActivityDTO {
 
     private List<Trip> selectedTrips;
 
+    private List<Trip> likedTrips;
+
 
 
     public ActivityDTO(Integer activityId, String name, String location, String description, double cost, Integer rating, List<Trip> selectedTrips, List<Trip> likedTrips, boolean isIndoor) {

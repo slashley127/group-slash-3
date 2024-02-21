@@ -23,7 +23,7 @@ public class ActivityController {
     @PostMapping("/addactivity")
     public ResponseEntity<ActivityDTO> addActivity(@RequestBody ActivityDTO activityDTO) {
         try {
-            ActivityDTO newActivityDTO = activityService.addActivity(activityDTO);
+            ActivityDTO newActivityDTO = activityService.createActivity(activityDTO);
             return ResponseEntity.ok(newActivityDTO);
         } catch (Exception e) {
             e.printStackTrace();

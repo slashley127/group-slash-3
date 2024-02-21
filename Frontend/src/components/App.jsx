@@ -66,7 +66,7 @@ const App = () => {
             <Route path='/trip' element={<Trip/>} />
             <Route path='/create' element={<CreateTrip/>} />
             <Route path='/AllActivities' element={<AllActivities />} />
-            <Route path='/addactivity' element={<AddActivity/>} />} />
+            <Route path='/addactivity' element={<AddActivity />} />
         </Routes>
     </BrowserRouter>
   )

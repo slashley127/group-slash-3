@@ -30,7 +30,8 @@ public class TripDTO {
     public TripDTO(String tripLocation, String traveler) {
         this.tripLocation = tripLocation;
         this.traveler = traveler;
-        this.activities = activities;
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
     }
     public TripDTO(){};
 
