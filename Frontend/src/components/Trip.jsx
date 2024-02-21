@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import WeatherWidget from './WeatherWidget';
 import AllActivities from './AllActivities';
+import SelectActivities from './SelectActivities';
+import './Trip.css';
 
 function Trip() {
    const location = useLocation();
@@ -49,16 +51,19 @@ function Trip() {
 
      return (
        <>
-         <div><h1> My Trip</h1></div>
+         <div className = "container">
+         <h1> My Trip</h1>
          {tripData && (
            <>
              <p>Location: {tripData.tripLocation}</p>
              <p>Travelers: {tripData.traveler}</p>
-             <WeatherWidget weatherData={weatherData} />
+             <WeatherWidget weatherData={weatherData} className="weather-widget" />
+             <SelectActivities tripId={tripData.tripId} activities={activities} className="activities-section"/>
+
              <AllActivities tripId={tripData.tripId} activities={activities} />
-{/*              <SelectActivities tripId={tripData.tripId} activities={activities}/> */}
            </>
          )}
+           </div>
        </>
      );
    }

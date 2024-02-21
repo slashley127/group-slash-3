@@ -1,20 +1,19 @@
 
-import AllActivities from './AllActivities';
 import Navbar from './Navbar';
 
-
-
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import AddActivity from './AddActivity';
 import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Trip from './Trip';
+
+import AddActivity from './AddActivity';
+import AllActivities from './AllActivities';
+import SelectActivities from './SelectActivities';
 import CreateTrip from './CreateTrip';
 import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
-// import SelectActivities from './SelectActivities';
 
 const App = () => {
 
@@ -68,7 +67,7 @@ const App = () => {
             <Route path='/create' element={<CreateTrip/>} />
             <Route path='/AllActivities' element={<AllActivities />} />
             <Route path='/addactivity' element={<AddActivity />} />
-{/*             <Route path='/select' element={<SelectActivities/>} /> */}
+            <Route path='/select' element={<SelectActivities/>} />
         </Routes>
     </BrowserRouter>
   )

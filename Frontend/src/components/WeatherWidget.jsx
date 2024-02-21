@@ -15,13 +15,13 @@ const WeatherWidget = ({ weatherData }) => {
           <div>
             {main.temp > 40 ? (
               <div>
-              <h3>Based on current weather conditions at your destination, outdoor activities are recommended!</h3>
+              <h5>Based on current weather conditions, outdoor activities are recommended!</h5>
 
 
               </div>
             ) : (
               <div>
-              <h3>Based on current weather conditions at your destination, indoor activities are recommended!</h3>
+              <h5>Based on current weather conditions, indoor activities are recommended!</h5>
 
 
               </div>
