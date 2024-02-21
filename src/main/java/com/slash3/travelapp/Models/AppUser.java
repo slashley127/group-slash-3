@@ -1,9 +1,10 @@
 package com.slash3.travelapp.Models;
 
+import com.slash3.travelapp.DTO.LoginAuth;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.List;
+
 
 
 @Entity
@@ -30,7 +31,7 @@ public class AppUser {
 //    @Column(name= "trips")
 //    private List<Trip> trips;
 
-
+    private LoginAuth loginAuth;
     public AppUser(String userName, String password, String email, Integer Id, String lastName, String firstName) {
         this.email=email;
         this.userName=userName;
@@ -98,9 +99,10 @@ public class AppUser {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public LoginAuth getLoginAuth() {
+        return loginAuth;
+
+    }
 }
-
-
-
-
 
