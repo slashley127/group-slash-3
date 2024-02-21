@@ -53,7 +53,7 @@ const handleSubmit = async (e) => {
             </label>
           </div>
           <div className='d-grid'>
-            <button className='btn btn-primary' onClick={handleSubmit}> Sign In</button>
+            <button className='btn btn-primary' onClick={handleSubmit}><Link to="/Profile">Sign In</Link></button>
             <p className='text-end mt-2'>
               Forgot <a href=""> Password?</a>
               <Link to="/signup" className="ms-2"> Sign Up</Link>
