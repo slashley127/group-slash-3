@@ -27,11 +27,10 @@ public class TripDTO {
         this.likedActivities = likedActivities;
     }
 
-    public TripDTO(String tripLocation, String traveler) {
+    public TripDTO(String tripLocation, String traveler, List<Activity> selectedActivities) {
         this.tripLocation = tripLocation;
         this.traveler = traveler;
         this.selectedActivities = selectedActivities;
-        this.likedActivities = likedActivities;
     }
     public TripDTO(){};
 

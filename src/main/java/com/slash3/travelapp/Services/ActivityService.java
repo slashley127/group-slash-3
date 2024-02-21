@@ -26,6 +26,8 @@ public class ActivityService {
     @Autowired
     private TripRepository tripRepository;
 
+    @Autowired
+    private ActivityLiteRepository activityLiteRepository;
 
     public ActivityDTO createActivity(ActivityDTO activityDTO) {
         Activity activity = new Activity();
@@ -64,8 +66,8 @@ public class ActivityService {
 
 
     public List<ActivityDTO> findAll() {
-//        List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
-        List<Activity> activities = activityRepository.findAllDistinctNamedActivities();
+        List<ActivityLite> activities = activityLiteRepository.findAllDistinctNamedActivities();
+//        List<Activity> activities = activityRepository.findAllDistinctNamedActivities();
         return activities.stream().map(this::convertToActivityDTO).collect(Collectors.toList());
     }
     public List<ActivityDTO> getActivitiesByLocation(String location) {

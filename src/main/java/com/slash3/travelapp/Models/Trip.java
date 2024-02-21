@@ -65,12 +65,12 @@ public class Trip {
 
     public void addActivity(Activity activity) {
         selectedActivities.add(activity);
-        activity.getTrips().add(this);
+        activity.getSelectedByTrips().add(this);
     }
 
     public void removeActivity(Activity activity) {
         selectedActivities.remove(activity);
-        activity.getTrips().remove(this);
+        activity.getSelectedByTrips().remove(this);
     }
 
     public Integer getTripId() {
