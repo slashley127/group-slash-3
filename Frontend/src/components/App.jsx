@@ -14,6 +14,7 @@ import CreateTrip from './CreateTrip';
 import WeatherWidget from'./WeatherWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from 'react';
+// import SelectActivities from './SelectActivities';
 
 const App = () => {
 
@@ -67,6 +68,7 @@ const App = () => {
             <Route path='/create' element={<CreateTrip/>} />
             <Route path='/AllActivities' element={<AllActivities />} />
             <Route path='/addactivity' element={<AddActivity />} />
+{/*             <Route path='/select' element={<SelectActivities/>} /> */}
         </Routes>
     </BrowserRouter>
   )

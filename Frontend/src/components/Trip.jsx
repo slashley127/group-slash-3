@@ -1,77 +1,80 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import WeatherWidget from './WeatherWidget';
+import AllActivities from './AllActivities';
+
+function Trip() {
+   const location = useLocation();
+    const tripData = location.state && location.state.tripData;
+    const activityData = location.state && location.state.activityData;
+    const [activities, setActivities] = useState([]);
+    const [weatherData, setWeatherData] = useState(null);
+    const apiKey = '68cbf853b47ee9fec36896495fc006d2';
+
+   useEffect(() => {
+       const fetchWeatherData = async () => {
+         try {
+           const response = await fetch(
+             `https://api.openweathermap.org/data/2.5/weather?q=${tripData.tripLocation}&appid=${apiKey}&units=imperial`
+           );
+           if (!response.ok) {
+             throw new Error('Failed to fetch weather data');
+           }
+           const data = await response.json();
+           setWeatherData(data);
+         } catch (error) {
+           console.error('Error fetching weather data:', error);
+         }
+       };
+
+       const fetchActivities = async () => {
+           try {
+               const response = await fetch(`http://localhost:8080/api/activities/location?location=${tripData.tripLocation}`);
+               if (!response.ok) {
+                   throw new Error('Failed to fetch activities');
+               }
+               const data = await response.json();
+               setActivities(data);
+           } catch (error) {
+               console.error('Error fetching activities:', error);
+           }
+       };
+
+       if (tripData) {
+         fetchWeatherData();
+         fetchActivities();
+       }
+     }, [tripData]);
 
 
+     return (
+       <>
+         <div><h1> My Trip</h1></div>
+         {tripData && (
+           <>
+             <p>Location: {tripData.tripLocation}</p>
+             <p>Travelers: {tripData.traveler}</p>
+             <WeatherWidget weatherData={weatherData} />
+             <AllActivities tripId={tripData.tripId} activities={activities} />
+{/*              <SelectActivities tripId={tripData.tripId} activities={activities}/> */}
+           </>
+         )}
+       </>
+     );
+   }
 
-function CreateTrip() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    tripLocation: '',
-    traveler: ''
-  });
+   export default Trip;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:8080/api/trips/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      if (response.ok) {
-        const tripData = await response.json();
-
-        navigate("/Trip", { state: { tripData } });
-
-      } else {
-        throw new Error('Failed to create trip');
-      }
-    } catch (error) {
-      console.error('Error creating trip:', error);
-    }
-  };
-
-  return (
-     <div className='signup template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'>
-              <div className='form-container p-5 rounded bg-white mx-auto'>
-                <form onSubmit={handleSubmit}>
-                  <h3 className="text-center">Create Trip</h3>
-                   <div className='mb-2'>
-                       <label htmlFor="location">Trip Location</label>
-                          <input
-                            type="text"
-                            name="tripLocation"
-                            placeholder='Enter trip location'
-                            className='form-control'
-                            value={formData.tripLocation}
-                             onChange={handleChange}
-                          />
-                        </div>
-                  <div className='mb-2'>
-                    <label htmlFor="traveler">Traveler</label>
-                    <input
-                      type="text"
-                      name="traveler"
-                      placeholder='Traveler'
-                      className='form-control'
-                      value={formData.traveler}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className='d-grid'>
-                   <button type="submit" className='btn btn-primary'>Create Trip</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-  );
-}
-
-export default CreateTrip;
+//     const fetchActivities = async () => {
+//                 try {
+//                   const response = await fetch('http://localhost:8080/api/activities');
+//                    console.error('Response:', await response.text());
+//                   if (!response.ok) {
+//                     throw new Error('Failed to fetch activities');
+//                   }
+//                   const data = await response.json();
+//                   setActivities(data);
+//                 } catch (error) {
+//                   console.error('Error fetching activities:', error);
+//                 }
+//               };
