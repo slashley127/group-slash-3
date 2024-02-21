@@ -1,5 +1,6 @@
 package com.slash3.travelapp.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -27,7 +28,7 @@ public class Trip {
     @NotNull
     private String traveler;
 
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "trip_activities",
@@ -35,7 +36,7 @@ public class Trip {
             inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
     private List<Activity> selectedActivities;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "trip_liked_activities",
@@ -58,8 +59,8 @@ public class Trip {
     public Trip(){}
 
     public Trip(List<Activity> selectedActivities, List<Activity> likedActivities) {
-        this.selectedActivities = new ArrayList<>();
-        this.likedActivities = new ArrayList<>();
+        this.selectedActivities = selectedActivities;
+        this.likedActivities = likedActivities;
     }
 
 
