@@ -37,9 +37,6 @@
   margin-bottom: 5px;
 }
 
-/* Add more styles as needed */
-
-/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .activity {
     width: 100%;

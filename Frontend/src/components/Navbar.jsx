@@ -44,25 +44,23 @@ function Navbar() {
                 My Profile
                     </Link>
                 </li>
+
                 <li className='nav-item'>
                    <Link to='/AllActivities' className='nav-links  fst-italic' onClick={closeMobileMenu}>
                 All Activities
                    </Link>
                 </li>
-                <li>
-                  <Link to='/other_page' className='nav-links-mobile  fst-italic' onClick={closeMobileMenu}>
-                    About us
-                  </Link>
-                </li>
+
               <li className='nav-item'>
                 <Link
-                  to='/login'
+                  to='/'
                   className='nav-links  fst-italic'
                   onClick={closeMobileMenu}
                 >
                   Log in 
                 </Link>
               </li>
+
             </ul>
           {button && (
             <Link to='/create' className='btn-link' onClick={closeMobileMenu}>

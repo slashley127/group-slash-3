@@ -28,7 +28,7 @@ function CreateTrip() {
       if (response.ok) {
         const tripData = await response.json();
 
-        navigate("/WeatherWidget", { state: { tripLocation: formData.tripLocation } });
+        navigate("/Trip", { state: { tripData } });
 
       } else {
         throw new Error('Failed to create trip');

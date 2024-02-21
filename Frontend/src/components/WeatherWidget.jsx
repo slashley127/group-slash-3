@@ -39,13 +39,28 @@ const WeatherWidget = ({ location }) => {
   const { main, weather } = weatherData;
 
   return (
-    <div>
-      <h2>Weather in {location}</h2>
-      <p>Temperature: {main.temp}°C</p>
-      <p>Description: {weather[0].description}</p>
-    </div>
-  );
-};
+         <div>
+              <h2>Weather in {weatherData.name}</h2>
+              <p>Temperature: {main.temp}°F</p>
+              <p>Description: {weather[0].description}</p>
+              <div>
+                {main.temp > 20 ? (
+                  <div>
+                  <p>Based on current weather conditions at your destination, outdoor activities are recommended!</p>
+                    <h3>Outdoor Activities:</h3>
+                    {/* Display outdoor activities */}
+                  </div>
+                ) : (
+                  <div>
+                  <p>Based on current weather conditions at your destination, indoor activities are recommended!</p>
+                    <h3>Indoor Activities:</h3>
+                    {/* Display indoor activities */}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        };
 
 export default WeatherWidget;
 

@@ -31,7 +31,7 @@ function Profile() {
      }
 
   return (
-    <>
+    <div>
       <div className="profile-title">My Profile</div>
             <div className="profile-info">
           <p>Name: {userData.firstName} {userData.lastName}</p>
@@ -40,7 +40,7 @@ function Profile() {
           <p>Planned Trips: {userData.trips}</p>
 
          </div>
-    </>
+    </div>
   );
 }
 
