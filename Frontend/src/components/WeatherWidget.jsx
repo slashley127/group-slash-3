@@ -6,6 +6,7 @@ const WeatherWidget = ({ weatherData }) => {
   }
 
   const { main, weather } = weatherData;
+  const isRainy = weather.some(w => w.main === 'Rain');
 
   return (
      <div>
@@ -13,7 +14,7 @@ const WeatherWidget = ({ weatherData }) => {
           <p>Temperature: {main.temp}°F</p>
           <p>Description: {weather[0].description}</p>
           <div>
-            {main.temp > 40 ? (
+            {main.temp > 40 && !isRainy ? (
               <div>
               <h5>Based on current weather conditions, outdoor activities are recommended!</h5>
 

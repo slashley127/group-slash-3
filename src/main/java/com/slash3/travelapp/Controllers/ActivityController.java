@@ -13,12 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ActivityController {
+
     @Autowired
     private ActivityService activityService;
 
-    public ActivityController(ActivityService activityService) {
-        this.activityService = activityService;
-    }
+//    public ActivityController(ActivityService activityService) {
+//        this.activityService = activityService;
+//    }
 
     @PostMapping("/addactivity")
     public ResponseEntity<ActivityDTO> addActivity(@RequestBody ActivityDTO activityDTO) {
@@ -35,6 +36,7 @@ public class ActivityController {
     public List<ActivityDTO> getAllActivities() {
         return activityService.findAll();
     }
+
     @GetMapping("/activities/location")
     public ResponseEntity<List<ActivityDTO>> getActivitiesByLocation(@RequestParam String location) {
         List<ActivityDTO> activityDTOList = activityService.getActivitiesByLocation(location);

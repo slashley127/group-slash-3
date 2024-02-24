@@ -155,4 +155,5 @@ public class Activity {
     public int hashCode() {
         return super.hashCode();
     }
+
 }

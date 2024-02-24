@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <table class="activity-listing">
+        <tr th:each="activity : ${activities}">
+            <td>
+                <p>
+                    Activity:
+                    <a th:href="@{'/view/' + ${activity.activityid}}" th:text="${activity.activityid}"></a>
+                </p>
+                <p th:text="${'Activity: ' + activity.name}"></p>
+                <p>
+                    Location:
+                    <a th:href="@{'/locations/view/' + ${activity.location.id}}" th:text="${activity.location.name}"></a>
+                </p>
+                <p>
+                    Cost:
+                <ul th:each="cost : ${activity.cost}">
+                    <li>
+                        <a th:href="@{'/cost/view/' + ${cost.id}}" th:text="${cost.name}"></a>
+                    </li>
+                </ul>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -40,6 +40,21 @@ public class ActivityService {
         activity.setLikedByTrips(activityDTO.getLikedTrips());
         activity.setIndoor(activityDTO.isIndoor());
 
+        if (activityDTO.getName() == null || activityDTO.getName().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Activity name cannot be empty");
+        }
+
+        if (activityDTO.getLocation() == null || activityDTO.getLocation().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Activity location cannot be empty");
+        }
+
+        if (activityDTO.getDescription() == null || activityDTO.getDescription().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Activity description cannot be empty");
+        }
+
+        if (activityDTO.getCost() < 0 ) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Activity name cannot be empty");
+        }
 
         Activity savedActivity = activityRepository.save(activity);
 

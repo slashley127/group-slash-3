@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+
+<body class="container  body-content">
+<h1 th:text="${'Activity: ' + activity.name}">Default Title</h1>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<div class="activity-listing">
+    <p th:text="${'ID: ' + activity.id}"></p>
+    <p th:text="${'Activity: ' + activity.name}"></p>
+    <p>
+        Employer: <a th:href="@{'/locations/view/' + ${activity.location.id}}" th:text="${activity.location.name}"></a>
+    </p>
+    <p> Rating:
+    <ul>
+        <li th:each="rating : ${activity.rating}">
+            <a th:href="@{'/rating/view/' + ${rating.id}}" th:text="${rating.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>
+
+
+</body>
+</html>
