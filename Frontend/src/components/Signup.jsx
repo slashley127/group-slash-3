@@ -104,7 +104,7 @@ function Signup() {
                    <button type="submit" className='btn btn-primary'>Sign Up</button>
                     <p className='text-end mt-2'>
                        Already Registered
-                      <Link to="/" className="ms-2">Sign in</Link>
+                      <Link to="/Profile" className="ms-2">Sign in</Link>
                     </p>
                   </div>
                 </form>

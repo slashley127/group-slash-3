@@ -53,7 +53,7 @@ function Navbar() {
 
               <li className='nav-item'>
                 <Link
-                  to='/'
+                  to='/login'
                   className='nav-links  fst-italic'
                   onClick={closeMobileMenu}
                 >

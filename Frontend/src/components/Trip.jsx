@@ -58,7 +58,7 @@ function Trip() {
              <p>Location: {tripData.tripLocation}</p>
              <p>Travelers: {tripData.traveler}</p>
              <WeatherWidget weatherData={weatherData} className="weather-widget" />
-             <SelectActivities tripId={tripData.tripId} activities={activities} className="activities-section"/>
+             <SelectActivities tripId={tripData.tripId} activities={activities} />
 
              <AllActivities tripId={tripData.tripId} activities={activities} />
            </>
