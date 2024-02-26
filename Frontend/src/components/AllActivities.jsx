@@ -44,7 +44,6 @@ import { FaSearch } from 'react-icons/fa';
 import './AllActivities.css'
 
 function AllActivities() {
-
  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -68,6 +67,28 @@ function AllActivities() {
     fetchActivities();
   }, []);
 
+
+   const handleDelete = async () => {
+      try {
+        const response = await fetch(`https://localhost:5173/activities/${activityId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+        setActivities((prevActivities) => prevActivities.filter((activity) => activity.id !== activityId));
+        console.log('Activity deleted successfully');
+        } else {
+        console.error('Failed to delete activity. Server returned:', response.status);
+      }
+       } catch (error) {
+        console.error('Error deleting activity:', error);
+      }
+    };
+
+
   return (
 
    <div>
@@ -82,12 +103,10 @@ function AllActivities() {
            <p>{activity.description}</p>
            <p>rating: {activity.rating}    ${activity.cost}</p>
            <p>{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
-{/*            <p> <a href={`https://localhost:5173/api/activities/${activity.activityId}`} target="_blank" rel="noopener noreferrer"> */}
-{/*                               Edit */}
-{/*                                </a></p> */}
-           <p> <a href={`https://localhost:5173/api/activities/${activity.activityId}`} target="_blank" rel="noopener noreferrer">
-                   Delete
-                    </a></p>
+
+           <p>
+                <button onClick={() => handleDelete(`${activity.activityId}`)}>Delete</button>
+           </p>
  </div>
  </div>
  ))}

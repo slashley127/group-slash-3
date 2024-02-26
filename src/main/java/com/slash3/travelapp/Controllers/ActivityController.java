@@ -69,7 +69,7 @@ public class ActivityController {
         return activityService.createActivity(activityDTO);
     }
 
-    @DeleteMapping("/activities/{activity.activityId}")
+    @DeleteMapping("/activities/{activityId}")
     public void deleteActivity(@PathVariable Integer activityId) {
         activityService.deleteActivity(activityId);
     }
