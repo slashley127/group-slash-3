@@ -5,24 +5,22 @@
 //     const navigate = useNavigate();
 //
 //     useEffect(() => {
-//         // Fetch activities if needed
-//     }, []); // Ensure this effect runs only once when the component mounts
-//
-// //     const handleAddActivityToTrip = async (activityId) => {
-// //         try {
-// //             const response = await fetch(`http://localhost:8080/api/trips/${tripId}/activities/${activityId}`, {
-// //                 method: 'POST'
-// //             });
-// //             if (!response.ok) {
-// //                 throw new Error('Failed to add activity to trip');
-// //             }
-// //             console.log('Activity added to trip successfully');
-// //             navigate('/trip');
-// //         } catch (error) {
-// //             console.error('Error adding activity to trip:', error);
-// //         }
-// //     };
-//
+//     }, []);
+//     const handleAddActivityToTrip = async (activityId) => {
+//         try {
+//             const response = await fetch(`http://localhost:8080/api/trips/${tripId}/activities/${activityId}`, {
+//                 method: 'POST'
+//             });
+//             if (!response.ok) {
+//                 throw new Error('Failed to add activity to trip');
+//             }
+//             console.log('Activity added to trip successfully');
+//             navigate('/trip');
+//         } catch (error) {
+//             console.error('Error adding activity to trip:', error);
+//         }
+//     };
+
 //     return (
 //         <div>
 //             <h3>Local Activities</h3>
@@ -84,6 +82,12 @@ function AllActivities() {
            <p>{activity.description}</p>
            <p>rating: {activity.rating}    ${activity.cost}</p>
            <p>{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
+{/*            <p> <a href={`https://localhost:5173/api/activities/${activity.activityId}`} target="_blank" rel="noopener noreferrer"> */}
+{/*                               Edit */}
+{/*                                </a></p> */}
+           <p> <a href={`https://localhost:5173/api/activities/${activity.activityId}`} target="_blank" rel="noopener noreferrer">
+                   Delete
+                    </a></p>
  </div>
  </div>
  ))}
