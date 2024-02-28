@@ -15,7 +15,9 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepository extends CrudRepository<Activity,Integer> {
+
     public List<Activity>  findAllByLocation(String location);
+
     @Query("SELECT DISTINCT a  FROM Activity a")
     public List<Activity> findAllDistinctNamedActivities();
 }

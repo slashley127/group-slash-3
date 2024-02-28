@@ -28,6 +28,7 @@ function Signup() {
         },
         body: JSON.stringify(formData)
       });
+
       if (response.ok) {
         const userData = await response.json();
 

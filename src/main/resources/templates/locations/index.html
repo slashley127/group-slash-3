@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${locations} and ${location.size()}">no activities!</p>
+
+<div class="container body-content">
+    <h2>Employers</h2>
+    <ul>
+        <li th:each="location : ${locations}">
+            <a th:href="@{'/location/view/' + ${location.locationId}}" th:text="${location.city} + ',' + ${location.state}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/locations/add'}">Add Locations</a>
+
+</div>
+
+</body>
+</html>

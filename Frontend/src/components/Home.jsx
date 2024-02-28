@@ -15,7 +15,7 @@ const Home = () => {
 
     const onSearch = (searchTerm) => {
       setValue(searchTerm);
-      // our api to fetch the search result
+
       console.log("search ", searchTerm);
     };
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+
+<body class="container  body-content">
+<h1 th:text="${'Location: ' + location.city}">Default Title</h1>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<div class="activity-listing">
+    <p th:text="${'Activity: ' + activity.name}"></p>
+    <p th:text="${'Location: ' + activity.location.city}"></p>
+    <p> Jobs:
+    <ul>
+        <li th:each="activity : ${location.activities}">
+            <a th:href="@{'/view/' + ${activity.activityid}}" th:text="${activity.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>
+
+
+</body>
+</html>
