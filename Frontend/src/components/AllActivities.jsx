@@ -70,7 +70,7 @@ function AllActivities() {
 
    const handleDelete = async () => {
       try {
-        const response = await fetch(`https://localhost:5173/activities/${activityId}`, {
+        const response = await fetch(`https://localhost:5173/activities/${activity.id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ function AllActivities() {
            <p>{activity.isIndoor ? 'Indoor' : 'Outdoor'}</p>
 
            <p>
-                <button onClick={() => handleDelete(`${activity.activityId}`)}>Delete</button>
+                <button onClick={() => handleDelete(activity.activityId)}>Delete</button>
            </p>
  </div>
  </div>
