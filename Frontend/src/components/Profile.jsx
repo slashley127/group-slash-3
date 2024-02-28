@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 
 function Profile() {
         const location = useLocation();
-    const [userData, setUserData] = useState(null);
-//     const userData = location.state && location.state.user;
+//     const [userData, setUserData] = useState(null);
+    const userData = location.state && location.state.user;
 
     useEffect(() => {
     const fetchUserData = async () => {

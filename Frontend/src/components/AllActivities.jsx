@@ -69,8 +69,9 @@ function AllActivities() {
 
 
    const handleDelete = async () => {
+
       try {
-        const response = await fetch(`https://localhost:5173/activities/${activityId}`, {
+        const response = await fetch(`https://localhost:5173/api/activities/${activityId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
