@@ -1,49 +1,45 @@
 import "./App.css";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Login() {
-const navigate = useNavigate();
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const handleSubmit = async (e) => {
+  const { loginWithRedirect } = useAuth0();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await fetch("http://localhost:8080/api/email", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-        });
+      const response = await fetch("http://localhost:8080/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-        if (response.ok) {
-            const userData = await response.json();
-            localStorage.setItem("userData", JSON.stringify(userData));
-            navigate("/Profile", { state: { user: userData } });
-        } else {
-            console.error("Login failed");
-        }
+      if (response.ok) {
+        const userData = await response.json();
+        localStorage.setItem("userData", JSON.stringify(userData));
+        // No need to use <Link> here, just navigate programmatically
+        window.location.href = "/Profile"; // Redirect to the Profile page
+      } else {
+        console.error("Login failed");
+      }
     } catch (error) {
       console.error("Error logging in:", error);
     }
-};
-    return (
+  };
+
+  return (
     <div className='login template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'>
       <div className='form-container p-5 rounded bg-white mx-auto'>
-        <form action="">
+        <form onSubmit={handleSubmit}> {/* Use onSubmit to handle form submission */}
           <h3 className="text-center"> Sign In</h3>
           <div className='mb-2'>
-            <label htmlFor="email">Email</label>
-            <input type="email" placeholder='Enter Email' className='form-control' value={email}
-            onChange={(e) => setEmail(e.target.value)}
-             required />
-          </div>
-          <div className='mb-2'>
-            <label htmlFor="Password">Password</label>
-            <input type="Password" placeholder='Enter Password' className='form-control' value={password}
-             onChange={(e) => setPassword(e.target.value)}
+            <label htmlFor="name">your name</label>
+            <input type="name" placeholder='Enter Your  Name' className='form-control' value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required />
           </div>
           <div className='mb-2'>
@@ -53,16 +49,16 @@ const handleSubmit = async (e) => {
             </label>
           </div>
           <div className='d-grid'>
-            <button className='btn btn-primary' onClick={handleSubmit}><Link to="/Profile">Sign In</Link></button>
+            <button  className='btn btn-primary'  onClick={() => loginWithRedirect()}>Sign In</button> {/* Use type="submit" to submit the form */}
             <p className='text-end mt-2'>
               Forgot <a href=""> Password?</a>
-              <Link to="/signup" className="ms-2"> Sign Up</Link>
+              <a href="/signup" className="ms-2"> Sign Up</a> {/* Use anchor tags for navigation */}
             </p>
           </div>
         </form>
       </div>
     </div>
-    );
+  );
 }
 
 export default Login;

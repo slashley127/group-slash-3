@@ -53,7 +53,8 @@ const Home = () => {
                 className="dropdown-row"
                 key={item.id}
               >
-                {item.name}
+                {item.name} ___________________
+                {item.location}
               </div>
             ))}
         </div>

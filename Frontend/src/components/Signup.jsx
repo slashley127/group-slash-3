@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 function Signup() {
+
+  const { SignupWithRedirect } = useAuth0();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: '',
@@ -101,7 +103,7 @@ function Signup() {
                     />
                   </div>
                   <div className='d-grid'>
-                   <button type="submit" className='btn btn-primary'>Sign Up</button>
+                   <button type="submit" className='btn btn-primary ' onClick={() => SignupWithRedirect()}>Sign Up</button>
                     <p className='text-end mt-2'>
                        Already Registered
                       <Link to="/Profile" className="ms-2">Sign in</Link>
